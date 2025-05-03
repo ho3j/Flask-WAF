@@ -1,0 +1,500 @@
+2025-05-03 21:12:48,974 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:12:49,012 - INFO -  * Restarting with stat
+2025-05-03 21:12:49,486 - WARNING -  * Debugger is active!
+2025-05-03 21:12:49,489 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:12:56,860 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:12:56,860 - WARNING - Attack Detected in param: q=' OR '1'='1 from 127.0.0.1
+2025-05-03 21:12:56,861 - INFO - 127.0.0.1 - - [03/May/2025 21:12:56] "[31m[1mGET /?q='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:13:11,595 - INFO - 127.0.0.1 - - [03/May/2025 21:13:11] "[31m[1mGET /?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:13:39,767 - INFO - 127.0.0.1 - - [03/May/2025 21:13:39] "[31m[1mGET /?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:13:41,322 - INFO - 127.0.0.1 - - [03/May/2025 21:13:41] "[31m[1mGET /?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:15:40,863 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:15:40,900 - INFO -  * Restarting with stat
+2025-05-03 21:15:41,379 - WARNING -  * Debugger is active!
+2025-05-03 21:15:41,382 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:15:50,596 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:15:50,596 - WARNING - Attack Detected in param: test=' OR '1'='1 from 127.0.0.1
+2025-05-03 21:15:50,596 - INFO - 127.0.0.1 - - [03/May/2025 21:15:50] "[31m[1mGET /?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:15:57,111 - INFO - 127.0.0.1 - - [03/May/2025 21:15:57] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:15:57,146 - INFO - 127.0.0.1 - - [03/May/2025 21:15:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:16:15,818 - INFO - 127.0.0.1 - - [03/May/2025 21:16:15] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:16:15,839 - INFO - 127.0.0.1 - - [03/May/2025 21:16:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:16:17,648 - INFO - 127.0.0.1 - - [03/May/2025 21:16:17] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:16:17,664 - INFO - 127.0.0.1 - - [03/May/2025 21:16:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:16:18,879 - INFO - 127.0.0.1 - - [03/May/2025 21:16:18] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:16:18,895 - INFO - 127.0.0.1 - - [03/May/2025 21:16:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:17:19,253 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:17:19,289 - INFO -  * Restarting with stat
+2025-05-03 21:17:19,761 - WARNING -  * Debugger is active!
+2025-05-03 21:17:19,764 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:17:23,920 - INFO - 127.0.0.1 - - [03/May/2025 21:17:23] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:17:36,081 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:17:36,081 - WARNING - Attack Detected in param: test=' OR '1'='1 from 127.0.0.1
+2025-05-03 21:17:36,081 - INFO - 127.0.0.1 - - [03/May/2025 21:17:36] "[31m[1mGET /?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:17:38,797 - INFO - 127.0.0.1 - - [03/May/2025 21:17:38] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:17:44,987 - INFO - 127.0.0.1 - - [03/May/2025 21:17:44] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:17:45,688 - INFO - 127.0.0.1 - - [03/May/2025 21:17:45] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:18:53,767 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:18:53,809 - INFO -  * Restarting with stat
+2025-05-03 21:18:54,268 - WARNING -  * Debugger is active!
+2025-05-03 21:18:54,271 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:18:59,776 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:18:59,776 - WARNING - Attack Detected in param: test=' OR '1'='1 from 127.0.0.1
+2025-05-03 21:18:59,777 - INFO - 127.0.0.1 - - [03/May/2025 21:18:59] "[31m[1mGET /?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:19:01,522 - INFO - 127.0.0.1 - - [03/May/2025 21:19:01] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:19:04,782 - INFO - 127.0.0.1 - - [03/May/2025 21:19:04] "[32mGET /unblock/127.0.0.1 HTTP/1.1[0m" 302 -
+2025-05-03 21:19:04,790 - INFO - 127.0.0.1 - - [03/May/2025 21:19:04] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:19:05,750 - INFO - 127.0.0.1 - - [03/May/2025 21:19:05] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:19:10,657 - INFO - 127.0.0.1 - - [03/May/2025 21:19:10] "GET /?q=hello HTTP/1.1" 200 -
+2025-05-03 21:19:14,835 - INFO - 127.0.0.1 - - [03/May/2025 21:19:14] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:19:16,184 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:19:16,185 - WARNING - Attack Detected in param: test=' OR '1'='1 from 127.0.0.1
+2025-05-03 21:19:16,185 - INFO - 127.0.0.1 - - [03/May/2025 21:19:16] "[31m[1mGET /?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:19:21,309 - INFO - 127.0.0.1 - - [03/May/2025 21:19:21] "[31m[1mGET /?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:19:23,899 - INFO - 127.0.0.1 - - [03/May/2025 21:19:23] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:23:07,131 - INFO -  * Detected change in 'D:\\CoDe\\waf\\db.py', reloading
+2025-05-03 21:23:07,168 - INFO -  * Restarting with stat
+2025-05-03 21:23:07,636 - WARNING -  * Debugger is active!
+2025-05-03 21:23:07,639 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:24:11,878 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:24:11,915 - INFO -  * Restarting with stat
+2025-05-03 21:24:12,384 - WARNING -  * Debugger is active!
+2025-05-03 21:24:12,386 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:25:46,683 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:25:46,720 - INFO -  * Restarting with stat
+2025-05-03 21:25:47,189 - WARNING -  * Debugger is active!
+2025-05-03 21:25:47,191 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:27:14,257 - INFO - 127.0.0.1 - - [03/May/2025 21:27:14] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:27:19,465 - INFO - 127.0.0.1 - - [03/May/2025 21:27:19] "GET /?q=hello HTTP/1.1" 200 -
+2025-05-03 21:27:20,994 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:27:20,995 - WARNING - SQLi in param: test=' OR '1'='1 from 127.0.0.1
+2025-05-03 21:27:21,006 - INFO - 127.0.0.1 - - [03/May/2025 21:27:21] "[31m[1mGET /?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:27:22,320 - INFO - 127.0.0.1 - - [03/May/2025 21:27:22] "[31m[1mGET /?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:27:23,706 - INFO - 127.0.0.1 - - [03/May/2025 21:27:23] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:29:27,630 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:29:27,666 - INFO -  * Restarting with stat
+2025-05-03 21:29:28,231 - WARNING -  * Debugger is active!
+2025-05-03 21:29:28,234 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:29:33,041 - INFO - 127.0.0.1 - - [03/May/2025 21:29:33] "GET /docs HTTP/1.1" 200 -
+2025-05-03 21:29:33,156 - INFO - 127.0.0.1 - - [03/May/2025 21:29:33] "GET /swaggerui/swagger-ui.css HTTP/1.1" 200 -
+2025-05-03 21:29:33,159 - INFO - 127.0.0.1 - - [03/May/2025 21:29:33] "GET /swaggerui/droid-sans.css HTTP/1.1" 200 -
+2025-05-03 21:29:33,159 - INFO - 127.0.0.1 - - [03/May/2025 21:29:33] "GET /swaggerui/swagger-ui-bundle.js HTTP/1.1" 200 -
+2025-05-03 21:29:33,161 - INFO - 127.0.0.1 - - [03/May/2025 21:29:33] "GET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1" 200 -
+2025-05-03 21:29:33,315 - INFO - 127.0.0.1 - - [03/May/2025 21:29:33] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -
+2025-05-03 21:29:33,326 - INFO - 127.0.0.1 - - [03/May/2025 21:29:33] "GET /swagger.json HTTP/1.1" 200 -
+2025-05-03 21:30:18,947 - INFO - 127.0.0.1 - - [03/May/2025 21:30:18] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:30:18,965 - INFO - 127.0.0.1 - - [03/May/2025 21:30:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:32:18,165 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:32:18,206 - INFO -  * Restarting with stat
+2025-05-03 21:32:18,801 - WARNING -  * Debugger is active!
+2025-05-03 21:32:18,804 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:32:21,219 - INFO - 127.0.0.1 - - [03/May/2025 21:32:21] "GET /docs HTTP/1.1" 200 -
+2025-05-03 21:32:21,336 - INFO - 127.0.0.1 - - [03/May/2025 21:32:21] "[36mGET /swaggerui/droid-sans.css HTTP/1.1[0m" 304 -
+2025-05-03 21:32:21,337 - INFO - 127.0.0.1 - - [03/May/2025 21:32:21] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-05-03 21:32:21,340 - INFO - 127.0.0.1 - - [03/May/2025 21:32:21] "[36mGET /swaggerui/swagger-ui.css HTTP/1.1[0m" 304 -
+2025-05-03 21:32:21,340 - INFO - 127.0.0.1 - - [03/May/2025 21:32:21] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-05-03 21:32:21,444 - INFO - 127.0.0.1 - - [03/May/2025 21:32:21] "GET /swagger.json HTTP/1.1" 200 -
+2025-05-03 21:32:24,399 - INFO - 127.0.0.1 - - [03/May/2025 21:32:24] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:32:24,414 - INFO - 127.0.0.1 - - [03/May/2025 21:32:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:32:25,533 - INFO - 127.0.0.1 - - [03/May/2025 21:32:25] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:32:25,547 - INFO - 127.0.0.1 - - [03/May/2025 21:32:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:32:27,012 - INFO - 127.0.0.1 - - [03/May/2025 21:32:27] "GET /blocked-ips HTTP/1.1" 200 -
+2025-05-03 21:32:27,027 - INFO - 127.0.0.1 - - [03/May/2025 21:32:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:33:12,783 - INFO - 127.0.0.1 - - [03/May/2025 21:33:12] "[33mGET /html/blocked-ips HTTP/1.1[0m" 404 -
+2025-05-03 21:33:17,346 - INFO - 127.0.0.1 - - [03/May/2025 21:33:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:34:23,922 - INFO - 127.0.0.1 - - [03/May/2025 21:34:23] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:34:31,550 - INFO - 127.0.0.1 - - [03/May/2025 21:34:31] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:34:33,792 - INFO - 127.0.0.1 - - [03/May/2025 21:34:33] "[33mGET /?q=hello HTTP/1.1[0m" 404 -
+2025-05-03 21:36:12,900 - INFO - 127.0.0.1 - - [03/May/2025 21:36:12] "[35m[1mGET /waf/?q=hello HTTP/1.1[0m" 500 -
+2025-05-03 21:36:12,926 - INFO - 127.0.0.1 - - [03/May/2025 21:36:12] "GET /waf/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-03 21:36:12,927 - INFO - 127.0.0.1 - - [03/May/2025 21:36:12] "GET /waf/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-03 21:36:12,954 - INFO - 127.0.0.1 - - [03/May/2025 21:36:12] "GET /waf/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-03 21:36:12,959 - INFO - 127.0.0.1 - - [03/May/2025 21:36:12] "GET /waf/?__debugger__=yes&cmd=resource&f=console.png&s=eTYLzEJmtcUOGmz0TM4D HTTP/1.1" 200 -
+2025-05-03 21:36:26,731 - INFO - 127.0.0.1 - - [03/May/2025 21:36:26] "[35m[1mGET /waf/?q=hello HTTP/1.1[0m" 500 -
+2025-05-03 21:36:26,751 - INFO - 127.0.0.1 - - [03/May/2025 21:36:26] "[36mGET /waf/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-03 21:36:26,752 - INFO - 127.0.0.1 - - [03/May/2025 21:36:26] "[36mGET /waf/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-03 21:36:26,764 - INFO - 127.0.0.1 - - [03/May/2025 21:36:26] "[36mGET /waf/?__debugger__=yes&cmd=resource&f=console.png&s=eTYLzEJmtcUOGmz0TM4D HTTP/1.1[0m" 304 -
+2025-05-03 21:36:37,022 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:36:37,034 - INFO - 127.0.0.1 - - [03/May/2025 21:36:37] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:36:37,058 - INFO - 127.0.0.1 - - [03/May/2025 21:36:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:36:43,793 - INFO - 127.0.0.1 - - [03/May/2025 21:36:43] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:39:13,841 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:39:13,901 - INFO -  * Restarting with stat
+2025-05-03 21:39:14,532 - WARNING -  * Debugger is active!
+2025-05-03 21:39:14,534 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:39:17,140 - INFO - 127.0.0.1 - - [03/May/2025 21:39:17] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:39:17,159 - INFO - 127.0.0.1 - - [03/May/2025 21:39:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:39:26,705 - INFO - 127.0.0.1 - - [03/May/2025 21:39:26] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:39:27,687 - INFO - 127.0.0.1 - - [03/May/2025 21:39:27] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 21:39:27,707 - INFO - 127.0.0.1 - - [03/May/2025 21:39:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:39:38,118 - INFO - 127.0.0.1 - - [03/May/2025 21:39:38] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:39:38,139 - INFO - 127.0.0.1 - - [03/May/2025 21:39:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:39:51,559 - INFO - 127.0.0.1 - - [03/May/2025 21:39:51] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:41:33,950 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:41:33,993 - INFO -  * Restarting with stat
+2025-05-03 21:41:34,535 - WARNING -  * Debugger is active!
+2025-05-03 21:41:34,538 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:41:57,125 - INFO - 127.0.0.1 - - [03/May/2025 21:41:57] "GET /attack-logs HTTP/1.1" 200 -
+2025-05-03 21:41:57,150 - INFO - 127.0.0.1 - - [03/May/2025 21:41:57] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:42:12,005 - INFO - 127.0.0.1 - - [03/May/2025 21:42:12] "[35m[1mGET /attack-logs/html HTTP/1.1[0m" 500 -
+2025-05-03 21:42:12,094 - INFO - 127.0.0.1 - - [03/May/2025 21:42:12] "GET /attack-logs/html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-03 21:42:12,094 - INFO - 127.0.0.1 - - [03/May/2025 21:42:12] "GET /attack-logs/html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-03 21:42:12,122 - INFO - 127.0.0.1 - - [03/May/2025 21:42:12] "GET /attack-logs/html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-03 21:42:12,158 - INFO - 127.0.0.1 - - [03/May/2025 21:42:12] "GET /attack-logs/html?__debugger__=yes&cmd=resource&f=console.png&s=Pk1sTauS8gIq5FxgIC2o HTTP/1.1" 200 -
+2025-05-03 21:42:28,452 - INFO - 127.0.0.1 - - [03/May/2025 21:42:28] "[35m[1mGET /attack-logs/html HTTP/1.1[0m" 500 -
+2025-05-03 21:42:28,469 - INFO - 127.0.0.1 - - [03/May/2025 21:42:28] "[36mGET /attack-logs/html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-03 21:42:28,471 - INFO - 127.0.0.1 - - [03/May/2025 21:42:28] "[36mGET /attack-logs/html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-03 21:42:28,522 - INFO - 127.0.0.1 - - [03/May/2025 21:42:28] "[36mGET /attack-logs/html?__debugger__=yes&cmd=resource&f=console.png&s=Pk1sTauS8gIq5FxgIC2o HTTP/1.1[0m" 304 -
+2025-05-03 21:42:56,777 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:42:56,824 - INFO -  * Restarting with stat
+2025-05-03 21:42:57,387 - WARNING -  * Debugger is active!
+2025-05-03 21:42:57,390 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:42:58,440 - INFO - 127.0.0.1 - - [03/May/2025 21:42:58] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:43:12,172 - INFO - 127.0.0.1 - - [03/May/2025 21:43:12] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:43:14,914 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:43:14,957 - INFO - 127.0.0.1 - - [03/May/2025 21:43:14] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:43:14,973 - INFO - 127.0.0.1 - - [03/May/2025 21:43:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:43:18,831 - INFO - 127.0.0.1 - - [03/May/2025 21:43:18] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:43:20,896 - INFO - 127.0.0.1 - - [03/May/2025 21:43:20] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:43:23,319 - INFO - 127.0.0.1 - - [03/May/2025 21:43:23] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:43:25,070 - INFO - 127.0.0.1 - - [03/May/2025 21:43:25] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:43:25,088 - INFO - 127.0.0.1 - - [03/May/2025 21:43:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:43:26,735 - INFO - 127.0.0.1 - - [03/May/2025 21:43:26] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:43:27,380 - INFO - 127.0.0.1 - - [03/May/2025 21:43:27] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:43:29,024 - INFO - 127.0.0.1 - - [03/May/2025 21:43:29] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:43:29,038 - INFO - 127.0.0.1 - - [03/May/2025 21:43:29] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:43:31,919 - INFO - 127.0.0.1 - - [03/May/2025 21:43:31] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:46:25,888 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:46:25,944 - INFO -  * Restarting with stat
+2025-05-03 21:46:26,499 - WARNING -  * Debugger is active!
+2025-05-03 21:46:26,501 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:46:29,627 - INFO - 127.0.0.1 - - [03/May/2025 21:46:29] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:46:32,796 - INFO - 127.0.0.1 - - [03/May/2025 21:46:32] "[32mPOST /attack-logs/clear HTTP/1.1[0m" 302 -
+2025-05-03 21:46:32,803 - INFO - 127.0.0.1 - - [03/May/2025 21:46:32] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:46:33,852 - INFO - 127.0.0.1 - - [03/May/2025 21:46:33] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:46:39,175 - INFO - 127.0.0.1 - - [03/May/2025 21:46:39] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:46:39,190 - INFO - 127.0.0.1 - - [03/May/2025 21:46:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:46:41,175 - INFO - 127.0.0.1 - - [03/May/2025 21:46:41] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:46:41,189 - INFO - 127.0.0.1 - - [03/May/2025 21:46:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:46:41,960 - INFO - 127.0.0.1 - - [03/May/2025 21:46:41] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:46:41,978 - INFO - 127.0.0.1 - - [03/May/2025 21:46:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:46:42,529 - INFO - 127.0.0.1 - - [03/May/2025 21:46:42] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:46:42,543 - INFO - 127.0.0.1 - - [03/May/2025 21:46:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:46:44,554 - INFO - 127.0.0.1 - - [03/May/2025 21:46:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:46:44,948 - INFO - 127.0.0.1 - - [03/May/2025 21:46:44] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:46:44,962 - INFO - 127.0.0.1 - - [03/May/2025 21:46:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:46:47,370 - INFO - 127.0.0.1 - - [03/May/2025 21:46:47] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:46:47,384 - INFO - 127.0.0.1 - - [03/May/2025 21:46:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:46:55,047 - INFO - 127.0.0.1 - - [03/May/2025 21:46:55] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:46:57,130 - INFO - 127.0.0.1 - - [03/May/2025 21:46:57] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:47:00,823 - INFO - 127.0.0.1 - - [03/May/2025 21:47:00] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 21:47:00,844 - INFO - 127.0.0.1 - - [03/May/2025 21:47:00] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:47:10,693 - INFO - 127.0.0.1 - - [03/May/2025 21:47:10] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:47:13,333 - INFO - 127.0.0.1 - - [03/May/2025 21:47:13] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:47:13,348 - INFO - 127.0.0.1 - - [03/May/2025 21:47:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:47:17,253 - INFO - 127.0.0.1 - - [03/May/2025 21:47:17] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:48:46,066 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:48:46,109 - INFO -  * Restarting with stat
+2025-05-03 21:48:46,667 - WARNING -  * Debugger is active!
+2025-05-03 21:48:46,670 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:48:49,900 - INFO - 127.0.0.1 - - [03/May/2025 21:48:49] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:48:54,673 - INFO - 127.0.0.1 - - [03/May/2025 21:48:54] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 21:48:58,186 - INFO - 127.0.0.1 - - [03/May/2025 21:48:58] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:48:59,726 - INFO - 127.0.0.1 - - [03/May/2025 21:48:59] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:49:03,579 - INFO - 127.0.0.1 - - [03/May/2025 21:49:03] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:49:03,596 - INFO - 127.0.0.1 - - [03/May/2025 21:49:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:49:09,721 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:49:09,733 - INFO - 127.0.0.1 - - [03/May/2025 21:49:09] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:49:09,748 - INFO - 127.0.0.1 - - [03/May/2025 21:49:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:49:12,228 - INFO - 127.0.0.1 - - [03/May/2025 21:49:12] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:49:14,748 - INFO - 127.0.0.1 - - [03/May/2025 21:49:14] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:49:17,996 - INFO - 127.0.0.1 - - [03/May/2025 21:49:17] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:49:18,009 - INFO - 127.0.0.1 - - [03/May/2025 21:49:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:50:32,249 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:50:32,292 - INFO -  * Restarting with stat
+2025-05-03 21:50:32,883 - WARNING -  * Debugger is active!
+2025-05-03 21:50:32,886 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:50:33,903 - INFO - 127.0.0.1 - - [03/May/2025 21:50:33] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:50:33,923 - INFO - 127.0.0.1 - - [03/May/2025 21:50:33] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:50:34,840 - INFO - 127.0.0.1 - - [03/May/2025 21:50:34] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:50:34,858 - INFO - 127.0.0.1 - - [03/May/2025 21:50:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:50:36,346 - INFO - 127.0.0.1 - - [03/May/2025 21:50:36] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:50:36,362 - INFO - 127.0.0.1 - - [03/May/2025 21:50:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:50:38,082 - INFO - 127.0.0.1 - - [03/May/2025 21:50:38] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:50:42,836 - INFO - 127.0.0.1 - - [03/May/2025 21:50:42] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 21:50:44,653 - INFO - 127.0.0.1 - - [03/May/2025 21:50:44] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 21:50:47,691 - INFO - 127.0.0.1 - - [03/May/2025 21:50:47] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:50:51,706 - INFO - 127.0.0.1 - - [03/May/2025 21:50:51] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:50:51,719 - INFO - 127.0.0.1 - - [03/May/2025 21:50:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:51:57,461 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 21:51:57,502 - INFO -  * Restarting with stat
+2025-05-03 21:51:58,036 - WARNING -  * Debugger is active!
+2025-05-03 21:51:58,038 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:52:12,691 - INFO - 127.0.0.1 - - [03/May/2025 21:52:12] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:52:12,710 - INFO - 127.0.0.1 - - [03/May/2025 21:52:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:52:28,733 - INFO - 127.0.0.1 - - [03/May/2025 21:52:28] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:52:57,221 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 21:52:57,264 - INFO -  * Restarting with stat
+2025-05-03 21:52:57,807 - WARNING -  * Debugger is active!
+2025-05-03 21:52:57,810 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:53:17,425 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:53:17,467 - INFO -  * Restarting with stat
+2025-05-03 21:53:17,968 - WARNING -  * Debugger is active!
+2025-05-03 21:53:17,971 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:53:22,008 - INFO - 127.0.0.1 - - [03/May/2025 21:53:22] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:53:22,028 - INFO - 127.0.0.1 - - [03/May/2025 21:53:22] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:53:23,989 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:53:24,013 - INFO - 127.0.0.1 - - [03/May/2025 21:53:24] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:53:24,027 - INFO - 127.0.0.1 - - [03/May/2025 21:53:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:53:28,968 - INFO - 127.0.0.1 - - [03/May/2025 21:53:28] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:53:32,795 - INFO - 127.0.0.1 - - [03/May/2025 21:53:32] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:53:32,811 - INFO - 127.0.0.1 - - [03/May/2025 21:53:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:54:22,168 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:54:22,213 - INFO -  * Restarting with stat
+2025-05-03 21:54:22,745 - WARNING -  * Debugger is active!
+2025-05-03 21:54:22,747 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:54:24,369 - INFO - 127.0.0.1 - - [03/May/2025 21:54:24] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:54:24,385 - INFO - 127.0.0.1 - - [03/May/2025 21:54:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:54:26,136 - INFO - 127.0.0.1 - - [03/May/2025 21:54:26] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:54:26,150 - INFO - 127.0.0.1 - - [03/May/2025 21:54:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:54:28,242 - INFO - 127.0.0.1 - - [03/May/2025 21:54:28] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:54:29,389 - INFO - 127.0.0.1 - - [03/May/2025 21:54:29] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 21:54:31,721 - INFO - 127.0.0.1 - - [03/May/2025 21:54:31] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:54:37,190 - INFO - 127.0.0.1 - - [03/May/2025 21:54:37] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:54:37,213 - INFO - 127.0.0.1 - - [03/May/2025 21:54:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:55:36,318 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:55:36,378 - INFO -  * Restarting with stat
+2025-05-03 21:55:36,905 - WARNING -  * Debugger is active!
+2025-05-03 21:55:36,907 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:55:39,942 - INFO - 127.0.0.1 - - [03/May/2025 21:55:39] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:55:39,961 - INFO - 127.0.0.1 - - [03/May/2025 21:55:39] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:55:43,989 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:55:44,002 - INFO - 127.0.0.1 - - [03/May/2025 21:55:44] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:55:44,017 - INFO - 127.0.0.1 - - [03/May/2025 21:55:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:55:45,796 - INFO - 127.0.0.1 - - [03/May/2025 21:55:45] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:55:45,813 - INFO - 127.0.0.1 - - [03/May/2025 21:55:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:55:47,246 - INFO - 127.0.0.1 - - [03/May/2025 21:55:47] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:56:54,293 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:56:54,343 - INFO -  * Restarting with stat
+2025-05-03 21:56:54,946 - WARNING -  * Debugger is active!
+2025-05-03 21:56:54,948 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 21:56:56,107 - INFO - 127.0.0.1 - - [03/May/2025 21:56:56] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:56:56,129 - INFO - 127.0.0.1 - - [03/May/2025 21:56:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:56:56,968 - INFO - 127.0.0.1 - - [03/May/2025 21:56:56] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:56:56,983 - INFO - 127.0.0.1 - - [03/May/2025 21:56:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:57:01,923 - INFO - 127.0.0.1 - - [03/May/2025 21:57:01] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:57:01,936 - INFO - 127.0.0.1 - - [03/May/2025 21:57:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:57:03,709 - INFO - 127.0.0.1 - - [03/May/2025 21:57:03] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:57:05,082 - INFO - 127.0.0.1 - - [03/May/2025 21:57:05] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 21:57:08,130 - INFO - 127.0.0.1 - - [03/May/2025 21:57:08] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 21:57:11,396 - INFO - 127.0.0.1 - - [03/May/2025 21:57:11] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 21:57:11,409 - INFO - 127.0.0.1 - - [03/May/2025 21:57:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:57:38,683 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 21:57:38,695 - INFO - 127.0.0.1 - - [03/May/2025 21:57:38] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 21:57:38,711 - INFO - 127.0.0.1 - - [03/May/2025 21:57:38] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:57:46,783 - INFO - 127.0.0.1 - - [03/May/2025 21:57:46] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 21:57:46,798 - INFO - 127.0.0.1 - - [03/May/2025 21:57:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 21:58:31,500 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 21:58:31,550 - INFO -  * Restarting with stat
+2025-05-03 21:59:59,830 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 21:59:59,831 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 21:59:59,832 - INFO -  * Restarting with stat
+2025-05-03 22:00:00,354 - WARNING -  * Debugger is active!
+2025-05-03 22:00:00,356 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:00:03,592 - INFO - 127.0.0.1 - - [03/May/2025 22:00:03] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:00:09,835 - INFO - 127.0.0.1 - - [03/May/2025 22:00:09] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:00:12,096 - INFO - 127.0.0.1 - - [03/May/2025 22:00:12] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:00:15,598 - INFO - 127.0.0.1 - - [03/May/2025 22:00:15] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:00:16,779 - INFO - 127.0.0.1 - - [03/May/2025 22:00:16] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:00:17,352 - INFO - 127.0.0.1 - - [03/May/2025 22:00:17] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:00:20,560 - INFO - 127.0.0.1 - - [03/May/2025 22:00:20] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 22:00:23,510 - INFO - 127.0.0.1 - - [03/May/2025 22:00:23] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:00:27,283 - INFO - 127.0.0.1 - - [03/May/2025 22:00:27] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:00:27,296 - INFO - 127.0.0.1 - - [03/May/2025 22:00:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 22:00:30,011 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 22:00:30,037 - INFO - 127.0.0.1 - - [03/May/2025 22:00:30] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:00:30,056 - INFO - 127.0.0.1 - - [03/May/2025 22:00:30] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 22:00:33,699 - INFO - 127.0.0.1 - - [03/May/2025 22:00:33] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:01:18,515 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 22:01:18,564 - INFO -  * Restarting with stat
+2025-05-03 22:01:19,156 - WARNING -  * Debugger is active!
+2025-05-03 22:01:19,158 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:01:20,216 - INFO - 127.0.0.1 - - [03/May/2025 22:01:20] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:01:34,583 - INFO - 127.0.0.1 - - [03/May/2025 22:01:34] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:01:36,443 - INFO - 127.0.0.1 - - [03/May/2025 22:01:36] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:02:07,383 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 22:02:07,426 - INFO -  * Restarting with stat
+2025-05-03 22:02:07,937 - WARNING -  * Debugger is active!
+2025-05-03 22:02:07,940 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:02:09,532 - INFO - 127.0.0.1 - - [03/May/2025 22:02:09] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:02:12,810 - INFO - 127.0.0.1 - - [03/May/2025 22:02:12] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:02:14,296 - INFO - 127.0.0.1 - - [03/May/2025 22:02:14] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 22:02:16,775 - INFO - 127.0.0.1 - - [03/May/2025 22:02:16] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:02:19,015 - INFO - 127.0.0.1 - - [03/May/2025 22:02:19] "[35m[1mGET /waf/?q=hello HTTP/1.1[0m" 500 -
+2025-05-03 22:02:19,081 - INFO - 127.0.0.1 - - [03/May/2025 22:02:19] "GET /waf/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-03 22:02:19,082 - INFO - 127.0.0.1 - - [03/May/2025 22:02:19] "[36mGET /waf/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-03 22:02:19,095 - INFO - 127.0.0.1 - - [03/May/2025 22:02:19] "GET /waf/?__debugger__=yes&cmd=resource&f=console.png&s=Ufndw87kfqFE9b3xNWbH HTTP/1.1" 200 -
+2025-05-03 22:03:05,802 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 22:03:05,843 - INFO -  * Restarting with stat
+2025-05-03 22:07:42,264 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 22:07:42,265 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 22:07:42,266 - INFO -  * Restarting with stat
+2025-05-03 22:07:42,771 - WARNING -  * Debugger is active!
+2025-05-03 22:07:42,774 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:07:45,449 - INFO - 127.0.0.1 - - [03/May/2025 22:07:45] "[35m[1mGET /waf/?q=hello HTTP/1.1[0m" 500 -
+2025-05-03 22:07:45,519 - INFO - 127.0.0.1 - - [03/May/2025 22:07:45] "[36mGET /waf/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-03 22:07:45,519 - INFO - 127.0.0.1 - - [03/May/2025 22:07:45] "[36mGET /waf/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-03 22:07:45,536 - INFO - 127.0.0.1 - - [03/May/2025 22:07:45] "GET /waf/?__debugger__=yes&cmd=resource&f=console.png&s=U2NRkF4uUXFDMSuo489v HTTP/1.1" 200 -
+2025-05-03 22:08:23,047 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 22:08:23,087 - INFO -  * Restarting with stat
+2025-05-03 22:08:36,558 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 22:08:36,558 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 22:08:36,559 - INFO -  * Restarting with stat
+2025-05-03 22:08:37,052 - WARNING -  * Debugger is active!
+2025-05-03 22:08:37,054 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:08:39,383 - INFO - 127.0.0.1 - - [03/May/2025 22:08:39] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:08:44,589 - INFO - 127.0.0.1 - - [03/May/2025 22:08:44] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:08:47,037 - INFO - 127.0.0.1 - - [03/May/2025 22:08:47] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:08:47,888 - INFO - 127.0.0.1 - - [03/May/2025 22:08:47] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:08:48,367 - INFO - 127.0.0.1 - - [03/May/2025 22:08:48] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:08:50,101 - INFO - 127.0.0.1 - - [03/May/2025 22:08:50] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:08:50,491 - INFO - 127.0.0.1 - - [03/May/2025 22:08:50] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:08:54,407 - INFO - 127.0.0.1 - - [03/May/2025 22:08:54] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:08:55,680 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 22:08:55,692 - INFO - 127.0.0.1 - - [03/May/2025 22:08:55] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:09:00,089 - INFO - 127.0.0.1 - - [03/May/2025 22:09:00] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:09:03,501 - INFO - 127.0.0.1 - - [03/May/2025 22:09:03] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:09:09,098 - INFO - 127.0.0.1 - - [03/May/2025 22:09:09] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-03 22:09:09,109 - INFO - 127.0.0.1 - - [03/May/2025 22:09:09] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:09:12,058 - INFO - 127.0.0.1 - - [03/May/2025 22:09:12] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:09:16,452 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 22:09:16,466 - INFO - 127.0.0.1 - - [03/May/2025 22:09:16] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:09:17,084 - INFO - 127.0.0.1 - - [03/May/2025 22:09:17] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:09:19,688 - INFO - 127.0.0.1 - - [03/May/2025 22:09:19] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:09:20,394 - INFO - 127.0.0.1 - - [03/May/2025 22:09:20] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:09:22,428 - INFO - 127.0.0.1 - - [03/May/2025 22:09:22] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:09:22,623 - INFO - 127.0.0.1 - - [03/May/2025 22:09:22] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:09:22,823 - INFO - 127.0.0.1 - - [03/May/2025 22:09:22] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:09:24,592 - INFO - 127.0.0.1 - - [03/May/2025 22:09:24] "GET /unblock/127.0.0.1 HTTP/1.1" 200 -
+2025-05-03 22:09:25,905 - INFO - 127.0.0.1 - - [03/May/2025 22:09:25] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:09:27,702 - INFO - 127.0.0.1 - - [03/May/2025 22:09:27] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:09:28,199 - INFO - 127.0.0.1 - - [03/May/2025 22:09:28] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:09:28,578 - INFO - 127.0.0.1 - - [03/May/2025 22:09:28] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:09:29,392 - INFO - 127.0.0.1 - - [03/May/2025 22:09:29] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:10:34,485 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 22:10:34,532 - INFO -  * Restarting with stat
+2025-05-03 22:10:47,897 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 22:10:47,898 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 22:10:47,898 - INFO -  * Restarting with stat
+2025-05-03 22:10:48,402 - WARNING -  * Debugger is active!
+2025-05-03 22:10:48,405 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:10:51,205 - INFO - 127.0.0.1 - - [03/May/2025 22:10:51] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:10:54,489 - INFO - 127.0.0.1 - - [03/May/2025 22:10:54] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:10:54,505 - INFO - 127.0.0.1 - - [03/May/2025 22:10:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-03 22:10:58,861 - INFO - 127.0.0.1 - - [03/May/2025 22:10:58] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:11:00,229 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 22:11:00,241 - INFO - 127.0.0.1 - - [03/May/2025 22:11:00] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:11:04,442 - INFO - 127.0.0.1 - - [03/May/2025 22:11:04] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:11:06,752 - INFO - 127.0.0.1 - - [03/May/2025 22:11:06] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:11:14,488 - INFO - 127.0.0.1 - - [03/May/2025 22:11:14] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:12:19,083 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 22:12:19,135 - INFO -  * Restarting with stat
+2025-05-03 22:12:30,765 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 22:12:30,766 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 22:12:30,767 - INFO -  * Restarting with stat
+2025-05-03 22:12:31,323 - WARNING -  * Debugger is active!
+2025-05-03 22:12:31,326 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:12:34,082 - INFO - 127.0.0.1 - - [03/May/2025 22:12:34] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:12:34,996 - INFO - 127.0.0.1 - - [03/May/2025 22:12:34] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-03 22:12:35,005 - INFO - 127.0.0.1 - - [03/May/2025 22:12:35] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:12:39,060 - INFO - 127.0.0.1 - - [03/May/2025 22:12:39] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:12:47,904 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 22:12:47,915 - INFO - 127.0.0.1 - - [03/May/2025 22:12:47] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:12:48,999 - INFO - 127.0.0.1 - - [03/May/2025 22:12:48] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:12:51,190 - INFO - 127.0.0.1 - - [03/May/2025 22:12:51] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:13:37,599 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 22:13:37,643 - INFO -  * Restarting with stat
+2025-05-03 22:13:38,167 - WARNING -  * Debugger is active!
+2025-05-03 22:13:38,170 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:13:41,018 - INFO - 127.0.0.1 - - [03/May/2025 22:13:41] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:13:43,320 - INFO - 127.0.0.1 - - [03/May/2025 22:13:43] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:13:44,022 - INFO - 127.0.0.1 - - [03/May/2025 22:13:44] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-03 22:13:44,031 - INFO - 127.0.0.1 - - [03/May/2025 22:13:44] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:13:47,540 - INFO - 127.0.0.1 - - [03/May/2025 22:13:47] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:13:52,128 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 22:13:52,139 - INFO - 127.0.0.1 - - [03/May/2025 22:13:52] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:13:53,878 - INFO - 127.0.0.1 - - [03/May/2025 22:13:53] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:14:48,372 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 22:14:48,415 - INFO -  * Restarting with stat
+2025-05-03 22:14:48,933 - WARNING -  * Debugger is active!
+2025-05-03 22:14:48,935 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:14:51,457 - INFO - 127.0.0.1 - - [03/May/2025 22:14:51] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:14:54,839 - INFO - 127.0.0.1 - - [03/May/2025 22:14:54] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:14:55,358 - INFO - 127.0.0.1 - - [03/May/2025 22:14:55] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-03 22:14:55,368 - INFO - 127.0.0.1 - - [03/May/2025 22:14:55] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:14:58,466 - INFO - 127.0.0.1 - - [03/May/2025 22:14:58] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:16:08,298 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 22:16:08,352 - INFO -  * Restarting with stat
+2025-05-03 22:16:08,912 - WARNING -  * Debugger is active!
+2025-05-03 22:16:08,916 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:16:13,548 - INFO - 127.0.0.1 - - [03/May/2025 22:16:13] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:16:26,061 - INFO - 127.0.0.1 - - [03/May/2025 22:16:26] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:16:32,563 - INFO - 127.0.0.1 - - [03/May/2025 22:16:32] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:17:47,508 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-03 22:17:47,552 - INFO -  * Restarting with stat
+2025-05-03 22:17:57,844 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-03 22:17:57,845 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-03 22:17:57,846 - INFO -  * Restarting with stat
+2025-05-03 22:17:58,405 - WARNING -  * Debugger is active!
+2025-05-03 22:17:58,408 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:18:02,078 - INFO - 127.0.0.1 - - [03/May/2025 22:18:02] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:18:05,485 - INFO - 127.0.0.1 - - [03/May/2025 22:18:05] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:18:06,525 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 22:18:06,553 - INFO - 127.0.0.1 - - [03/May/2025 22:18:06] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:18:07,577 - INFO - 127.0.0.1 - - [03/May/2025 22:18:07] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:18:09,544 - INFO - 127.0.0.1 - - [03/May/2025 22:18:09] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:18:10,976 - INFO - 127.0.0.1 - - [03/May/2025 22:18:10] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:18:11,791 - INFO - 127.0.0.1 - - [03/May/2025 22:18:11] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-03 22:18:11,799 - INFO - 127.0.0.1 - - [03/May/2025 22:18:11] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:18:18,424 - INFO - 127.0.0.1 - - [03/May/2025 22:18:18] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:19:16,415 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 22:19:16,459 - INFO -  * Restarting with stat
+2025-05-03 22:19:16,992 - WARNING -  * Debugger is active!
+2025-05-03 22:19:16,994 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:19:20,573 - INFO - 127.0.0.1 - - [03/May/2025 22:19:20] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:20:07,392 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 22:20:07,435 - INFO -  * Restarting with stat
+2025-05-03 22:20:07,943 - WARNING -  * Debugger is active!
+2025-05-03 22:20:07,945 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:20:12,602 - INFO - 127.0.0.1 - - [03/May/2025 22:20:12] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:20:23,434 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 22:20:23,483 - INFO -  * Restarting with stat
+2025-05-03 22:20:24,032 - WARNING -  * Debugger is active!
+2025-05-03 22:20:24,034 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:20:27,109 - INFO - 127.0.0.1 - - [03/May/2025 22:20:27] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:20:51,495 - INFO - 127.0.0.1 - - [03/May/2025 22:20:51] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:20:59,059 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 22:20:59,099 - INFO -  * Restarting with stat
+2025-05-03 22:20:59,607 - WARNING -  * Debugger is active!
+2025-05-03 22:20:59,610 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:21:07,103 - INFO - 127.0.0.1 - - [03/May/2025 22:21:07] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:21:14,798 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-03 22:21:14,837 - INFO -  * Restarting with stat
+2025-05-03 22:21:15,331 - WARNING -  * Debugger is active!
+2025-05-03 22:21:15,333 - INFO -  * Debugger PIN: 119-727-939
+2025-05-03 22:21:22,660 - INFO - 127.0.0.1 - - [03/May/2025 22:21:22] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-03 22:21:28,350 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-03 22:21:28,362 - INFO - 127.0.0.1 - - [03/May/2025 22:21:28] "[31m[1mGET /waf/?test='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-03 22:21:31,366 - INFO - 127.0.0.1 - - [03/May/2025 22:21:31] "[31m[1mGET /waf/?q=hello HTTP/1.1[0m" 403 -
+2025-05-03 22:21:35,768 - INFO - 127.0.0.1 - - [03/May/2025 22:21:35] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:21:38,049 - INFO - 127.0.0.1 - - [03/May/2025 22:21:38] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-03 22:21:46,296 - INFO - 127.0.0.1 - - [03/May/2025 22:21:46] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:21:47,099 - INFO - 127.0.0.1 - - [03/May/2025 22:21:47] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-03 22:21:47,107 - INFO - 127.0.0.1 - - [03/May/2025 22:21:47] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-03 22:21:52,095 - INFO - 127.0.0.1 - - [03/May/2025 22:21:52] "GET /waf/?q=hello HTTP/1.1" 200 -
