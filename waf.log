@@ -778,3 +778,53 @@
 2025-05-04 21:09:47,097 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
 2025-05-04 21:09:47,284 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "GET /swagger.json HTTP/1.1" 200 -
 2025-05-04 21:09:47,304 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -
+2025-05-04 21:13:53,194 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:14:11,446 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:14:11,463 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-04 21:14:11,464 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-04 21:14:11,465 - INFO -  * Restarting with stat
+2025-05-04 21:14:16,177 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:14:16,190 - WARNING -  * Debugger is active!
+2025-05-04 21:14:16,193 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:14:24,513 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:17:28,685 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
+2025-05-04 21:17:28,737 - INFO -  * Restarting with stat
+2025-05-04 21:17:33,450 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:17:33,503 - WARNING -  * Debugger is active!
+2025-05-04 21:17:33,506 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:19:08,549 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
+2025-05-04 21:19:08,599 - INFO -  * Restarting with stat
+2025-05-04 21:19:13,332 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:19:13,348 - WARNING -  * Debugger is active!
+2025-05-04 21:19:13,351 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:19:41,193 - INFO - 127.0.0.1 - - [04/May/2025 21:19:41] "[31m[1mGET /waf/?path=../../../etc/passwd HTTP/1.1[0m" 403 -
+2025-05-04 21:19:44,638 - INFO - 127.0.0.1 - - [04/May/2025 21:19:44] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 21:19:46,986 - INFO - 127.0.0.1 - - [04/May/2025 21:19:46] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 21:19:46,998 - INFO - 127.0.0.1 - - [04/May/2025 21:19:46] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 21:21:07,601 - INFO - 127.0.0.1 - - [04/May/2025 21:21:07] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 21:22:10,723 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
+2025-05-04 21:22:10,779 - INFO -  * Restarting with stat
+2025-05-04 21:22:15,554 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:22:15,570 - WARNING -  * Debugger is active!
+2025-05-04 21:22:15,572 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:23:05,932 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
+2025-05-04 21:23:05,981 - INFO -  * Restarting with stat
+2025-05-04 21:23:10,697 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:23:10,711 - WARNING -  * Debugger is active!
+2025-05-04 21:23:10,714 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:24:38,365 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
+2025-05-04 21:24:38,429 - INFO -  * Restarting with stat
+2025-05-04 21:24:43,214 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:24:43,229 - WARNING -  * Debugger is active!
+2025-05-04 21:24:43,232 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:26:22,782 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
+2025-05-04 21:26:22,843 - INFO -  * Restarting with stat
+2025-05-04 21:26:27,614 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:26:27,635 - WARNING -  * Debugger is active!
+2025-05-04 21:26:27,637 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:28:47,138 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
+2025-05-04 21:28:47,201 - INFO -  * Restarting with stat
+2025-05-04 21:28:51,956 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:28:51,974 - WARNING -  * Debugger is active!
+2025-05-04 21:28:51,976 - INFO -  * Debugger PIN: 119-727-939
