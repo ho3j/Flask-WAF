@@ -498,3 +498,283 @@
 2025-05-03 22:21:47,099 - INFO - 127.0.0.1 - - [03/May/2025 22:21:47] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
 2025-05-03 22:21:47,107 - INFO - 127.0.0.1 - - [03/May/2025 22:21:47] "GET /blocked-ips/html HTTP/1.1" 200 -
 2025-05-03 22:21:52,095 - INFO - 127.0.0.1 - - [03/May/2025 22:21:52] "GET /waf/?q=hello HTTP/1.1" 200 -
+2025-05-04 20:04:17,064 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-04 20:04:17,064 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-04 20:04:17,065 - INFO -  * Restarting with stat
+2025-05-04 20:04:17,596 - WARNING -  * Debugger is active!
+2025-05-04 20:04:17,598 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:04:31,976 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-04 20:04:32,016 - INFO -  * Restarting with stat
+2025-05-04 20:04:32,582 - WARNING -  * Debugger is active!
+2025-05-04 20:04:32,585 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:04:48,911 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-04 20:04:48,954 - INFO -  * Restarting with stat
+2025-05-04 20:04:49,593 - WARNING -  * Debugger is active!
+2025-05-04 20:04:49,597 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:04:55,833 - INFO - 127.0.0.1 - - [04/May/2025 20:04:55] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:04:57,781 - INFO - 127.0.0.1 - - [04/May/2025 20:04:57] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:05:06,831 - INFO - 127.0.0.1 - - [04/May/2025 20:05:06] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:05:10,970 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-04 20:05:10,980 - INFO - 127.0.0.1 - - [04/May/2025 20:05:10] "[31m[1mGET /waf/?input='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-04 20:05:12,926 - INFO - 127.0.0.1 - - [04/May/2025 20:05:12] "[31m[1mGET /waf/?input='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-04 20:05:16,201 - INFO - 127.0.0.1 - - [04/May/2025 20:05:16] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:10:47,286 - INFO -  * Detected change in 'D:\\CoDe\\waf\\db.py', reloading
+2025-05-04 20:10:47,339 - INFO -  * Restarting with stat
+2025-05-04 20:10:47,996 - WARNING -  * Debugger is active!
+2025-05-04 20:10:47,999 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:11:57,255 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-04 20:11:57,310 - INFO -  * Restarting with stat
+2025-05-04 20:11:57,953 - WARNING -  * Debugger is active!
+2025-05-04 20:11:57,957 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:12:13,468 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf_utils.py', reloading
+2025-05-04 20:12:13,511 - INFO -  * Restarting with stat
+2025-05-04 20:12:14,094 - WARNING -  * Debugger is active!
+2025-05-04 20:12:14,097 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:13:14,015 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-04 20:13:14,016 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-04 20:13:14,017 - INFO -  * Restarting with stat
+2025-05-04 20:13:14,578 - WARNING -  * Debugger is active!
+2025-05-04 20:13:14,580 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:13:20,770 - INFO - 127.0.0.1 - - [04/May/2025 20:13:20] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:13:41,488 - INFO - 127.0.0.1 - - [04/May/2025 20:13:41] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:13:51,102 - INFO - 127.0.0.1 - - [04/May/2025 20:13:51] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:13:58,105 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-04 20:13:58,115 - INFO - 127.0.0.1 - - [04/May/2025 20:13:58] "[31m[1mGET /waf/?input='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-04 20:14:02,575 - INFO - 127.0.0.1 - - [04/May/2025 20:14:02] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:14:07,072 - INFO - 127.0.0.1 - - [04/May/2025 20:14:07] "[31m[1mGET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1[0m" 403 -
+2025-05-04 20:14:09,150 - INFO - 127.0.0.1 - - [04/May/2025 20:14:09] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:14:14,809 - INFO - 127.0.0.1 - - [04/May/2025 20:14:14] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:14:14,820 - INFO - 127.0.0.1 - - [04/May/2025 20:14:14] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:14:18,450 - INFO - 127.0.0.1 - - [04/May/2025 20:14:18] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:14:22,693 - INFO - 127.0.0.1 - - [04/May/2025 20:14:22] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:14:33,243 - INFO - 127.0.0.1 - - [04/May/2025 20:14:33] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:14:35,564 - INFO - 127.0.0.1 - - [04/May/2025 20:14:35] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:14:37,651 - INFO - 127.0.0.1 - - [04/May/2025 20:14:37] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:18:22,182 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-04 20:18:22,226 - INFO -  * Restarting with stat
+2025-05-04 20:19:07,305 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-04 20:19:07,306 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-04 20:19:07,308 - INFO -  * Restarting with stat
+2025-05-04 20:19:07,914 - WARNING -  * Debugger is active!
+2025-05-04 20:19:07,918 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:19:27,997 - INFO - 127.0.0.1 - - [04/May/2025 20:19:27] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:19:32,274 - INFO - 127.0.0.1 - - [04/May/2025 20:19:32] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:19:35,547 - INFO - 127.0.0.1 - - [04/May/2025 20:19:35] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:19:42,358 - INFO - 127.0.0.1 - - [04/May/2025 20:19:42] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:19:42,797 - INFO - 127.0.0.1 - - [04/May/2025 20:19:42] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-04 20:21:36,444 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-04 20:21:36,488 - INFO -  * Restarting with stat
+2025-05-04 20:21:37,109 - WARNING -  * Debugger is active!
+2025-05-04 20:21:37,112 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:21:44,482 - INFO - 127.0.0.1 - - [04/May/2025 20:21:44] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:21:48,381 - INFO - 127.0.0.1 - - [04/May/2025 20:21:48] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:22:54,548 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-04 20:22:54,603 - INFO -  * Restarting with stat
+2025-05-04 20:22:55,217 - WARNING -  * Debugger is active!
+2025-05-04 20:22:55,220 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:22:57,213 - INFO - 127.0.0.1 - - [04/May/2025 20:22:57] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:23:01,127 - INFO - 127.0.0.1 - - [04/May/2025 20:23:01] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:23:36,947 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-04 20:23:37,000 - INFO -  * Restarting with stat
+2025-05-04 20:23:37,603 - WARNING -  * Debugger is active!
+2025-05-04 20:23:37,606 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:23:39,784 - INFO - 127.0.0.1 - - [04/May/2025 20:23:39] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:23:43,197 - INFO - 127.0.0.1 - - [04/May/2025 20:23:43] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:23:43,600 - INFO - 127.0.0.1 - - [04/May/2025 20:23:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-04 20:23:54,024 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-04 20:23:54,067 - INFO -  * Restarting with stat
+2025-05-04 20:23:54,667 - WARNING -  * Debugger is active!
+2025-05-04 20:23:54,670 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:23:56,662 - INFO - 127.0.0.1 - - [04/May/2025 20:23:56] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:25:31,074 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf_patterns.py', reloading
+2025-05-04 20:25:31,127 - INFO -  * Restarting with stat
+2025-05-04 20:25:31,783 - WARNING -  * Debugger is active!
+2025-05-04 20:25:31,786 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:25:44,969 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf_utils.py', reloading
+2025-05-04 20:25:45,024 - INFO -  * Restarting with stat
+2025-05-04 20:37:59,819 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 20:37:59,842 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-04 20:37:59,843 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-04 20:37:59,844 - INFO -  * Restarting with stat
+2025-05-04 20:38:04,543 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 20:38:04,561 - WARNING -  * Debugger is active!
+2025-05-04 20:38:04,564 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 20:38:28,752 - INFO - 127.0.0.1 - - [04/May/2025 20:38:28] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:39:49,680 - INFO - 127.0.0.1 - - [04/May/2025 20:39:49] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:39:54,867 - INFO - 127.0.0.1 - - [04/May/2025 20:39:54] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:39:59,195 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='1
+2025-05-04 20:39:59,206 - INFO - 127.0.0.1 - - [04/May/2025 20:39:59] "[31m[1mGET /waf/?input='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-04 20:40:03,020 - INFO - 127.0.0.1 - - [04/May/2025 20:40:03] "[31m[1mGET /waf/?input='%20OR%20'1'='1 HTTP/1.1[0m" 403 -
+2025-05-04 20:40:10,196 - INFO - 127.0.0.1 - - [04/May/2025 20:40:10] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:40:15,141 - INFO - 127.0.0.1 - - [04/May/2025 20:40:15] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:40:23,832 - INFO - 127.0.0.1 - - [04/May/2025 20:40:23] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:40:24,590 - INFO - 127.0.0.1 - - [04/May/2025 20:40:24] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:40:26,503 - INFO - 127.0.0.1 - - [04/May/2025 20:40:26] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:40:28,556 - INFO - 127.0.0.1 - - [04/May/2025 20:40:28] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:40:36,312 - INFO - 127.0.0.1 - - [04/May/2025 20:40:36] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:40:38,495 - INFO - 127.0.0.1 - - [04/May/2025 20:40:38] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:40:38,505 - INFO - 127.0.0.1 - - [04/May/2025 20:40:38] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:40:43,185 - INFO - 127.0.0.1 - - [04/May/2025 20:40:43] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:40:49,541 - INFO - 127.0.0.1 - - [04/May/2025 20:40:49] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:41:03,530 - WARNING - SQL Injection: Classic OR '1'='1 | Input: ' OR '1'='10
+2025-05-04 20:41:03,549 - INFO - 127.0.0.1 - - [04/May/2025 20:41:03] "[31m[1mGET /waf/?input='%20OR%20'1'='10 HTTP/1.1[0m" 403 -
+2025-05-04 20:41:09,568 - INFO - 127.0.0.1 - - [04/May/2025 20:41:09] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:41:13,773 - INFO - 127.0.0.1 - - [04/May/2025 20:41:13] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:41:14,707 - INFO - 127.0.0.1 - - [04/May/2025 20:41:14] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:41:14,717 - INFO - 127.0.0.1 - - [04/May/2025 20:41:14] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:41:28,655 - INFO - 127.0.0.1 - - [04/May/2025 20:41:28] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:42:06,651 - INFO - 127.0.0.1 - - [04/May/2025 20:42:06] "[32mPOST /rules/html HTTP/1.1[0m" 302 -
+2025-05-04 20:42:06,660 - INFO - 127.0.0.1 - - [04/May/2025 20:42:06] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:42:13,375 - INFO - 127.0.0.1 - - [04/May/2025 20:42:13] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:42:20,343 - INFO - 127.0.0.1 - - [04/May/2025 20:42:20] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:42:26,216 - INFO - 127.0.0.1 - - [04/May/2025 20:42:26] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:43:01,672 - INFO - 127.0.0.1 - - [04/May/2025 20:43:01] "[32mGET /rules/delete/1 HTTP/1.1[0m" 302 -
+2025-05-04 20:43:01,683 - INFO - 127.0.0.1 - - [04/May/2025 20:43:01] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:43:29,907 - INFO - 127.0.0.1 - - [04/May/2025 20:43:29] "[33mGET /?cmd=ping%20localhost HTTP/1.1[0m" 404 -
+2025-05-04 20:43:48,786 - INFO - 127.0.0.1 - - [04/May/2025 20:43:48] "[33mGET /?cmd=ping%20localhost HTTP/1.1[0m" 404 -
+2025-05-04 20:44:20,531 - INFO - 127.0.0.1 - - [04/May/2025 20:44:20] "[32mPOST /rules/html HTTP/1.1[0m" 302 -
+2025-05-04 20:44:20,540 - INFO - 127.0.0.1 - - [04/May/2025 20:44:20] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:44:22,797 - INFO - 127.0.0.1 - - [04/May/2025 20:44:22] "[33mGET /?cmd=ping%20localhost HTTP/1.1[0m" 404 -
+2025-05-04 20:44:24,026 - INFO - 127.0.0.1 - - [04/May/2025 20:44:24] "[33mGET /?cmd=ping%20localhost HTTP/1.1[0m" 404 -
+2025-05-04 20:44:24,464 - INFO - 127.0.0.1 - - [04/May/2025 20:44:24] "[33mGET /?cmd=ping%20localhost HTTP/1.1[0m" 404 -
+2025-05-04 20:44:24,828 - INFO - 127.0.0.1 - - [04/May/2025 20:44:24] "[33mGET /?cmd=ping%20localhost HTTP/1.1[0m" 404 -
+2025-05-04 20:44:25,198 - INFO - 127.0.0.1 - - [04/May/2025 20:44:25] "[33mGET /?cmd=ping%20localhost HTTP/1.1[0m" 404 -
+2025-05-04 20:44:38,581 - INFO - 127.0.0.1 - - [04/May/2025 20:44:38] "[33mGET /?cmd=ping%20localhost HTTP/1.1[0m" 404 -
+2025-05-04 20:45:12,682 - INFO - 127.0.0.1 - - [04/May/2025 20:45:12] "[32mGET /rules/delete/2 HTTP/1.1[0m" 302 -
+2025-05-04 20:45:12,692 - INFO - 127.0.0.1 - - [04/May/2025 20:45:12] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:45:42,359 - INFO - 127.0.0.1 - - [04/May/2025 20:45:42] "[33mGET /?query=1%20OR%201=1 HTTP/1.1[0m" 404 -
+2025-05-04 20:45:46,272 - INFO - 127.0.0.1 - - [04/May/2025 20:45:46] "[33mGET /?query=1%20OR%201=1 HTTP/1.1[0m" 404 -
+2025-05-04 20:45:46,738 - INFO - 127.0.0.1 - - [04/May/2025 20:45:46] "[33mGET /?query=1%20OR%201=1 HTTP/1.1[0m" 404 -
+2025-05-04 20:45:47,132 - INFO - 127.0.0.1 - - [04/May/2025 20:45:47] "[33mGET /?query=1%20OR%201=1 HTTP/1.1[0m" 404 -
+2025-05-04 20:46:01,784 - WARNING - SQL Injection: Logic condition | Input: 1 OR 1=1
+2025-05-04 20:46:01,796 - INFO - 127.0.0.1 - - [04/May/2025 20:46:01] "[31m[1mGET /waf/?query=1%20OR%201=1 HTTP/1.1[0m" 403 -
+2025-05-04 20:46:07,941 - INFO - 127.0.0.1 - - [04/May/2025 20:46:07] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:46:11,527 - INFO - 127.0.0.1 - - [04/May/2025 20:46:11] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:47:27,809 - INFO - 127.0.0.1 - - [04/May/2025 20:47:27] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:47:29,113 - INFO - 127.0.0.1 - - [04/May/2025 20:47:29] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:47:29,123 - INFO - 127.0.0.1 - - [04/May/2025 20:47:29] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:47:43,636 - WARNING - SQL Injection: Logic condition | Input: OR 1=1
+2025-05-04 20:47:43,649 - INFO - 127.0.0.1 - - [04/May/2025 20:47:43] "[31m[1mGET /waf/?query=OR%201=1 HTTP/1.1[0m" 403 -
+2025-05-04 20:50:09,611 - INFO - 127.0.0.1 - - [04/May/2025 20:50:09] "[31m[1mGET /waf/?query=1%20OR%201=1 HTTP/1.1[0m" 403 -
+2025-05-04 20:50:12,596 - INFO - 127.0.0.1 - - [04/May/2025 20:50:12] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:50:13,822 - INFO - 127.0.0.1 - - [04/May/2025 20:50:13] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:50:13,832 - INFO - 127.0.0.1 - - [04/May/2025 20:50:13] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:50:19,620 - INFO - 127.0.0.1 - - [04/May/2025 20:50:19] "GET /waf/?q=show%20me%20the%20latest%20product%20updates HTTP/1.1" 200 -
+2025-05-04 20:50:22,828 - WARNING - SQL Injection: Classic OR '1'='1 | Input: OR '1'='1'
+2025-05-04 20:50:22,840 - INFO - 127.0.0.1 - - [04/May/2025 20:50:22] "[31m[1mGET /waf/?query=OR%20'1'='1' HTTP/1.1[0m" 403 -
+2025-05-04 20:50:27,660 - INFO - 127.0.0.1 - - [04/May/2025 20:50:27] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:50:28,542 - INFO - 127.0.0.1 - - [04/May/2025 20:50:28] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:50:28,553 - INFO - 127.0.0.1 - - [04/May/2025 20:50:28] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:50:52,517 - INFO - 127.0.0.1 - - [04/May/2025 20:50:52] "GET /waf/?query=name=hossein HTTP/1.1" 200 -
+2025-05-04 20:51:39,629 - INFO - 127.0.0.1 - - [04/May/2025 20:51:39] "[32mPOST /rules/html HTTP/1.1[0m" 302 -
+2025-05-04 20:51:39,638 - INFO - 127.0.0.1 - - [04/May/2025 20:51:39] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:51:43,770 - WARNING - SQL Injection: \bname=hossein\b | Input: name=hossein
+2025-05-04 20:51:43,787 - INFO - 127.0.0.1 - - [04/May/2025 20:51:43] "[31m[1mGET /waf/?query=name=hossein HTTP/1.1[0m" 403 -
+2025-05-04 20:51:51,185 - INFO - 127.0.0.1 - - [04/May/2025 20:51:51] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:51:57,048 - INFO - 127.0.0.1 - - [04/May/2025 20:51:57] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:51:58,661 - INFO - 127.0.0.1 - - [04/May/2025 20:51:58] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:51:58,671 - INFO - 127.0.0.1 - - [04/May/2025 20:51:58] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:52:08,008 - INFO - 127.0.0.1 - - [04/May/2025 20:52:08] "[32mGET /rules/delete/3 HTTP/1.1[0m" 302 -
+2025-05-04 20:52:08,018 - INFO - 127.0.0.1 - - [04/May/2025 20:52:08] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:52:09,996 - INFO - 127.0.0.1 - - [04/May/2025 20:52:09] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:52:23,698 - INFO - 127.0.0.1 - - [04/May/2025 20:52:23] "[32mPOST /rules/html HTTP/1.1[0m" 302 -
+2025-05-04 20:52:23,707 - INFO - 127.0.0.1 - - [04/May/2025 20:52:23] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:52:27,259 - WARNING - SQL Injection: \bname=hossein\b | Input: name=hossein
+2025-05-04 20:52:27,271 - INFO - 127.0.0.1 - - [04/May/2025 20:52:27] "[31m[1mGET /waf/?query=name=hossein HTTP/1.1[0m" 403 -
+2025-05-04 20:52:30,787 - INFO - 127.0.0.1 - - [04/May/2025 20:52:30] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:52:32,057 - INFO - 127.0.0.1 - - [04/May/2025 20:52:32] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:52:32,068 - INFO - 127.0.0.1 - - [04/May/2025 20:52:32] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:52:38,259 - INFO - 127.0.0.1 - - [04/May/2025 20:52:38] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:52:55,005 - INFO - 127.0.0.1 - - [04/May/2025 20:52:55] "[32mGET /rules/delete/4 HTTP/1.1[0m" 302 -
+2025-05-04 20:52:55,016 - INFO - 127.0.0.1 - - [04/May/2025 20:52:55] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 20:53:51,237 - INFO - 127.0.0.1 - - [04/May/2025 20:53:51] "GET /waf/?query=name=hossein HTTP/1.1" 200 -
+2025-05-04 20:53:53,147 - WARNING - XSS Detected: IMG onerror XSS | Input: <img src=x onerror=alert('hacked')>
+2025-05-04 20:53:53,161 - INFO - 127.0.0.1 - - [04/May/2025 20:53:53] "[31m[1mGET /waf/?query=<img%20src=x%20onerror=alert('hacked')> HTTP/1.1[0m" 403 -
+2025-05-04 20:53:57,374 - INFO - 127.0.0.1 - - [04/May/2025 20:53:57] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:54:14,522 - INFO - 127.0.0.1 - - [04/May/2025 20:54:14] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:54:15,795 - INFO - 127.0.0.1 - - [04/May/2025 20:54:15] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:54:15,804 - INFO - 127.0.0.1 - - [04/May/2025 20:54:15] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:54:22,228 - INFO - 127.0.0.1 - - [04/May/2025 20:54:22] "GET /waf/?query=name=hossein HTTP/1.1" 200 -
+2025-05-04 20:54:24,792 - WARNING - Command Injection: System command execution | Input: ;whoami
+2025-05-04 20:54:24,816 - INFO - 127.0.0.1 - - [04/May/2025 20:54:24] "[31m[1mGET /waf/?cmd=;whoami HTTP/1.1[0m" 403 -
+2025-05-04 20:54:28,930 - INFO - 127.0.0.1 - - [04/May/2025 20:54:28] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:54:29,714 - INFO - 127.0.0.1 - - [04/May/2025 20:54:29] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:54:29,726 - INFO - 127.0.0.1 - - [04/May/2025 20:54:29] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:54:31,975 - INFO - 127.0.0.1 - - [04/May/2025 20:54:31] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 20:54:52,214 - WARNING - Path Traversal: Directory traversal | Input: ../../../etc/passwd
+2025-05-04 20:54:52,229 - INFO - 127.0.0.1 - - [04/May/2025 20:54:52] "[31m[1mGET /waf/?path=../../../etc/passwd HTTP/1.1[0m" 403 -
+2025-05-04 20:54:54,577 - INFO - 127.0.0.1 - - [04/May/2025 20:54:54] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:54:55,497 - INFO - 127.0.0.1 - - [04/May/2025 20:54:55] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 20:54:55,506 - INFO - 127.0.0.1 - - [04/May/2025 20:54:55] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 20:54:59,644 - INFO - 127.0.0.1 - - [04/May/2025 20:54:59] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 21:02:12,733 - INFO -  * Detected change in 'D:\\CoDe\\waf\\config.py', reloading
+2025-05-04 21:02:12,797 - INFO -  * Restarting with stat
+2025-05-04 21:02:17,535 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:02:17,550 - WARNING -  * Debugger is active!
+2025-05-04 21:02:17,552 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:02:54,983 - INFO -  * Detected change in 'D:\\CoDe\\waf\\backend.py', reloading
+2025-05-04 21:02:55,036 - INFO -  * Restarting with stat
+2025-05-04 21:02:59,774 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:02:59,794 - WARNING -  * Debugger is active!
+2025-05-04 21:02:59,797 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:04:04,591 - INFO -  * Detected change in 'D:\\CoDe\\waf\\db.py', reloading
+2025-05-04 21:04:04,648 - INFO -  * Restarting with stat
+2025-05-04 21:04:09,344 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:04:09,360 - WARNING -  * Debugger is active!
+2025-05-04 21:04:09,362 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:04:40,987 - INFO -  * Detected change in 'D:\\CoDe\\waf\\db.py', reloading
+2025-05-04 21:04:41,047 - INFO -  * Restarting with stat
+2025-05-04 21:04:45,803 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:04:45,820 - WARNING -  * Debugger is active!
+2025-05-04 21:04:45,822 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:05:00,775 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf_patterns.py', reloading
+2025-05-04 21:05:00,834 - INFO -  * Restarting with stat
+2025-05-04 21:05:05,552 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:05:05,576 - WARNING -  * Debugger is active!
+2025-05-04 21:05:05,579 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:05:16,025 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf_utils.py', reloading
+2025-05-04 21:05:16,077 - INFO -  * Restarting with stat
+2025-05-04 21:05:20,801 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:05:20,821 - WARNING -  * Debugger is active!
+2025-05-04 21:05:20,824 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:05:38,474 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
+2025-05-04 21:05:38,529 - INFO -  * Restarting with stat
+2025-05-04 21:05:43,218 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:05:43,234 - WARNING -  * Debugger is active!
+2025-05-04 21:05:43,236 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:06:00,371 - INFO -  * Detected change in 'D:\\CoDe\\waf\\app.py', reloading
+2025-05-04 21:06:00,424 - INFO -  * Restarting with stat
+2025-05-04 21:06:05,129 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:06:05,144 - WARNING -  * Debugger is active!
+2025-05-04 21:06:05,146 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:06:42,017 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:06:42,037 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-04 21:06:42,038 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-04 21:06:42,039 - INFO -  * Restarting with stat
+2025-05-04 21:06:46,737 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-04 21:06:46,755 - WARNING -  * Debugger is active!
+2025-05-04 21:06:46,757 - INFO -  * Debugger PIN: 119-727-939
+2025-05-04 21:06:52,557 - INFO - 127.0.0.1 - - [04/May/2025 21:06:52] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 21:06:57,089 - INFO - 127.0.0.1 - - [04/May/2025 21:06:57] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 21:07:12,331 - INFO - 127.0.0.1 - - [04/May/2025 21:07:12] "GET /waf/?msg=hello+world HTTP/1.1" 200 -
+2025-05-04 21:07:16,531 - WARNING - Path Traversal: Directory traversal | Input: ../../../etc/passwd
+2025-05-04 21:07:16,543 - INFO - 127.0.0.1 - - [04/May/2025 21:07:16] "[31m[1mGET /waf/?path=../../../etc/passwd HTTP/1.1[0m" 403 -
+2025-05-04 21:07:18,594 - INFO - 127.0.0.1 - - [04/May/2025 21:07:18] "[31m[1mGET /waf/?path=../../../etc/passwd HTTP/1.1[0m" 403 -
+2025-05-04 21:07:19,709 - INFO - 127.0.0.1 - - [04/May/2025 21:07:19] "[31m[1mGET /waf/?path=../../../etc/passwd HTTP/1.1[0m" 403 -
+2025-05-04 21:07:25,341 - INFO - 127.0.0.1 - - [04/May/2025 21:07:25] "GET /rules/html HTTP/1.1" 200 -
+2025-05-04 21:07:29,655 - INFO - 127.0.0.1 - - [04/May/2025 21:07:29] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 21:07:33,632 - INFO - 127.0.0.1 - - [04/May/2025 21:07:33] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-04 21:07:33,640 - INFO - 127.0.0.1 - - [04/May/2025 21:07:33] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-04 21:07:37,163 - INFO - 127.0.0.1 - - [04/May/2025 21:07:37] "POST /attack-logs/html HTTP/1.1" 200 -
+2025-05-04 21:09:46,937 - INFO - 127.0.0.1 - - [04/May/2025 21:09:46] "GET /docs HTTP/1.1" 200 -
+2025-05-04 21:09:47,043 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "GET /swaggerui/droid-sans.css HTTP/1.1" 200 -
+2025-05-04 21:09:47,048 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "GET /swaggerui/swagger-ui.css HTTP/1.1" 200 -
+2025-05-04 21:09:47,091 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "[36mGET /swaggerui/swagger-ui-standalone-preset.js HTTP/1.1[0m" 304 -
+2025-05-04 21:09:47,097 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "[36mGET /swaggerui/swagger-ui-bundle.js HTTP/1.1[0m" 304 -
+2025-05-04 21:09:47,284 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "GET /swagger.json HTTP/1.1" 200 -
+2025-05-04 21:09:47,304 - INFO - 127.0.0.1 - - [04/May/2025 21:09:47] "GET /swaggerui/favicon-32x32.png HTTP/1.1" 200 -

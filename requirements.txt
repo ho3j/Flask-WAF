@@ -1,0 +1,5 @@
+Flask==2.3.2
+Flask-RESTx==1.1.0
+requests==2.31.0
+Flask-Limiter==3.5.0
+redis==5.0.1

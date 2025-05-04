@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def backend():
+    # Return a simple HTML response indicating the request method
     return f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -23,10 +24,11 @@ def backend():
         </style>
     </head>
     <body>
-        <h2> Backend Response! Method: {request.method}</h2>
+        <h2>Backend Response! Method: {request.method}</h2>
     </body>
     </html>
     """, 200, {'Content-Type': 'text/html'}
 
 if __name__ == '__main__':
-    app.run(port=8000)
+    # Run the backend server on port 8888
+    app.run(port=8888)
