@@ -1,5 +1,6 @@
 import sqlite3
 import time
+import bcrypt
 
 # Path to the SQLite database file
 DB_PATH = "waf.db"
@@ -7,7 +8,7 @@ DB_PATH = "waf.db"
 def init_db():
     """
     Initialize the SQLite database and create tables if they don't exist.
-    Tables: blocked_ips, attack_logs, rules, settings
+    Tables: blocked_ips, attack_logs, rules, settings, users
     """
     with sqlite3.connect(DB_PATH) as conn:
         c = conn.cursor()
@@ -48,6 +49,14 @@ def init_db():
                 updated_at REAL
             )
         ''')
+        # Table for users
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS users (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                username TEXT NOT NULL UNIQUE,
+                password TEXT NOT NULL
+            )
+        ''')
         # Initialize default settings
         default_settings = [
             ('sql_injection_detection', 1, 'Enable SQL Injection detection', time.time()),
@@ -61,12 +70,19 @@ def init_db():
             ('attack_logging', 1, 'Enable logging of detected attacks', time.time()),
             ('block_duration', 300, 'Duration of IP block in seconds', time.time()),
             ('request_limit', 100, 'Maximum requests per minute for rate limiting', time.time()),
-            ('request_window', 60, 'Time window in seconds for rate limiting', time.time())
+            ('request_window', 60, 'Time window in seconds for rate limiting', time.time()),
+            ('learning_mode', 0, 'Enable Learning Mode (log attacks without blocking)', time.time())
         ]
         c.executemany('''
             INSERT OR IGNORE INTO settings (key, value, description, updated_at)
             VALUES (?, ?, ?, ?)
         ''', default_settings)
+        # Initialize default user (admin:admin)
+        admin_password = bcrypt.hashpw('admin'.encode('utf-8'), bcrypt.gensalt())
+        c.execute('''
+            INSERT OR IGNORE INTO users (username, password)
+            VALUES (?, ?)
+        ''', ('admin', admin_password.decode('utf-8')))
         conn.commit()
 
 def block_ip(ip, duration_seconds):
@@ -116,7 +132,6 @@ def log_attack(ip, attack_type, parameter):
         attack_type (str): Type of attack (e.g., SQLi, XSS, LFI)
         parameter (str): Malicious input parameter
     """
-    # Check if attack logging is enabled
     if not get_setting('attack_logging'):
         return
     timestamp = time.time()
@@ -215,3 +230,21 @@ def get_all_settings():
         c = conn.cursor()
         c.execute("SELECT key, value, description, updated_at FROM settings")
         return [{'key': r[0], 'value': r[1], 'description': r[2], 'updated_at': r[3]} for r in c.fetchall()]
+
+def get_user(username):
+    """
+    Retrieve a user from the database by username.
+    
+    Args:
+        username (str): Username to look up
+        
+    Returns:
+        dict: User details (id, username, password) or None if not found
+    """
+    with sqlite3.connect(DB_PATH) as conn:
+        c = conn.cursor()
+        c.execute("SELECT id, username, password FROM users WHERE username = ?", (username,))
+        result = c.fetchone()
+        if result:
+            return {'id': result[0], 'username': result[1], 'password': result[2]}
+        return None

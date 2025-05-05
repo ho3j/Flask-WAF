@@ -1,0 +1,35 @@
+2025-05-05 20:16:05,952 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-05 20:16:06,213 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-05 20:16:06,213 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-05 20:16:06,216 - INFO -  * Restarting with stat
+2025-05-05 20:16:10,924 - ERROR - Cannot connect to Redis. Behavioral detection disabled.
+2025-05-05 20:16:11,147 - WARNING -  * Debugger is active!
+2025-05-05 20:16:11,150 - INFO -  * Debugger PIN: 119-727-939
+2025-05-05 20:16:13,288 - INFO - 127.0.0.1 - - [05/May/2025 20:16:13] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-05-05 20:16:13,304 - INFO - 127.0.0.1 - - [05/May/2025 20:16:13] "GET /login HTTP/1.1" 200 -
+2025-05-05 20:16:13,655 - INFO - 127.0.0.1 - - [05/May/2025 20:16:13] "[33mGET /static/res/logo.png HTTP/1.1[0m" 404 -
+2025-05-05 20:16:21,128 - INFO - 127.0.0.1 - - [05/May/2025 20:16:21] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-05 20:16:21,140 - INFO - 127.0.0.1 - - [05/May/2025 20:16:21] "GET /dashboard HTTP/1.1" 200 -
+2025-05-05 20:16:30,069 - INFO - 127.0.0.1 - - [05/May/2025 20:16:30] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-05 20:16:30,080 - INFO - 127.0.0.1 - - [05/May/2025 20:16:30] "GET /login HTTP/1.1" 200 -
+2025-05-05 20:16:30,118 - INFO - 127.0.0.1 - - [05/May/2025 20:16:30] "[33mGET /static/res/logo.png HTTP/1.1[0m" 404 -
+2025-05-05 20:16:32,172 - INFO - 127.0.0.1 - - [05/May/2025 20:16:32] "[32mGET /settings/html HTTP/1.1[0m" 302 -
+2025-05-05 20:16:32,184 - INFO - 127.0.0.1 - - [05/May/2025 20:16:32] "GET /login HTTP/1.1" 200 -
+2025-05-05 20:16:32,216 - INFO - 127.0.0.1 - - [05/May/2025 20:16:32] "[33mGET /static/res/logo.png HTTP/1.1[0m" 404 -
+2025-05-05 20:16:35,526 - INFO - 127.0.0.1 - - [05/May/2025 20:16:35] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-05 20:16:35,538 - INFO - 127.0.0.1 - - [05/May/2025 20:16:35] "GET /dashboard HTTP/1.1" 200 -
+2025-05-05 20:16:37,306 - INFO - 127.0.0.1 - - [05/May/2025 20:16:37] "GET /login HTTP/1.1" 200 -
+2025-05-05 20:16:37,332 - INFO - 127.0.0.1 - - [05/May/2025 20:16:37] "[33mGET /static/res/logo.png HTTP/1.1[0m" 404 -
+2025-05-05 20:16:39,170 - INFO - 127.0.0.1 - - [05/May/2025 20:16:39] "GET /login HTTP/1.1" 200 -
+2025-05-05 20:16:39,197 - INFO - 127.0.0.1 - - [05/May/2025 20:16:39] "[33mGET /static/res/logo.png HTTP/1.1[0m" 404 -
+2025-05-05 20:16:40,021 - INFO - 127.0.0.1 - - [05/May/2025 20:16:40] "GET /login HTTP/1.1" 200 -
+2025-05-05 20:16:40,045 - INFO - 127.0.0.1 - - [05/May/2025 20:16:40] "[33mGET /static/res/logo.png HTTP/1.1[0m" 404 -
+2025-05-05 20:16:41,935 - INFO - 127.0.0.1 - - [05/May/2025 20:16:41] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-05 20:16:41,957 - INFO - 127.0.0.1 - - [05/May/2025 20:16:41] "GET /dashboard HTTP/1.1" 200 -
+2025-05-05 20:16:46,059 - INFO - 127.0.0.1 - - [05/May/2025 20:16:46] "GET /settings/html HTTP/1.1" 200 -
+2025-05-05 20:16:56,201 - INFO - 127.0.0.1 - - [05/May/2025 20:16:56] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-05 20:16:56,211 - INFO - 127.0.0.1 - - [05/May/2025 20:16:56] "GET /login HTTP/1.1" 200 -
+2025-05-05 20:16:56,239 - INFO - 127.0.0.1 - - [05/May/2025 20:16:56] "[33mGET /static/res/logo.png HTTP/1.1[0m" 404 -
+2025-05-05 20:16:58,449 - INFO - 127.0.0.1 - - [05/May/2025 20:16:58] "GET /login HTTP/1.1" 200 -
+2025-05-05 20:16:58,470 - INFO - 127.0.0.1 - - [05/May/2025 20:16:58] "[33mGET /static/res/logo.png HTTP/1.1[0m" 404 -

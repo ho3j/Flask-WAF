@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template_string, redirect, url_for, jsonify, make_response
+from flask import Flask, request, render_template_string, redirect, url_for, jsonify, make_response, session, flash
 from flask_restx import Api, Resource, fields
 from waf_utils import check_sql_injection, check_xss, check_command_injection, check_path_traversal, check_csrf, check_lfi
 import logging
@@ -7,13 +7,15 @@ import requests
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import time
-from db import init_db, block_ip, get_blocked_ips, unblock_ip, log_attack, add_rule, get_rules, delete_rule, update_setting, get_setting, get_all_settings
+from db import init_db, block_ip, get_blocked_ips, unblock_ip, log_attack, add_rule, get_rules, delete_rule, update_setting, get_setting, get_all_settings, get_user
 import sqlite3
 from datetime import datetime, timedelta
 import redis
+import bcrypt
 
 # Initialize Flask app
 app = Flask(__name__)
+app.secret_key = 'super_secret_key_123'  # Change this in production!
 
 # Initialize Flask-RESTx API
 api = Api(app, version='1.0', title='WAF API', description='Simple Web Application Firewall', doc='/docs')
@@ -40,6 +42,138 @@ init_db()
 
 # Define WAF namespace for API
 waf_ns = api.namespace('waf', description='Main WAF endpoint')
+
+def login_required(f):
+    """
+    Decorator to ensure user is logged in before accessing a route.
+    """
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            flash('Please log in to access this page.', 'danger')
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    decorated_function.__name__ = f.__name__
+    return decorated_function
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """
+    Display and handle the login page.
+    
+    Returns:
+        Rendered HTML template for login page or redirect to dashboard
+    """
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        user = get_user(username)
+        if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
+            session['user_id'] = user['id']
+            session['username'] = user['username']
+            flash('Login successful!', 'success')
+            return redirect(url_for('dashboard'))
+        else:
+            flash('Invalid username or password.', 'danger')
+    
+    html_template = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login - WAF Dashboard</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Vazir', Arial, sans-serif;
+                background: linear-gradient(135deg, #667eea, #764ba2);
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+            }
+            .login-container {
+                background: white;
+                padding: 2rem;
+                border-radius: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                width: 100%;
+                max-width: 400px;
+            }
+            .login-container img {
+                display: block;
+                margin: 0 auto 1.5rem;
+                max-width: 150px;
+            }
+            .form-control {
+                border-radius: 10px;
+                border: 1px solid #ced4da;
+                padding: 0.75rem;
+            }
+            .btn-primary {
+                background: #667eea;
+                border: none;
+                border-radius: 10px;
+                padding: 0.75rem;
+                width: 100%;
+                transition: background 0.3s;
+            }
+            .btn-primary:hover {
+                background: #764ba2;
+            }
+            .alert {
+                border-radius: 10px;
+                margin-bottom: 1rem;
+            }
+            h2 {
+                color: #333;
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="login-container">
+            <img src="{{ url_for('static', filename='res/logo.png') }}" alt="WAF Logo">
+            <h2>🔐 WAF Login</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <form method="POST">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </body>
+    </html>
+    """
+    return render_template_string(html_template)
+
+@app.route('/logout')
+def logout():
+    """
+    Log out the current user and redirect to login page.
+    
+    Returns:
+        Redirect to login page
+    """
+    session.pop('user_id', None)
+    session.pop('username', None)
+    flash('You have been logged out.', 'success')
+    return redirect(url_for('login'))
 
 @waf_ns.route('/')
 class WAF(Resource):
@@ -146,6 +280,7 @@ def process_request():
     # Check request parameters for attacks
     params = request.args if request.method == 'GET' else request.form
     for key, value in params.items():
+        logging.info(f"Checking params: {key}={value}")
         if check_sql_injection(value):
             log_attack(client_ip, "SQLi", f"{key}={value}")
             block_ip(client_ip, BLOCK_DURATION)
@@ -210,6 +345,7 @@ def process_request():
             response.headers['Content-Type'] = 'text/html'
             return response
         if check_lfi(value):
+            logging.info(f"LFI detected for: {key}={value}")
             log_attack(client_ip, "LFI", f"{key}={value}")
             block_ip(client_ip, BLOCK_DURATION)
             response = make_response(render_template_string("""
@@ -255,6 +391,7 @@ def process_request():
     # Check raw request body for attacks
     if request.data:
         raw = request.data.decode(errors='ignore')
+        logging.info(f"Checking raw body: {raw}")
         if check_sql_injection(raw):
             log_attack(client_ip, "SQLi", "raw body")
             block_ip(client_ip, BLOCK_DURATION)
@@ -298,6 +435,7 @@ def process_request():
             </html>
             """), 403
         if check_lfi(raw):
+            logging.info(f"LFI detected in raw body: {raw}")
             log_attack(client_ip, "LFI", "raw body")
             block_ip(client_ip, BLOCK_DURATION)
             return render_template_string("""
@@ -314,7 +452,7 @@ def process_request():
                 <h2>⛔ Request Blocked</h2>
                 <p>Attempt to include local files in request body detected.</p>
             </body>
-            </html>
+            </html
             """), 403
         if check_path_traversal(raw):
             log_attack(client_ip, "PathTraversal", "raw body")
@@ -333,7 +471,7 @@ def process_request():
                 <h2>⛔ Request Blocked</h2>
                 <p>Attempt to access unauthorized files in request body detected.</p>
             </body>
-            </html>
+            </html
             """), 403
 
     # Check JSON data for attacks
@@ -359,7 +497,7 @@ def process_request():
                             <h2>⛔ Request Blocked</h2>
                             <p>Malicious JSON content detected in your request.</p>
                         </body>
-                        </html>
+                        </html
                         """), 403
                     if check_xss(value):
                         log_attack(client_ip, "XSS", f"json:{key}")
@@ -382,9 +520,10 @@ def process_request():
                             <h2>⛔ Request Blocked</h2>
                             <p>Attempt to execute malicious command in JSON content detected.</p>
                         </body>
-                        </html>
+                        </html
                         """), 403
                     if check_lfi(value):
+                        logging.info(f"LFI detected in JSON: {key}={value}")
                         log_attack(client_ip, "LFI", f"json:{key}")
                         block_ip(client_ip, BLOCK_DURATION)
                         return render_template_string("""
@@ -401,7 +540,7 @@ def process_request():
                             <h2>⛔ Request Blocked</h2>
                             <p>Attempt to include local files in JSON content detected.</p>
                         </body>
-                        </html>
+                        </html
                         """), 403
                     if check_path_traversal(value):
                         log_attack(client_ip, "PathTraversal", f"json:{key}")
@@ -420,7 +559,7 @@ def process_request():
                             <h2>⛔ Request Blocked</h2>
                             <p>Attempt to access unauthorized files in JSON content detected.</p>
                         </body>
-                        </html>
+                        </html
                         """), 403
 
     # Check uploaded file names for attacks
@@ -443,7 +582,7 @@ def process_request():
                 <h2>⛔ Request Blocked</h2>
                 <p>Malicious filename detected in uploaded file.</p>
             </body>
-            </html>
+            </html
             """), 403
         if check_xss(filename):
             log_attack(client_ip, "XSS", f"filename:{filename}")
@@ -466,9 +605,10 @@ def process_request():
                 <h2>⛔ Request Blocked</h2>
                 <p>Attempt to execute malicious command in filename detected.</p>
             </body>
-            </html>
+            </html
             """), 403
         if check_lfi(filename):
+            logging.info(f"LFI detected in filename: {filename}")
             log_attack(client_ip, "LFI", f"filename:{filename}")
             block_ip(client_ip, BLOCK_DURATION)
             return render_template_string("""
@@ -485,7 +625,7 @@ def process_request():
                 <h2>⛔ Request Blocked</h2>
                 <p>Attempt to include local files in filename detected.</p>
             </body>
-            </html>
+            </html
             """), 403
         if check_path_traversal(filename):
             log_attack(client_ip, "PathTraversal", f"filename:{filename}")
@@ -504,7 +644,7 @@ def process_request():
                 <h2>⛔ Request Blocked</h2>
                 <p>Attempt to access unauthorized files in filename detected.</p>
             </body>
-            </html>
+            </html
             """), 403
 
     # Forward safe requests to the backend if enabled
@@ -548,6 +688,7 @@ class BlockedIPs(Resource):
         return result
 
 @app.route('/dashboard')
+@login_required
 def dashboard():
     """
     Display the WAF dashboard with attack statistics and recent logs.
@@ -609,9 +750,19 @@ def dashboard():
             .btn-primary { background-color: #007bff; border: none; }
             .btn-primary:hover { background-color: #0056b3; }
             h1 { color: #333; }
+            .navbar { margin-bottom: 20px; }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WAF Dashboard</a>
+                <div>
+                    <span class="navbar-text me-3">Welcome, {{ session.username }}</span>
+                    <a href="/logout" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             <h1 class="text-center my-4">🔐 WAF Dashboard</h1>
             <div class="row">
@@ -713,6 +864,7 @@ def dashboard():
     )
 
 @app.route('/blocked-ips/html')
+@login_required
 def show_blocked_ips_html():
     """
     Display a page showing currently blocked IPs with options to unblock or clear all.
@@ -745,9 +897,19 @@ def show_blocked_ips_html():
             .btn-primary:hover { background-color: #0056b3; }
             .alert { border-radius: 10px; }
             h1 { color: #333; }
+            .navbar { margin-bottom: 20px; }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WAF Dashboard</a>
+                <div>
+                    <span class="navbar-text me-3">Welcome, {{ session.username }}</span>
+                    <a href="/logout" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             <h1 class="my-4">⛔ Blocked IPs</h1>
             {% if active_ips %}
@@ -783,6 +945,7 @@ def show_blocked_ips_html():
     return render_template_string(html_template, active_ips=active_ips)
 
 @app.route('/attack-logs/html', methods=['GET', 'POST'])
+@login_required
 def show_attack_logs_html():
     """
     Display a page showing attack logs with filtering options.
@@ -841,9 +1004,19 @@ def show_attack_logs_html():
             .btn-primary:hover { background-color: #0056b3; }
             .form-label { font-weight: bold; }
             h1 { color: #333; }
+            .navbar { margin-bottom: 20px; }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WAF Dashboard</a>
+                <div>
+                    <span class="navbar-text me-3">Welcome, {{ session.username }}</span>
+                    <a href="/logout" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             <h1 class="my-4">📜 Attack Logs</h1>
             <form method="POST" class="mb-4">
@@ -908,6 +1081,7 @@ def show_attack_logs_html():
     return render_template_string(html_template, logs=logs_fmt, attack_type=attack_type, time_filter=time_filter, search_ip=search_ip)
 
 @app.route('/rules/html', methods=['GET', 'POST'])
+@login_required
 def manage_rules_html():
     """
     Display a page for managing detection rules (add, view, delete).
@@ -941,9 +1115,19 @@ def manage_rules_html():
             .btn-primary:hover { background-color: #0056b3; }
             .form-label { font-weight: bold; }
             h1 { color: #333; }
+            .navbar { margin-bottom: 20px; }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WAF Dashboard</a>
+                <div>
+                    <span class="navbar-text me-3">Welcome, {{ session.username }}</span>
+                    <a href="/logout" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             <h1 class="my-4">⚙️ Manage Rules</h1>
             <form method="POST" class="mb-4">
@@ -1006,6 +1190,7 @@ def manage_rules_html():
     return render_template_string(html_template, rules=rules)
 
 @app.route('/analytics/html', methods=['GET', 'POST'])
+@login_required
 def analytics_html():
     """
     Display a page for analyzing attack patterns with charts and top IPs.
@@ -1087,9 +1272,19 @@ def analytics_html():
             .btn-primary:hover { background-color: #0056b3; }
             .table { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
             h1 { color: #333; }
+            .navbar { margin-bottom: 20px; }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WAF Dashboard</a>
+                <div>
+                    <span class="navbar-text me-3">Welcome, {{ session.username }}</span>
+                    <a href="/logout" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             <h1 class="my-4">📊 Attack Analytics</h1>
             <form method="POST" class="mb-4">
@@ -1187,6 +1382,7 @@ def analytics_html():
     )
 
 @app.route('/settings/html', methods=['GET', 'POST'])
+@login_required
 def manage_settings_html():
     """
     Display a page for managing WAF settings (enable/disable features).
@@ -1221,9 +1417,19 @@ def manage_settings_html():
             .btn-primary:hover { background-color: #0056b3; }
             .form-label { font-weight: bold; }
             h1 { color: #333; }
+            .navbar { margin-bottom: 20px; }
         </style>
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">WAF Dashboard</a>
+                <div>
+                    <span class="navbar-text me-3">Welcome, {{ session.username }}</span>
+                    <a href="/logout" class="btn btn-outline-danger">Logout</a>
+                </div>
+            </div>
+        </nav>
         <div class="container">
             <h1 class="my-4">⚙️ Manage WAF Settings</h1>
             <form method="POST" class="mb-4">
@@ -1261,6 +1467,7 @@ def manage_settings_html():
     return render_template_string(html_template, settings=settings)
 
 @app.route('/rules/delete/<int:rule_id>')
+@login_required
 def delete_rule_route(rule_id):
     """
     Delete a detection rule and redirect to the rules management page.
@@ -1275,6 +1482,7 @@ def delete_rule_route(rule_id):
     return redirect(url_for('manage_rules_html'))
 
 @app.route('/attack-logs/clear', methods=['POST'])
+@login_required
 def clear_attack_logs():
     """
     Clear all attack logs from the database and redirect to the logs page.
@@ -1290,6 +1498,7 @@ def clear_attack_logs():
     return redirect(url_for('show_attack_logs_html'))
 
 @app.route('/unblock/<ip>')
+@login_required
 def unblock_ip_route(ip):
     """
     Unblock an IP address and display a confirmation page.
@@ -1322,6 +1531,7 @@ def unblock_ip_route(ip):
     """, ip=ip)
 
 @app.route('/blocked-ips/clear', methods=['POST'])
+@login_required
 def clear_blocked_ips():
     """
     Clear all blocked IPs from the database and redirect to the blocked IPs page.
