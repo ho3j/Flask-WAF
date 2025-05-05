@@ -46,7 +46,8 @@ def init_db():
                 key TEXT PRIMARY KEY,
                 value INTEGER NOT NULL,
                 description TEXT,
-                updated_at REAL
+                updated_at REAL,
+                learning_mode_expiry REAL
             )
         ''')
         # Table for users
@@ -59,23 +60,23 @@ def init_db():
         ''')
         # Initialize default settings
         default_settings = [
-            ('sql_injection_detection', 1, 'Enable SQL Injection detection', time.time()),
-            ('xss_detection', 1, 'Enable XSS detection', time.time()),
-            ('command_injection_detection', 1, 'Enable Command Injection detection', time.time()),
-            ('path_traversal_detection', 1, 'Enable Path Traversal detection', time.time()),
-            ('csrf_detection', 1, 'Enable CSRF detection', time.time()),
-            ('lfi_detection', 1, 'Enable Local File Inclusion detection', time.time()),
-            ('rate_limiting', 1, 'Enable rate limiting with Redis', time.time()),
-            ('forward_to_backend', 1, 'Enable forwarding safe requests to backend', time.time()),
-            ('attack_logging', 1, 'Enable logging of detected attacks', time.time()),
-            ('block_duration', 300, 'Duration of IP block in seconds', time.time()),
-            ('request_limit', 100, 'Maximum requests per minute for rate limiting', time.time()),
-            ('request_window', 60, 'Time window in seconds for rate limiting', time.time()),
-            ('learning_mode', 0, 'Enable Learning Mode (log attacks without blocking)', time.time())
+            ('sql_injection_detection', 1, 'Enable SQL Injection detection', time.time(), None),
+            ('xss_detection', 1, 'Enable XSS detection', time.time(), None),
+            ('command_injection_detection', 1, 'Enable Command Injection detection', time.time(), None),
+            ('path_traversal_detection', 1, 'Enable Path Traversal detection', time.time(), None),
+            ('csrf_detection', 1, 'Enable CSRF detection', time.time(), None),
+            ('lfi_detection', 1, 'Enable Local File Inclusion detection', time.time(), None),
+            ('rate_limiting', 1, 'Enable rate limiting with Redis', time.time(), None),
+            ('forward_to_backend', 1, 'Enable forwarding safe requests to backend', time.time(), None),
+            ('attack_logging', 1, 'Enable logging of detected attacks', time.time(), None),
+            ('block_duration', 300, 'Duration of IP block in seconds', time.time(), None),
+            ('request_limit', 100, 'Maximum requests per minute for rate limiting', time.time(), None),
+            ('request_window', 60, 'Time window in seconds for rate limiting', time.time(), None),
+            ('learning_mode', 0, 'Enable Learning Mode (log attacks without blocking)', time.time(), None)
         ]
         c.executemany('''
-            INSERT OR IGNORE INTO settings (key, value, description, updated_at)
-            VALUES (?, ?, ?, ?)
+            INSERT OR IGNORE INTO settings (key, value, description, updated_at, learning_mode_expiry)
+            VALUES (?, ?, ?, ?, ?)
         ''', default_settings)
         # Initialize default user (admin:admin)
         admin_password = bcrypt.hashpw('admin'.encode('utf-8'), bcrypt.gensalt())
@@ -186,26 +187,27 @@ def delete_rule(rule_id):
         c.execute("DELETE FROM rules WHERE id = ?", (rule_id,))
         conn.commit()
 
-def update_setting(key, value):
+def update_setting(key, value, learning_mode_expiry=None):
     """
     Update a setting in the database.
     
     Args:
         key (str): Setting key (e.g., sql_injection_detection, block_duration)
         value (int): Value for the setting (1/0 for boolean, number for durations/limits)
+        learning_mode_expiry (float): Expiry time for learning mode (optional)
     """
     timestamp = time.time()
     with sqlite3.connect(DB_PATH) as conn:
         c = conn.cursor()
         c.execute("""
-            UPDATE settings SET value = ?, updated_at = ?
+            UPDATE settings SET value = ?, updated_at = ?, learning_mode_expiry = ?
             WHERE key = ?
-        """, (value, timestamp, key))
+        """, (value, timestamp, learning_mode_expiry, key))
         conn.commit()
 
 def get_setting(key):
     """
-    Retrieve a setting value from the database.
+    Retrieve a setting value from the database, handling learning mode expiry.
     
     Args:
         key (str): Setting key
@@ -215,9 +217,16 @@ def get_setting(key):
     """
     with sqlite3.connect(DB_PATH) as conn:
         c = conn.cursor()
-        c.execute("SELECT value FROM settings WHERE key = ?", (key,))
+        c.execute("SELECT value, learning_mode_expiry FROM settings WHERE key = ?", (key,))
         result = c.fetchone()
-        return result[0] if result else 0
+        if result:
+            value, expiry = result
+            if key == 'learning_mode' and value == 1 and expiry is not None:
+                if time.time() > expiry:
+                    update_setting('learning_mode', 0, None)
+                    return 0
+            return value
+        return 0
 
 def get_all_settings():
     """
@@ -228,8 +237,8 @@ def get_all_settings():
     """
     with sqlite3.connect(DB_PATH) as conn:
         c = conn.cursor()
-        c.execute("SELECT key, value, description, updated_at FROM settings")
-        return [{'key': r[0], 'value': r[1], 'description': r[2], 'updated_at': r[3]} for r in c.fetchall()]
+        c.execute("SELECT key, value, description, updated_at, learning_mode_expiry FROM settings")
+        return [{'key': r[0], 'value': r[1], 'description': r[2], 'updated_at': r[3], 'learning_mode_expiry': r[4]} for r in c.fetchall()]
 
 def get_user(username):
     """

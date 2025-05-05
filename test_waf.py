@@ -1,6 +1,6 @@
 import pytest
 import sqlite3
-from app import app
+# from app import app
 
 @pytest.fixture
 def client():

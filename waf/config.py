@@ -5,7 +5,10 @@ logging.basicConfig(
     level=logging.WARNING,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("res/logs/waf.log"),    # Log to waf.log file
+        logging.FileHandler("log/waf.log"),         # Log to waf.log file
         logging.StreamHandler()                     # Log to console
     ]
 )
+
+# Define absolute path to the log file
+LOG_FILE = "res/logs/waf.log"

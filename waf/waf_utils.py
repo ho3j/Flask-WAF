@@ -1,8 +1,8 @@
 from urllib.parse import unquote
-from waf_patterns import sql_patterns, xss_patterns, command_injection_patterns, path_traversal_patterns, lfi_patterns
+from waf.waf_patterns import sql_patterns, xss_patterns, command_injection_patterns, path_traversal_patterns, lfi_patterns
 import logging
 import re
-from db import get_rules, get_setting
+from waf.db import get_rules, get_setting
 
 def is_text_like(s):
     """
