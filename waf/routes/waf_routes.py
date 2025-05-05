@@ -48,7 +48,7 @@ def process_request():
     BLOCK_DURATION = get_setting('block_duration') or 300
 
     # Check if IP is blocked
-    blocked_ips = {entry['ip']: entry['expires_at'] for entry in get_blocked_ips()}
+    blocked_ips = get_blocked_ips()
     if client_ip in blocked_ips:
         if blocked_ips[client_ip] is None or current_time < blocked_ips[client_ip]:
             response = make_response(render_template_string("""
