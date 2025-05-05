@@ -55,9 +55,13 @@ def init_db():
             ('command_injection_detection', 1, 'Enable Command Injection detection', time.time()),
             ('path_traversal_detection', 1, 'Enable Path Traversal detection', time.time()),
             ('csrf_detection', 1, 'Enable CSRF detection', time.time()),
+            ('lfi_detection', 1, 'Enable Local File Inclusion detection', time.time()),
             ('rate_limiting', 1, 'Enable rate limiting with Redis', time.time()),
             ('forward_to_backend', 1, 'Enable forwarding safe requests to backend', time.time()),
-            ('attack_logging', 1, 'Enable logging of detected attacks', time.time())
+            ('attack_logging', 1, 'Enable logging of detected attacks', time.time()),
+            ('block_duration', 300, 'Duration of IP block in seconds', time.time()),
+            ('request_limit', 100, 'Maximum requests per minute for rate limiting', time.time()),
+            ('request_window', 60, 'Time window in seconds for rate limiting', time.time())
         ]
         c.executemany('''
             INSERT OR IGNORE INTO settings (key, value, description, updated_at)
@@ -109,7 +113,7 @@ def log_attack(ip, attack_type, parameter):
     
     Args:
         ip (str): IP address of the attacker
-        attack_type (str): Type of attack (e.g., SQLi, XSS)
+        attack_type (str): Type of attack (e.g., SQLi, XSS, LFI)
         parameter (str): Malicious input parameter
     """
     # Check if attack logging is enabled
@@ -130,7 +134,7 @@ def add_rule(pattern, attack_type, description, action='block'):
     
     Args:
         pattern (str): Regex pattern for detection
-        attack_type (str): Type of attack (e.g., SQLi, XSS)
+        attack_type (str): Type of attack (e.g., SQLi, XSS, LFI)
         description (str): Description of the rule
         action (str): Action to take (default: 'block')
     """
@@ -172,8 +176,8 @@ def update_setting(key, value):
     Update a setting in the database.
     
     Args:
-        key (str): Setting key (e.g., sql_injection_detection)
-        value (int): 1 for enabled, 0 for disabled
+        key (str): Setting key (e.g., sql_injection_detection, block_duration)
+        value (int): Value for the setting (1/0 for boolean, number for durations/limits)
     """
     timestamp = time.time()
     with sqlite3.connect(DB_PATH) as conn:
@@ -192,13 +196,13 @@ def get_setting(key):
         key (str): Setting key
         
     Returns:
-        bool: True if enabled, False if disabled or not found
+        int: Setting value (1/0 for boolean settings, number for durations/limits) or 0 if not found
     """
     with sqlite3.connect(DB_PATH) as conn:
         c = conn.cursor()
         c.execute("SELECT value FROM settings WHERE key = ?", (key,))
         result = c.fetchone()
-        return bool(result[0]) if result else False
+        return result[0] if result else 0
 
 def get_all_settings():
     """

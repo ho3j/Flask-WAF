@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template_string, redirect, url_for, jsonify, make_response
 from flask_restx import Api, Resource, fields
-from waf_utils import check_sql_injection, check_xss, check_command_injection, check_path_traversal, check_csrf
+from waf_utils import check_sql_injection, check_xss, check_command_injection, check_path_traversal, check_csrf, check_lfi
 import logging
 from config import *
 import requests
@@ -31,9 +31,9 @@ except redis.ConnectionError:
     redis_client = None
 
 # Configuration for blocking
-BLOCK_DURATION = 300  # Duration in seconds (5 minutes)
-REQUEST_LIMIT = 100   # Maximum requests per minute
-REQUEST_WINDOW = 60   # Time window in seconds
+BLOCK_DURATION = get_setting('block_duration') or 300  # Duration in seconds (5 minutes)
+REQUEST_LIMIT = get_setting('request_limit') or 100   # Maximum requests per minute
+REQUEST_WINDOW = get_setting('request_window') or 60   # Time window in seconds
 
 # Initialize the database
 init_db()
@@ -209,6 +209,27 @@ def process_request():
             """), 403)
             response.headers['Content-Type'] = 'text/html'
             return response
+        if check_lfi(value):
+            log_attack(client_ip, "LFI", f"{key}={value}")
+            block_ip(client_ip, BLOCK_DURATION)
+            response = make_response(render_template_string("""
+            <html>
+            <head><meta charset='UTF-8'><title>Blocked</title>
+            <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+            <style>
+                body { font-family: 'Vazir', Arial, sans-serif; background-color: #fff0f0; padding: 2rem; text-align: center; }
+                h2 { color: #cc0000; }
+                p { font-size: 1.1rem; }
+            </style>
+            </head>
+            <body>
+                <h2>⛔ Request Blocked</h2>
+                <p>Attempt to include local files detected.</p>
+            </body>
+            </html>
+            """), 403)
+            response.headers['Content-Type'] = 'text/html'
+            return response
         if check_path_traversal(value):
             log_attack(client_ip, "PathTraversal", f"{key}={value}")
             block_ip(client_ip, BLOCK_DURATION)
@@ -273,6 +294,25 @@ def process_request():
             <body>
                 <h2>⛔ Request Blocked</h2>
                 <p>Attempt to execute malicious command in request body detected.</p>
+            </body>
+            </html>
+            """), 403
+        if check_lfi(raw):
+            log_attack(client_ip, "LFI", "raw body")
+            block_ip(client_ip, BLOCK_DURATION)
+            return render_template_string("""
+            <html>
+            <head><title>Blocked</title>
+            <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+            <style>
+                body { font-family: 'Vazir', Arial, sans-serif; background-color: #fff0f0; padding: 2rem; text-align: center; }
+                h2 { color: #cc0000; }
+                p { font-size: 1.1rem; }
+            </style>
+            </head>
+            <body>
+                <h2>⛔ Request Blocked</h2>
+                <p>Attempt to include local files in request body detected.</p>
             </body>
             </html>
             """), 403
@@ -344,6 +384,25 @@ def process_request():
                         </body>
                         </html>
                         """), 403
+                    if check_lfi(value):
+                        log_attack(client_ip, "LFI", f"json:{key}")
+                        block_ip(client_ip, BLOCK_DURATION)
+                        return render_template_string("""
+                        <html>
+                        <head><title>Blocked</title>
+                        <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+                        <style>
+                            body { font-family: 'Vazir', Arial, sans-serif; background-color: #fff0f0; padding: 2rem; text-align: center; }
+                            h2 { color: #cc0000; }
+                            p { font-size: 1.1rem; }
+                        </style>
+                        </head>
+                        <body>
+                            <h2>⛔ Request Blocked</h2>
+                            <p>Attempt to include local files in JSON content detected.</p>
+                        </body>
+                        </html>
+                        """), 403
                     if check_path_traversal(value):
                         log_attack(client_ip, "PathTraversal", f"json:{key}")
                         block_ip(client_ip, BLOCK_DURATION)
@@ -406,6 +465,25 @@ def process_request():
             <body>
                 <h2>⛔ Request Blocked</h2>
                 <p>Attempt to execute malicious command in filename detected.</p>
+            </body>
+            </html>
+            """), 403
+        if check_lfi(filename):
+            log_attack(client_ip, "LFI", f"filename:{filename}")
+            block_ip(client_ip, BLOCK_DURATION)
+            return render_template_string("""
+            <html>
+            <head><title>Blocked</title>
+            <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+            <style>
+                body { font-family: 'Vazir', Arial, sans-serif; background-color: #fff0f0; padding: 2rem; text-align: center; }
+                h2 { color: #cc0000; }
+                p { font-size: 1.1rem; }
+            </style>
+            </head>
+            <body>
+                <h2>⛔ Request Blocked</h2>
+                <p>Attempt to include local files in filename detected.</p>
             </body>
             </html>
             """), 403
@@ -562,6 +640,7 @@ def dashboard():
                             <p>CommandInjection: {{ attack_counts.get('CommandInjection', 0) }}</p>
                             <p>PathTraversal: {{ attack_counts.get('PathTraversal', 0) }}</p>
                             <p>CSRF: {{ attack_counts.get('CSRF', 0) }}</p>
+                            <p>LFI: {{ attack_counts.get('LFI', 0) }}</p>
                         </div>
                     </div>
                 </div>
@@ -598,6 +677,7 @@ def dashboard():
                 </div>
             </div>
             <div class="text-center my-4">
+                <a href="/analytics/html" class="btn btn-primary">📊 Analytics</a>
                 <a href="/settings/html" class="btn btn-primary">⚙️ WAF Settings</a>
                 <a href="/blocked-ips/html" class="btn btn-primary">View Blocked IPs</a>
                 <a href="/attack-logs/html" class="btn btn-primary">View Attack Logs</a>
@@ -777,6 +857,7 @@ def show_attack_logs_html():
                             <option value="CommandInjection" {% if attack_type == 'CommandInjection' %}selected{% endif %}>Command Injection</option>
                             <option value="PathTraversal" {% if attack_type == 'PathTraversal' %}selected{% endif %}>Path Traversal</option>
                             <option value="CSRF" {% if attack_type == 'CSRF' %}selected{% endif %}>CSRF</option>
+                            <option value="LFI" {% if attack_type == 'LFI' %}selected{% endif %}>LFI</option>
                         </select>
                     </div>
                     <div class="col-md-3">
@@ -877,6 +958,7 @@ def manage_rules_html():
                         <option value="XSS">XSS</option>
                         <option value="CommandInjection">Command Injection</option>
                         <option value="PathTraversal">Path Traversal</option>
+                        <option value="LFI">LFI</option>
                     </select>
                 </div>
                 <div class="mb-3">
@@ -923,6 +1005,187 @@ def manage_rules_html():
     """
     return render_template_string(html_template, rules=rules)
 
+@app.route('/analytics/html', methods=['GET', 'POST'])
+def analytics_html():
+    """
+    Display a page for analyzing attack patterns with charts and top IPs.
+    
+    Returns:
+        Rendered HTML template for analytics
+    """
+    conn = sqlite3.connect("waf.db")
+    c = conn.cursor()
+    
+    # Filter parameters
+    time_filter = request.form.get('time_filter', '7d') if request.method == 'POST' else request.args.get('time_filter', '7d')
+    
+    current_time = time.time()
+    time_condition = ""
+    params = []
+    
+    if time_filter == '24h':
+        time_condition = "WHERE timestamp > ?"
+        params.append(current_time - 24 * 3600)
+    elif time_filter == '7d':
+        time_condition = "WHERE timestamp > ?"
+        params.append(current_time - 7 * 24 * 3600)
+    
+    # Attack types chart
+    c.execute(f"""
+        SELECT attack_type, COUNT(*) 
+        FROM attack_logs 
+        {time_condition} 
+        GROUP BY attack_type
+    """, params)
+    attack_types_data = c.fetchall()
+    attack_types_labels = [row[0] for row in attack_types_data]
+    attack_types_values = [row[1] for row in attack_types_data]
+    
+    # Attacks per day chart
+    c.execute(f"""
+        SELECT strftime('%Y-%m-%d', timestamp, 'unixepoch') as day, COUNT(*)
+        FROM attack_logs
+        {time_condition}
+        GROUP BY day
+        ORDER BY day
+    """, params)
+    daily_data = c.fetchall()
+    daily_labels = [row[0] for row in daily_data]
+    daily_values = [row[1] for row in daily_data]
+    
+    # Top IPs
+    c.execute(f"""
+        SELECT ip, COUNT(*) as attack_count, MAX(timestamp) as last_seen
+        FROM attack_logs
+        {time_condition}
+        GROUP BY ip
+        ORDER BY attack_count DESC
+        LIMIT 10
+    """, params)
+    top_ips = [
+        {'ip': row[0], 'attack_count': row[1], 'last_seen': time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(row[2]))}
+        for row in c.fetchall()
+    ]
+    
+    conn.close()
+    
+    html_template = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Attack Analytics</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+        <style>
+            body { font-family: 'Vazir', Arial, sans-serif; background-color: #f4f6f9; padding: 20px; }
+            .card { margin-bottom: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+            .card-header { background-color: #cc0000; color: white; font-weight: bold; }
+            canvas { max-width: 100%; }
+            .btn-primary { background-color: #007bff; border: none; }
+            .btn-primary:hover { background-color: #0056b3; }
+            .table { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+            h1 { color: #333; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="my-4">📊 Attack Analytics</h1>
+            <form method="POST" class="mb-4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="time_filter" class="form-label">Time Range</label>
+                        <select name="time_filter" class="form-select">
+                            <option value="24h" {% if time_filter == '24h' %}selected{% endif %}>Last 24 Hours</option>
+                            <option value="7d" {% if time_filter == '7d' %}selected{% endif %}>Last 7 Days</option>
+                            <option value="all" {% if time_filter == 'all' %}selected{% endif %}>All</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary">Apply Filter</button>
+                    </div>
+                </div>
+            </form>
+            <div class="card">
+                <div class="card-header">Attacks by Type</div>
+                <div class="card-body">
+                    <canvas id="attackTypesChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Attacks Per Day</div>
+                <div class="card-body">
+                    <canvas id="dailyAttacksChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">Top Attacking IPs</div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>IP</th>
+                                <th>Attack Count</th>
+                                <th>Last Seen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ip in top_ips %}
+                            <tr>
+                                <td>{{ ip.ip }}</td>
+                                <td>{{ ip.attack_count }}</td>
+                                <td>{{ ip.last_seen }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <a href="/dashboard" class="btn btn-secondary">🔙 Back to Dashboard</a>
+        </div>
+        <script>
+            const typesCtx = document.getElementById('attackTypesChart').getContext('2d');
+            new Chart(typesCtx, {
+                type: 'bar',
+                data: {
+                    labels: {{ attack_types_labels | tojson }},
+                    datasets: [{
+                        label: 'Number of Attacks',
+                        data: {{ attack_types_values | tojson }},
+                        backgroundColor: '#cc0000'
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+
+            const dailyCtx = document.getElementById('dailyAttacksChart').getContext('2d');
+            new Chart(dailyCtx, {
+                type: 'line',
+                data: {
+                    labels: {{ daily_labels | tojson }},
+                    datasets: [{
+                        label: 'Number of Attacks',
+                        data: {{ daily_values | tojson }},
+                        borderColor: '#cc0000',
+                        fill: false
+                    }]
+                },
+                options: { scales: { y: { beginAtZero: true } } }
+            });
+        </script>
+    </body>
+    </html>
+    """
+    return render_template_string(html_template, 
+        attack_types_labels=attack_types_labels,
+        attack_types_values=attack_types_values,
+        daily_labels=daily_labels,
+        daily_values=daily_values,
+        top_ips=top_ips,
+        time_filter=time_filter
+    )
+
 @app.route('/settings/html', methods=['GET', 'POST'])
 def manage_settings_html():
     """
@@ -935,7 +1198,10 @@ def manage_settings_html():
         settings = get_all_settings()
         for setting in settings:
             key = setting['key']
-            value = 1 if request.form.get(key) == 'on' else 0
+            if key in ['block_duration', 'request_limit', 'request_window']:
+                value = int(request.form.get(key, 0))
+            else:
+                value = 1 if request.form.get(key) == 'on' else 0
             update_setting(key, value)
         return redirect(url_for('manage_settings_html'))
     
@@ -966,7 +1232,7 @@ def manage_settings_html():
                         <tr>
                             <th>Feature</th>
                             <th>Description</th>
-                            <th>Status</th>
+                            <th>Value</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -975,7 +1241,11 @@ def manage_settings_html():
                             <td>{{ setting.key.replace('_', ' ').title() }}</td>
                             <td>{{ setting.description }}</td>
                             <td>
-                                <input type="checkbox" name="{{ setting.key }}" {% if setting.value %}checked{% endif %}>
+                                {% if setting.key in ['block_duration', 'request_limit', 'request_window'] %}
+                                    <input type="number" name="{{ setting.key }}" class="form-control" value="{{ setting.value }}">
+                                {% else %}
+                                    <input type="checkbox" name="{{ setting.key }}" {% if setting.value %}checked{% endif %}>
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}

@@ -28,6 +28,14 @@ command_injection_patterns = [
 
 # Path Traversal patterns
 path_traversal_patterns = [
-    (re.compile(r"(?i)(\.\./|\.\.\\\\|/etc/|/var/|\\\\etc\\\\|\\\\var\\\\)"), "Directory traversal"),
+    (re.compile(r"(?i)(\.\./|\.\.\\\\|\\\\var\\\\)"), "Directory traversal"),
     (re.compile(r"(?i)\b(file://|php://|data://)"), "File protocol access"),
+]
+
+# Local File Inclusion (LFI) patterns
+lfi_patterns = [
+    (re.compile(r"(?i)\binclude\s*\(.+\b"), "General include attempt"),
+    (re.compile(r"(?i)\bfile_get_contents\s*\(.+\b"), "File read attempt"),
+    (re.compile(r"(?i)\brequire\s*\(.+\b"), "Require statement"),
+    (re.compile(r"(?i)\/etc\/(passwd|shadow)"), "Access to passwd/shadow file"),
 ]

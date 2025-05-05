@@ -1,5 +1,5 @@
 from urllib.parse import unquote
-from waf_patterns import sql_patterns, xss_patterns, command_injection_patterns, path_traversal_patterns
+from waf_patterns import sql_patterns, xss_patterns, command_injection_patterns, path_traversal_patterns, lfi_patterns
 import logging
 import re
 from db import get_rules, get_setting
@@ -14,7 +14,9 @@ def is_text_like(s):
     Returns:
         bool: True if input is a string longer than 2 characters and not numeric
     """
-    return isinstance(s, str) and len(s) > 2 and not s.isdigit()
+    result = isinstance(s, str) and len(s) > 2 and not s.isdigit()
+    logging.info(f"is_text_like check: {s} -> {result}")
+    return result
 
 def check_sql_injection(input_string):
     """
@@ -27,10 +29,12 @@ def check_sql_injection(input_string):
         bool: True if SQLi detected, False otherwise
     """
     if not get_setting('sql_injection_detection'):
+        logging.info("SQLi detection is disabled")
         return False
     if not is_text_like(input_string):
         return False
     decoded = unquote(input_string)
+    logging.info(f"Checking SQLi for decoded input: {decoded}")
     
     # Check static patterns
     for pattern, desc in sql_patterns:
@@ -62,10 +66,12 @@ def check_xss(input_string):
         bool: True if XSS detected, False otherwise
     """
     if not get_setting('xss_detection'):
+        logging.info("XSS detection is disabled")
         return False
     if not is_text_like(input_string):
         return False
     decoded = unquote(input_string)
+    logging.info(f"Checking XSS for decoded input: {decoded}")
     
     # Check static patterns
     for pattern, desc in xss_patterns:
@@ -97,10 +103,12 @@ def check_command_injection(input_string):
         bool: True if command injection detected, False otherwise
     """
     if not get_setting('command_injection_detection'):
+        logging.info("Command Injection detection is disabled")
         return False
     if not is_text_like(input_string):
         return False
     decoded = unquote(input_string)
+    logging.info(f"Checking Command Injection for decoded input: {decoded}")
     
     for pattern, desc in command_injection_patterns:
         if pattern.search(decoded):
@@ -130,10 +138,12 @@ def check_path_traversal(input_string):
         bool: True if path traversal detected, False otherwise
     """
     if not get_setting('path_traversal_detection'):
+        logging.info("Path Traversal detection is disabled")
         return False
     if not is_text_like(input_string):
         return False
     decoded = unquote(input_string)
+    logging.info(f"Checking Path Traversal for decoded input: {decoded}")
     
     for pattern, desc in path_traversal_patterns:
         if pattern.search(decoded):
@@ -163,6 +173,7 @@ def check_csrf(request):
         bool: True if CSRF detected, False otherwise
     """
     if not get_setting('csrf_detection'):
+        logging.info("CSRF detection is disabled")
         return False
     if request.method != 'POST':
         return False
@@ -186,5 +197,45 @@ def check_csrf(request):
     if origin and origin not in valid_origins:
         logging.warning(f"CSRF Detected: Invalid Origin header: {origin}")
         return True
+    
+    return False
+
+def check_lfi(input_string):
+    """
+    Detect Local File Inclusion (LFI) attempts in the input string.
+    
+    Args:
+        input_string (str): Input to check for LFI patterns
+        
+    Returns:
+        bool: True if LFI detected, False otherwise
+    """
+    if not get_setting('lfi_detection'):
+        logging.info("LFI detection is disabled")
+        return False
+    if not is_text_like(input_string):
+        logging.info(f"Input not text-like: {input_string}")
+        return False
+    decoded = unquote(input_string)
+    logging.info(f"Checking LFI for decoded input: {decoded}")
+    
+    # Check static patterns
+    for pattern, desc in lfi_patterns:
+        if pattern.search(decoded):
+            logging.warning(f"LFI Detected: {desc} | Input: {decoded}")
+            return True
+        else:
+            logging.info(f"No match for pattern {desc} | Input: {decoded}")
+    
+    # Check database rules
+    rules = get_rules()
+    for rule in rules:
+        if rule['attack_type'] == 'LFI':
+            try:
+                if re.search(rule['pattern'], decoded, re.IGNORECASE):
+                    logging.warning(f"LFI Detected: {rule['description']} | Input: {decoded}")
+                    return True
+            except re.error:
+                logging.error(f"Invalid regex pattern in rule {rule['id']}: {rule['pattern']}")
     
     return False
