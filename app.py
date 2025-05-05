@@ -7,7 +7,7 @@ import requests
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import time
-from db import init_db, block_ip, get_blocked_ips, unblock_ip, log_attack, add_rule, get_rules, delete_rule
+from db import init_db, block_ip, get_blocked_ips, unblock_ip, log_attack, add_rule, get_rules, delete_rule, update_setting, get_setting, get_all_settings
 import sqlite3
 from datetime import datetime, timedelta
 import redis
@@ -64,7 +64,7 @@ def process_request():
     current_time = time.time()
 
     # Check request rate (behavioral detection)
-    if redis_client:
+    if redis_client and get_setting('rate_limiting'):
         try:
             key = f"rate:{client_ip}"
             count = redis_client.get(key)
@@ -429,27 +429,31 @@ def process_request():
             </html>
             """), 403
 
-    # Forward safe requests to the backend
-    backend_url = "http://localhost:8888"
-    try:
-        if request.method == "GET":
-            forwarded = requests.get(
-                backend_url,
-                headers={k: v for k, v in request.headers if k.lower() != 'host'},
-                params=request.args
-            )
-        else:
-            forwarded = requests.post(
-                backend_url,
-                headers={k: v for k, v in request.headers if k.lower() != 'host'},
-                data=request.form
-            )
-        response = make_response(forwarded.text, forwarded.status_code)
-        response.headers['Content-Type'] = 'text/html'
-        return response
-    except Exception as e:
-        logging.error(f"Error forwarding to backend: {str(e)}")
-        return {"message": "Error connecting to backend server."}, 502
+    # Forward safe requests to the backend if enabled
+    if get_setting('forward_to_backend'):
+        backend_url = "http://localhost:8888"
+        try:
+            if request.method == "GET":
+                forwarded = requests.get(
+                    backend_url,
+                    headers={k: v for k, v in request.headers if k.lower() != 'host'},
+                    params=request.args
+                )
+            else:
+                forwarded = requests.post(
+                    backend_url,
+                    headers={k: v for k, v in request.headers if k.lower() != 'host'},
+                    data=request.form
+                )
+            response = make_response(forwarded.text, forwarded.status_code)
+            response.headers['Content-Type'] = 'text/html'
+            return response
+        except Exception as e:
+            logging.error(f"Error forwarding to backend: {str(e)}")
+            return {"message": "Error connecting to backend server."}, 502
+    else:
+        # Return a simple response if forwarding is disabled
+        return {"message": "Request is safe but forwarding to backend is disabled."}, 200
 
 @api.route('/blocked-ips')
 class BlockedIPs(Resource):
@@ -594,6 +598,7 @@ def dashboard():
                 </div>
             </div>
             <div class="text-center my-4">
+                <a href="/settings/html" class="btn btn-primary">⚙️ WAF Settings</a>
                 <a href="/blocked-ips/html" class="btn btn-primary">View Blocked IPs</a>
                 <a href="/attack-logs/html" class="btn btn-primary">View Attack Logs</a>
                 <a href="/rules/html" class="btn btn-primary">Manage Rules</a>
@@ -917,6 +922,73 @@ def manage_rules_html():
     </html>
     """
     return render_template_string(html_template, rules=rules)
+
+@app.route('/settings/html', methods=['GET', 'POST'])
+def manage_settings_html():
+    """
+    Display a page for managing WAF settings (enable/disable features).
+    
+    Returns:
+        Rendered HTML template for settings management
+    """
+    if request.method == 'POST':
+        settings = get_all_settings()
+        for setting in settings:
+            key = setting['key']
+            value = 1 if request.form.get(key) == 'on' else 0
+            update_setting(key, value)
+        return redirect(url_for('manage_settings_html'))
+    
+    settings = get_all_settings()
+    html_template = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Manage WAF Settings</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+        <style>
+            body { font-family: 'Vazir', Arial, sans-serif; background-color: #f4f6f9; padding: 20px; }
+            .table { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+            .btn-primary { background-color: #007bff; border: none; }
+            .btn-primary:hover { background-color: #0056b3; }
+            .form-label { font-weight: bold; }
+            h1 { color: #333; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="my-4">⚙️ Manage WAF Settings</h1>
+            <form method="POST" class="mb-4">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for setting in settings %}
+                        <tr>
+                            <td>{{ setting.key.replace('_', ' ').title() }}</td>
+                            <td>{{ setting.description }}</td>
+                            <td>
+                                <input type="checkbox" name="{{ setting.key }}" {% if setting.value %}checked{% endif %}>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-primary">Save Settings</button>
+            </form>
+            <a href="/dashboard" class="btn btn-secondary">🔙 Back to Dashboard</a>
+        </div>
+    </body>
+    </html>
+    """
+    return render_template_string(html_template, settings=settings)
 
 @app.route('/rules/delete/<int:rule_id>')
 def delete_rule_route(rule_id):

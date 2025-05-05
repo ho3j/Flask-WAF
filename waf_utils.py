@@ -2,7 +2,7 @@ from urllib.parse import unquote
 from waf_patterns import sql_patterns, xss_patterns, command_injection_patterns, path_traversal_patterns
 import logging
 import re
-from db import get_rules
+from db import get_rules, get_setting
 
 def is_text_like(s):
     """
@@ -26,6 +26,8 @@ def check_sql_injection(input_string):
     Returns:
         bool: True if SQLi detected, False otherwise
     """
+    if not get_setting('sql_injection_detection'):
+        return False
     if not is_text_like(input_string):
         return False
     decoded = unquote(input_string)
@@ -59,6 +61,8 @@ def check_xss(input_string):
     Returns:
         bool: True if XSS detected, False otherwise
     """
+    if not get_setting('xss_detection'):
+        return False
     if not is_text_like(input_string):
         return False
     decoded = unquote(input_string)
@@ -92,6 +96,8 @@ def check_command_injection(input_string):
     Returns:
         bool: True if command injection detected, False otherwise
     """
+    if not get_setting('command_injection_detection'):
+        return False
     if not is_text_like(input_string):
         return False
     decoded = unquote(input_string)
@@ -123,6 +129,8 @@ def check_path_traversal(input_string):
     Returns:
         bool: True if path traversal detected, False otherwise
     """
+    if not get_setting('path_traversal_detection'):
+        return False
     if not is_text_like(input_string):
         return False
     decoded = unquote(input_string)
@@ -154,6 +162,8 @@ def check_csrf(request):
     Returns:
         bool: True if CSRF detected, False otherwise
     """
+    if not get_setting('csrf_detection'):
+        return False
     if request.method != 'POST':
         return False
     

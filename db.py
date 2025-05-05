@@ -7,7 +7,7 @@ DB_PATH = "waf.db"
 def init_db():
     """
     Initialize the SQLite database and create tables if they don't exist.
-    Tables: blocked_ips, attack_logs, rules
+    Tables: blocked_ips, attack_logs, rules, settings
     """
     with sqlite3.connect(DB_PATH) as conn:
         c = conn.cursor()
@@ -39,6 +39,30 @@ def init_db():
                 created_at REAL
             )
         ''')
+        # Table for WAF settings
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS settings (
+                key TEXT PRIMARY KEY,
+                value INTEGER NOT NULL,
+                description TEXT,
+                updated_at REAL
+            )
+        ''')
+        # Initialize default settings
+        default_settings = [
+            ('sql_injection_detection', 1, 'Enable SQL Injection detection', time.time()),
+            ('xss_detection', 1, 'Enable XSS detection', time.time()),
+            ('command_injection_detection', 1, 'Enable Command Injection detection', time.time()),
+            ('path_traversal_detection', 1, 'Enable Path Traversal detection', time.time()),
+            ('csrf_detection', 1, 'Enable CSRF detection', time.time()),
+            ('rate_limiting', 1, 'Enable rate limiting with Redis', time.time()),
+            ('forward_to_backend', 1, 'Enable forwarding safe requests to backend', time.time()),
+            ('attack_logging', 1, 'Enable logging of detected attacks', time.time())
+        ]
+        c.executemany('''
+            INSERT OR IGNORE INTO settings (key, value, description, updated_at)
+            VALUES (?, ?, ?, ?)
+        ''', default_settings)
         conn.commit()
 
 def block_ip(ip, duration_seconds):
@@ -88,6 +112,9 @@ def log_attack(ip, attack_type, parameter):
         attack_type (str): Type of attack (e.g., SQLi, XSS)
         parameter (str): Malicious input parameter
     """
+    # Check if attack logging is enabled
+    if not get_setting('attack_logging'):
+        return
     timestamp = time.time()
     with sqlite3.connect(DB_PATH) as conn:
         c = conn.cursor()
@@ -139,3 +166,48 @@ def delete_rule(rule_id):
         c = conn.cursor()
         c.execute("DELETE FROM rules WHERE id = ?", (rule_id,))
         conn.commit()
+
+def update_setting(key, value):
+    """
+    Update a setting in the database.
+    
+    Args:
+        key (str): Setting key (e.g., sql_injection_detection)
+        value (int): 1 for enabled, 0 for disabled
+    """
+    timestamp = time.time()
+    with sqlite3.connect(DB_PATH) as conn:
+        c = conn.cursor()
+        c.execute("""
+            UPDATE settings SET value = ?, updated_at = ?
+            WHERE key = ?
+        """, (value, timestamp, key))
+        conn.commit()
+
+def get_setting(key):
+    """
+    Retrieve a setting value from the database.
+    
+    Args:
+        key (str): Setting key
+        
+    Returns:
+        bool: True if enabled, False if disabled or not found
+    """
+    with sqlite3.connect(DB_PATH) as conn:
+        c = conn.cursor()
+        c.execute("SELECT value FROM settings WHERE key = ?", (key,))
+        result = c.fetchone()
+        return bool(result[0]) if result else False
+
+def get_all_settings():
+    """
+    Retrieve all settings from the database.
+    
+    Returns:
+        list: List of dictionaries containing setting details
+    """
+    with sqlite3.connect(DB_PATH) as conn:
+        c = conn.cursor()
+        c.execute("SELECT key, value, description, updated_at FROM settings")
+        return [{'key': r[0], 'value': r[1], 'description': r[2], 'updated_at': r[3]} for r in c.fetchall()]
