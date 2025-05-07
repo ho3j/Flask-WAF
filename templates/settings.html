@@ -1,0 +1,38 @@
+<!-- templates/settings.html -->
+{% extends 'base.html' %}
+{% block title %}Manage WAF Settings{% endblock %}
+{% block content %}
+<h1 class="my-4">⚙️ Manage WAF Settings</h1>
+<form method="POST" class="mb-4">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Description</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for setting in settings %}
+            <tr>
+                <td>{{ setting.key.replace('_', ' ').title() }}</td>
+                <td>
+                    {{ setting.description }}
+                    {% if setting.key == 'learning_mode' and learning_mode_remaining %}
+                        <br><span class="expiry-info">Expires in: {{ learning_mode_remaining }}</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if setting.key in ['block_duration', 'request_limit', 'request_window'] %}
+                        <input type="number" name="{{ setting.key }}" class="form-control" value="{{ setting.value }}">
+                    {% else %}
+                        <input type="checkbox" name="{{ setting.key }}" {% if setting.value %}checked{% endif %}>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Save Settings</button>
+</form>
+{% endblock %}

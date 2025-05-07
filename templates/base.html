@@ -1,0 +1,83 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}WAF Dashboard{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Vazir', Arial, sans-serif; background-color: #f4f6f9; }
+        .sidebar { position: fixed; top: 0; bottom: 0; left: 0; z-index: 100; padding: 48px 0 0; box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1); background-color: #343a40; }
+        .sidebar .nav-link { color: #adb5bd; }
+        .sidebar .nav-link:hover, .sidebar .nav-link.active { color: #fff; background-color: #495057; }
+        .sidebar .navbar-brand { color: #fff; padding: 1rem; }
+        .main-content { margin-left: 250px; padding: 20px; }
+        .navbar-top { margin-left: 250px; background-color: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .content { margin-top: 20px; }
+        @media (max-width: 768px) {
+            .sidebar { width: 100%; height: auto; position: relative; }
+            .main-content, .navbar-top { margin-left: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-light navbar-top">
+        <div class="container-fluid">
+            <span class="navbar-brand">WAF Dashboard</span>
+            <div>
+                <span class="navbar-text me-3">Welcome, {{ session.username }}</span>
+                <a href="/logout" class="btn btn-outline-danger">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <nav class="sidebar col-md-3 col-lg-2 d-md-block bg-dark">
+        <div class="position-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/dashboard' %}active{% endif %}" href="/dashboard">
+                        🏠 Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/blocked-ips/html' %}active{% endif %}" href="/blocked-ips/html">
+                        ⛔ Blocked IPs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/attack-logs/html' %}active{% endif %}" href="/attack-logs/html">
+                        📜 Attack Logs
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/rules/html' %}active{% endif %}" href="/rules/html">
+                        ⚙️ Rules
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/settings/html' %}active{% endif %}" href="/settings/html">
+                        🔧 Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/logs-management/html' %}active{% endif %}" href="/logs-management/html">
+                        📂 Log Management
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content col-md-9 ms-sm-auto col-lg-10 px-md-4">
+        <div class="content">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!-- templates/dashboard.html -->
+{% extends 'base.html' %}
+{% block title %}WAF Dashboard{% endblock %}
+{% block content %}
+<h1 class="text-center my-4">🔐 WAF Dashboard</h1>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">Total Attacks</div>
+            <div class="card-body">
+                <h3>{{ total_attacks }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">Blocked IPs</div>
+            <div class="card-body">
+                <h3>{{ active_blocks }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">Attack Types</div>
+            <div class="card-body">
+                <p>SQLi: {{ attack_counts.get('SQLi', 0) }}</p>
+                <p>XSS: {{ attack_counts.get('XSS', 0) }}</p>
+                <p>CommandInjection: {{ attack_counts.get('CommandInjection', 0) }}</p>
+                <p>PathTraversal: {{ attack_counts.get('PathTraversal', 0) }}</p>
+                <p>CSRF: {{ attack_counts.get('CSRF', 0) }}</p>
+                <p>LFI: {{ attack_counts.get('LFI', 0) }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">Attack Chart (Last 7 Days)</div>
+    <div class="card-body">
+        <canvas id="attackChart"></canvas>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">Recent Attacks</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>Attack Type</th>
+                    <th>Parameter</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for attack in recent_attacks %}
+                <tr>
+                    <td>{{ attack.ip }}</td>
+                    <td>{{ attack.attack_type }}</td>
+                    <td>{{ attack.parameter }}</td>
+                    <td>{{ attack.time }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+    const ctx = document.getElementById('attackChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ chart_labels | tojson }},
+            datasets: [{
+                label: 'Number of Attacks',
+                data: {{ chart_values | tojson }},
+                borderColor: '#cc0000',
+                fill: false
+            }]
+        },
+        options: { scales: { y: { beginAtZero: true } } }
+    });
+</script>
+{% endblock %}

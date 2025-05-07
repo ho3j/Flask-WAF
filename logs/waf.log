@@ -1,0 +1,160 @@
+2025-05-07 16:08:29,924 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:08:30,149 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:08:30,149 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:08:30,150 - INFO -  * Restarting with stat
+2025-05-07 16:08:30,671 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:08:30,913 - WARNING -  * Debugger is active!
+2025-05-07 16:08:30,916 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:08:33,764 - INFO - 127.0.0.1 - - [07/May/2025 16:08:33] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2025-05-07 16:08:33,834 - INFO - 127.0.0.1 - - [07/May/2025 16:08:33] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-07 16:08:33,835 - INFO - 127.0.0.1 - - [07/May/2025 16:08:33] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-07 16:08:33,850 - INFO - 127.0.0.1 - - [07/May/2025 16:08:33] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=DWNgq6NOO5oDXqqeeGHk HTTP/1.1" 200 -
+2025-05-07 16:09:37,463 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\admin_routes.py', reloading
+2025-05-07 16:09:37,525 - INFO -  * Restarting with stat
+2025-05-07 16:09:38,073 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:09:41,037 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:09:57,396 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:09:57,631 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:09:57,632 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:09:57,635 - INFO -  * Restarting with stat
+2025-05-07 16:09:58,181 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:09:58,403 - WARNING -  * Debugger is active!
+2025-05-07 16:09:58,406 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:10:03,572 - INFO - 127.0.0.1 - - [07/May/2025 16:10:03] "[33mGET /dashboard HTTP/1.1[0m" 404 -
+2025-05-07 16:12:58,873 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\admin_routes.py', reloading
+2025-05-07 16:12:58,931 - INFO -  * Restarting with stat
+2025-05-07 16:18:18,039 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:18:18,261 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:18:18,262 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:18:18,264 - INFO -  * Restarting with stat
+2025-05-07 16:18:18,760 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:18:18,976 - WARNING -  * Debugger is active!
+2025-05-07 16:18:18,978 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:18:22,648 - INFO - 127.0.0.1 - - [07/May/2025 16:18:22] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2025-05-07 16:18:22,728 - INFO - 127.0.0.1 - - [07/May/2025 16:18:22] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-07 16:18:22,729 - INFO - 127.0.0.1 - - [07/May/2025 16:18:22] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-07 16:18:22,756 - INFO - 127.0.0.1 - - [07/May/2025 16:18:22] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=3KeQFYKzm5e6jKTHjSkK HTTP/1.1" 200 -
+2025-05-07 16:20:26,171 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\main.py', reloading
+2025-05-07 16:20:26,235 - INFO -  * Restarting with stat
+2025-05-07 16:20:26,813 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:20:27,050 - WARNING -  * Debugger is active!
+2025-05-07 16:20:27,053 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:20:33,670 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:20:33,908 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:20:33,909 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:20:33,911 - INFO -  * Restarting with stat
+2025-05-07 16:20:34,456 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:20:34,713 - WARNING -  * Debugger is active!
+2025-05-07 16:20:34,715 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:20:39,392 - INFO - 127.0.0.1 - - [07/May/2025 16:20:39] "[35m[1mGET /dashboard HTTP/1.1[0m" 500 -
+2025-05-07 16:20:39,475 - INFO - 127.0.0.1 - - [07/May/2025 16:20:39] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-07 16:20:39,475 - INFO - 127.0.0.1 - - [07/May/2025 16:20:39] "[36mGET /dashboard?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-07 16:20:39,509 - INFO - 127.0.0.1 - - [07/May/2025 16:20:39] "GET /dashboard?__debugger__=yes&cmd=resource&f=console.png&s=4O0yURaEGSDb7czKNZqk HTTP/1.1" 200 -
+2025-05-07 16:26:11,753 - INFO - 127.0.0.1 - - [07/May/2025 16:26:11] "[35m[1mGET /blocked-ips/html HTTP/1.1[0m" 500 -
+2025-05-07 16:26:11,785 - INFO - 127.0.0.1 - - [07/May/2025 16:26:11] "GET /blocked-ips/html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-07 16:26:11,785 - INFO - 127.0.0.1 - - [07/May/2025 16:26:11] "GET /blocked-ips/html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-07 16:26:11,809 - INFO - 127.0.0.1 - - [07/May/2025 16:26:11] "GET /blocked-ips/html?__debugger__=yes&cmd=resource&f=console.png&s=4O0yURaEGSDb7czKNZqk HTTP/1.1" 200 -
+2025-05-07 16:26:11,818 - INFO - 127.0.0.1 - - [07/May/2025 16:26:11] "GET /blocked-ips/html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-07 16:27:38,328 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\admin_routes.py', reloading
+2025-05-07 16:27:38,376 - INFO -  * Restarting with stat
+2025-05-07 16:27:38,934 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:27:39,163 - WARNING -  * Debugger is active!
+2025-05-07 16:27:39,165 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:27:42,142 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:27:42,363 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:27:42,364 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:27:42,368 - INFO -  * Restarting with stat
+2025-05-07 16:27:42,935 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:27:43,188 - WARNING -  * Debugger is active!
+2025-05-07 16:27:43,190 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:27:52,099 - INFO - 127.0.0.1 - - [07/May/2025 16:27:52] "[35m[1mGET /test HTTP/1.1[0m" 500 -
+2025-05-07 16:27:52,181 - INFO - 127.0.0.1 - - [07/May/2025 16:27:52] "GET /test?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2025-05-07 16:27:52,183 - INFO - 127.0.0.1 - - [07/May/2025 16:27:52] "GET /test?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2025-05-07 16:27:52,216 - INFO - 127.0.0.1 - - [07/May/2025 16:27:52] "GET /test?__debugger__=yes&cmd=resource&f=console.png&s=cKM2LFI7y34K1hK0JkJh HTTP/1.1" 200 -
+2025-05-07 16:27:52,221 - INFO - 127.0.0.1 - - [07/May/2025 16:27:52] "GET /test?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-05-07 16:28:43,134 - INFO - 127.0.0.1 - - [07/May/2025 16:28:43] "GET /test HTTP/1.1" 200 -
+2025-05-07 16:29:05,853 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:29:06,076 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:29:06,077 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:29:06,078 - INFO -  * Restarting with stat
+2025-05-07 16:29:06,641 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:29:06,896 - WARNING -  * Debugger is active!
+2025-05-07 16:29:06,898 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:29:07,963 - INFO - 127.0.0.1 - - [07/May/2025 16:29:07] "GET /test HTTP/1.1" 200 -
+2025-05-07 16:30:04,935 - INFO - Logo URL: /res/logo.png
+2025-05-07 16:30:04,936 - INFO - Logo file path: res\logo.png
+2025-05-07 16:30:04,936 - INFO - Logo file exists: True
+2025-05-07 16:30:04,940 - INFO - 127.0.0.1 - - [07/May/2025 16:30:04] "GET /login HTTP/1.1" 200 -
+2025-05-07 16:30:05,353 - INFO - Serving file from res: logo.png
+2025-05-07 16:30:05,382 - INFO - 127.0.0.1 - - [07/May/2025 16:30:05] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 16:30:07,163 - INFO - 127.0.0.1 - - [07/May/2025 16:30:07] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 16:30:07,178 - INFO - 127.0.0.1 - - [07/May/2025 16:30:07] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 16:30:12,647 - INFO - 127.0.0.1 - - [07/May/2025 16:30:12] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 16:30:13,681 - INFO - 127.0.0.1 - - [07/May/2025 16:30:13] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-07 16:30:14,501 - INFO - 127.0.0.1 - - [07/May/2025 16:30:14] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 16:30:15,466 - INFO - 127.0.0.1 - - [07/May/2025 16:30:15] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-07 16:30:16,201 - INFO - 127.0.0.1 - - [07/May/2025 16:30:16] "GET /rules/html HTTP/1.1" 200 -
+2025-05-07 16:30:18,232 - INFO - 127.0.0.1 - - [07/May/2025 16:30:18] "GET /settings/html HTTP/1.1" 200 -
+2025-05-07 16:30:20,433 - INFO - 127.0.0.1 - - [07/May/2025 16:30:20] "GET /logs-management/html HTTP/1.1" 200 -
+2025-05-07 16:30:23,707 - INFO - 127.0.0.1 - - [07/May/2025 16:30:23] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 16:30:32,548 - INFO - 127.0.0.1 - - [07/May/2025 16:30:32] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 16:30:33,451 - INFO - 127.0.0.1 - - [07/May/2025 16:30:33] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-07 16:30:34,096 - INFO - 127.0.0.1 - - [07/May/2025 16:30:34] "GET /rules/html HTTP/1.1" 200 -
+2025-05-07 16:30:34,707 - INFO - 127.0.0.1 - - [07/May/2025 16:30:34] "GET /settings/html HTTP/1.1" 200 -
+2025-05-07 16:30:35,247 - INFO - 127.0.0.1 - - [07/May/2025 16:30:35] "GET /logs-management/html HTTP/1.1" 200 -
+2025-05-07 16:30:36,258 - INFO - 127.0.0.1 - - [07/May/2025 16:30:36] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 16:35:53,992 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\admin_routes.py', reloading
+2025-05-07 16:35:54,069 - INFO -  * Restarting with stat
+2025-05-07 16:35:54,599 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:35:54,821 - WARNING -  * Debugger is active!
+2025-05-07 16:35:54,825 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:35:57,180 - INFO - 127.0.0.1 - - [07/May/2025 16:35:57] "[33mGET /dashboard HTTP/1.1[0m" 404 -
+2025-05-07 16:39:27,973 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\admin_routes.py', reloading
+2025-05-07 16:39:28,034 - INFO -  * Restarting with stat
+2025-05-07 16:39:28,596 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:41:00,214 - INFO - Template folder path: templates
+2025-05-07 16:41:00,216 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:41:41,492 - INFO - Template folder path: templates
+2025-05-07 16:41:41,494 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:43:02,090 - INFO - Template folder path: templates
+2025-05-07 16:43:02,092 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:43:02,311 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:43:02,312 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:43:02,313 - INFO -  * Restarting with stat
+2025-05-07 16:43:02,814 - INFO - Template folder path: templates
+2025-05-07 16:43:02,816 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:43:03,039 - WARNING -  * Debugger is active!
+2025-05-07 16:43:03,041 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:45:06,253 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:45:06,254 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 16:45:06,508 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:45:06,508 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:45:06,509 - INFO -  * Restarting with stat
+2025-05-07 16:45:07,082 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:45:07,083 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 16:45:07,340 - WARNING -  * Debugger is active!
+2025-05-07 16:45:07,343 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:45:32,991 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:45:32,992 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 16:45:33,226 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 16:45:33,227 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 16:45:33,229 - INFO -  * Restarting with stat
+2025-05-07 16:45:33,785 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 16:45:33,787 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 16:45:34,063 - WARNING -  * Debugger is active!
+2025-05-07 16:45:34,067 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 16:45:37,312 - INFO - 127.0.0.1 - - [07/May/2025 16:45:37] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 16:45:44,619 - INFO - 127.0.0.1 - - [07/May/2025 16:45:44] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 16:45:45,388 - INFO - 127.0.0.1 - - [07/May/2025 16:45:45] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 16:45:46,029 - INFO - 127.0.0.1 - - [07/May/2025 16:45:46] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-07 16:45:46,949 - INFO - 127.0.0.1 - - [07/May/2025 16:45:46] "GET /settings/html HTTP/1.1" 200 -
+2025-05-07 16:45:47,431 - INFO - 127.0.0.1 - - [07/May/2025 16:45:47] "GET /rules/html HTTP/1.1" 200 -

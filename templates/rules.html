@@ -1,0 +1,58 @@
+<!-- templates/rules.html -->
+{% extends 'base.html' %}
+{% block title %}Manage Rules{% endblock %}
+{% block content %}
+<h1 class="my-4">⚙️ Manage Rules</h1>
+<form method="POST" class="mb-4">
+    <div class="mb-3">
+        <label for="pattern" class="form-label">Pattern</label>
+        <input type="text" name="pattern" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="attack_type" class="form-label">Attack Type</label>
+        <select name="attack_type" class="form-select" required>
+            <option value="SQLi">SQLi</option>
+            <option value="XSS">XSS</option>
+            <option value="CommandInjection">Command Injection</option>
+            <option value="PathTraversal">Path Traversal</option>
+            <option value="LFI">LFI</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" name="description" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="action" class="form-label">Action</label>
+        <select name="action" class="form-select">
+            <option value="block">Block</option>
+            <option value="log">Log Only</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Rule</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Pattern</th>
+            <th>Attack Type</th>
+            <th>Description</th>
+            <th>Action</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for rule in rules %}
+        <tr>
+            <td>{{ rule.id }}</td>
+            <td>{{ rule.pattern }}</td>
+            <td>{{ rule.attack_type }}</td>
+            <td>{{ rule.description }}</td>
+            <td>{{ rule.action }}</td>
+            <td><a class="btn btn-danger btn-sm" href="/rules/delete/{{ rule.id }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

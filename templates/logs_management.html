@@ -1,0 +1,50 @@
+<!-- templates/logs_management.html -->
+{% extends 'base.html' %}
+{% block title %}Log Management{% endblock %}
+{% block content %}
+<h1 class="my-4">📂 Log Management</h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<div class="card mb-4">
+    <div class="card-header">Log Files Size</div>
+    <div class="card-body">
+        <p>Total Size: <strong>{{ total_size_mb | round(2) }} MB</strong></p>
+        {% if is_warning %}
+            <p class="alert alert-warning">⚠️ Log files are using more than {{ warning_threshold }} MB!</p>
+        {% endif %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>File Name</th>
+                    <th>Size (MB)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file_name, file_size in log_files %}
+                <tr>
+                    <td>{{ file_name }}</td>
+                    <td>{{ file_size | round(2) }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="card mb-4">
+    <div class="card-header">Clean Old Logs</div>
+    <div class="card-body">
+        <form method="POST">
+            <div class="mb-3">
+                <label for="max_age_days" class="form-label">Maximum Age (days)</label>
+                <input type="number" name="max_age_days" class="form-control" value="30" min="1">
+            </div>
+            <button type="submit" name="cleanup" class="btn btn-danger">🧹 Clean Old Logs</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

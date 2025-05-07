@@ -1,0 +1,31 @@
+<!-- templates/blocked_ips.html -->
+{% extends 'base.html' %}
+{% block title %}Blocked IPs{% endblock %}
+{% block content %}
+<h1 class="my-4">⛔ Blocked IPs</h1>
+{% if active_ips %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>IP Address</th>
+            <th>Time Remaining</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ip, time_left in active_ips %}
+        <tr>
+            <td>{{ ip }}</td>
+            <td>{{ time_left }} seconds</td>
+            <td><a class="btn btn-primary btn-sm" href="/unblock/{{ ip }}">Unblock</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<form method="POST" action="/blocked-ips/clear" class="mt-3">
+    <button type="submit" class="btn btn-danger">🗑 Clear All IPs</button>
+</form>
+{% else %}
+<p class="alert alert-success">✅ No IPs are currently blocked.</p>
+{% endif %}
+{% endblock %}

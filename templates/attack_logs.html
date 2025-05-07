@@ -1,0 +1,60 @@
+<!-- templates/attack_logs.html -->
+{% extends 'base.html' %}
+{% block title %}Attack Logs{% endblock %}
+{% block content %}
+<h1 class="my-4">📜 Attack Logs</h1>
+<form method="POST" class="mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <label for="attack_type" class="form-label">Attack Type</label>
+            <select name="attack_type" class="form-select">
+                <option value="">All</option>
+                <option value="SQLi" {% if attack_type == 'SQLi' %}selected{% endif %}>SQLi</option>
+                <option value="XSS" {% if attack_type == 'XSS' %}selected{% endif %}>XSS</option>
+                <option value="CommandInjection" {% if attack_type == 'CommandInjection' %}selected{% endif %}>Command Injection</option>
+                <option value="PathTraversal" {% if attack_type == 'PathTraversal' %}selected{% endif %}>Path Traversal</option>
+                <option value="CSRF" {% if attack_type == 'CSRF' %}selected{% endif %}>CSRF</option>
+                <option value="LFI" {% if attack_type == 'LFI' %}selected{% endif %}>LFI</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="time_filter" class="form-label">Time Range</label>
+            <select name="time_filter" class="form-select">
+                <option value="all" {% if time_filter == 'all' %}selected{% endif %}>All</option>
+                <option value="24h" {% if time_filter == '24h' %}selected{% endif %}>Last 24 Hours</option>
+                <option value="7d" {% if time_filter == '7d' %}selected{% endif %}>Last 7 Days</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="search_ip" class="form-label">Search IP</label>
+            <input type="text" name="search_ip" class="form-control" value="{{ search_ip }}">
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+    </div>
+</form>
+<form method="POST" action="/attack-logs/clear" class="mb-4">
+    <button type="submit" class="btn btn-danger">🧹 Clear All Logs</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>IP</th>
+            <th>Attack Type</th>
+            <th>Parameter</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log[0] }}</td>
+            <td>{{ log[1] }}</td>
+            <td>{{ log[2] }}</td>
+            <td>{{ log[3] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
