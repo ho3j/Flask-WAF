@@ -1,4 +1,5 @@
 import logging
+import os
 
 # Configure logging with file and console output
 logging.basicConfig(
@@ -10,5 +11,7 @@ logging.basicConfig(
     ]
 )
 
-# Define absolute path to the log file
-LOG_FILE = "res/logs/waf.log"
+# Define absolute path 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))   #config.py loc
+DB_PATH = os.path.join(BASE_DIR, '../db', 'waf.db')
+LOG_FILE = os.path.join(BASE_DIR, '../logs', 'waf.log')

@@ -1,9 +1,8 @@
 import sqlite3
 import time
 import bcrypt
-
-# Path to the SQLite database file
-DB_PATH = "waf.db"
+import os
+from waf.config import DB_PATH
 
 def init_db():
     """

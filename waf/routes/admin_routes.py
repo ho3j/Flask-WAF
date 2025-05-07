@@ -3,6 +3,8 @@ from waf.db import get_blocked_ips, unblock_ip, log_attack, add_rule, get_rules,
 import sqlite3
 from datetime import datetime, timedelta
 import time
+from waf.config import DB_PATH
+
 
 def login_required(f):
     """
@@ -32,7 +34,7 @@ def init_admin_routes(app):
             Rendered HTML template for the dashboard
         """
         current_time = time.time()
-        conn = sqlite3.connect("waf.db")
+        conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
         
         # Total number of attacks
@@ -288,7 +290,7 @@ def init_admin_routes(app):
         Returns:
             Rendered HTML template for attack logs
         """
-        conn = sqlite3.connect("waf.db")
+        conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
         
         # Filter and search parameters
@@ -533,7 +535,7 @@ def init_admin_routes(app):
         Returns:
             Rendered HTML template for analytics
         """
-        conn = sqlite3.connect("waf.db")
+        conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
         
         # Filter parameters
@@ -850,7 +852,7 @@ def init_admin_routes(app):
         Returns:
             Redirect to the attack logs page
         """
-        conn = sqlite3.connect("waf.db")
+        conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
         c.execute("DELETE FROM attack_logs")
         conn.commit()
@@ -899,7 +901,7 @@ def init_admin_routes(app):
         Returns:
             Redirect to the blocked IPs page
         """
-        conn = sqlite3.connect("waf.db")
+        conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
         c.execute("DELETE FROM blocked_ips")
         conn.commit()

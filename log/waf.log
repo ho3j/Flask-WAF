@@ -1,187 +1,22 @@
-2025-05-05 23:10:28,153 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-05-07 14:29:06,124 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2025-05-05 23:10:28,154 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-05 23:10:28,155 - INFO -  * Restarting with stat
-2025-05-05 23:10:28,675 - WARNING -  * Debugger is active!
-2025-05-05 23:10:28,678 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:10:34,535 - INFO - 127.0.0.1 - - [05/May/2025 23:10:34] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:11:04,082 - INFO - 127.0.0.1 - - [05/May/2025 23:11:04] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:11:07,132 - INFO - 127.0.0.1 - - [05/May/2025 23:11:07] "POST /login HTTP/1.1" 200 -
-2025-05-05 23:11:07,163 - INFO - 127.0.0.1 - - [05/May/2025 23:11:07] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:11:12,832 - INFO - 127.0.0.1 - - [05/May/2025 23:11:12] "POST /login HTTP/1.1" 200 -
-2025-05-05 23:11:12,857 - INFO - 127.0.0.1 - - [05/May/2025 23:11:12] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:17:57,306 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\admin_routes.py', reloading
-2025-05-05 23:17:57,345 - INFO -  * Restarting with stat
-2025-05-05 23:17:57,935 - WARNING -  * Debugger is active!
-2025-05-05 23:17:57,938 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:18:56,313 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\admin_routes.py', reloading
-2025-05-05 23:18:56,352 - INFO -  * Restarting with stat
-2025-05-05 23:18:56,855 - WARNING -  * Debugger is active!
-2025-05-05 23:18:56,857 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:19:04,152 - INFO - 127.0.0.1 - - [05/May/2025 23:19:04] "POST /login HTTP/1.1" 200 -
-2025-05-05 23:19:35,681 - INFO - 127.0.0.1 - - [05/May/2025 23:19:35] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:19:43,750 - INFO - 127.0.0.1 - - [05/May/2025 23:19:43] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:21:03,528 - INFO - 127.0.0.1 - - [05/May/2025 23:21:03] "GET /analytics/html HTTP/1.1" 200 -
-2025-05-05 23:28:37,974 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-05-07 14:29:06,124 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 14:29:06,125 - INFO -  * Restarting with stat
+2025-05-07 14:29:06,796 - WARNING -  * Debugger is active!
+2025-05-07 14:29:06,799 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 14:29:07,980 - INFO - 127.0.0.1 - - [07/May/2025 14:29:07] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 14:29:12,584 - INFO - 127.0.0.1 - - [07/May/2025 14:29:12] "GET /analytics/html HTTP/1.1" 200 -
+2025-05-07 14:29:23,234 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\config.py', reloading
+2025-05-07 14:29:23,271 - INFO -  * Restarting with stat
+2025-05-07 14:29:23,961 - WARNING -  * Debugger is active!
+2025-05-07 14:29:23,964 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 14:29:35,448 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\config.py', reloading
+2025-05-07 14:29:35,483 - INFO -  * Restarting with stat
+2025-05-07 14:29:36,172 - WARNING -  * Debugger is active!
+2025-05-07 14:29:36,174 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 14:30:00,123 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
-2025-05-05 23:28:37,975 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-05 23:28:37,976 - INFO -  * Restarting with stat
-2025-05-05 23:28:38,806 - WARNING -  * Debugger is active!
-2025-05-05 23:28:38,808 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:28:43,663 - INFO - 127.0.0.1 - - [05/May/2025 23:28:43] "GET /analytics/html HTTP/1.1" 200 -
-2025-05-05 23:28:52,633 - INFO - 127.0.0.1 - - [05/May/2025 23:28:52] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:29:01,515 - INFO - 127.0.0.1 - - [05/May/2025 23:29:01] "GET /analytics/html HTTP/1.1" 200 -
-2025-05-05 23:29:09,003 - INFO - 127.0.0.1 - - [05/May/2025 23:29:09] "GET /settings/html HTTP/1.1" 200 -
-2025-05-05 23:29:16,975 - INFO - 127.0.0.1 - - [05/May/2025 23:29:16] "[32mPOST /settings/html HTTP/1.1[0m" 302 -
-2025-05-05 23:29:16,986 - INFO - 127.0.0.1 - - [05/May/2025 23:29:16] "GET /settings/html HTTP/1.1" 200 -
-2025-05-05 23:29:24,348 - INFO - 127.0.0.1 - - [05/May/2025 23:29:24] "[32mPOST /settings/html HTTP/1.1[0m" 302 -
-2025-05-05 23:29:24,358 - INFO - 127.0.0.1 - - [05/May/2025 23:29:24] "GET /settings/html HTTP/1.1" 200 -
-2025-05-05 23:29:29,478 - INFO - 127.0.0.1 - - [05/May/2025 23:29:29] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:29:36,246 - INFO - 127.0.0.1 - - [05/May/2025 23:29:36] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:29:43,195 - INFO - 127.0.0.1 - - [05/May/2025 23:29:43] "GET /attack-logs/html HTTP/1.1" 200 -
-2025-05-05 23:29:49,156 - INFO - 127.0.0.1 - - [05/May/2025 23:29:49] "GET /rules/html HTTP/1.1" 200 -
-2025-05-05 23:29:59,790 - INFO - 127.0.0.1 - - [05/May/2025 23:29:59] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-05 23:29:59,799 - INFO - 127.0.0.1 - - [05/May/2025 23:29:59] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:29:59,862 - INFO - 127.0.0.1 - - [05/May/2025 23:29:59] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:30:08,921 - INFO - 127.0.0.1 - - [05/May/2025 23:30:08] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:30:08,944 - INFO - 127.0.0.1 - - [05/May/2025 23:30:08] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:30:15,617 - INFO - 127.0.0.1 - - [05/May/2025 23:30:15] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-05 23:30:15,629 - INFO - 127.0.0.1 - - [05/May/2025 23:30:15] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:30:22,801 - INFO - 127.0.0.1 - - [05/May/2025 23:30:22] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-05 23:30:22,811 - INFO - 127.0.0.1 - - [05/May/2025 23:30:22] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:30:22,840 - INFO - 127.0.0.1 - - [05/May/2025 23:30:22] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:30:27,655 - INFO - 127.0.0.1 - - [05/May/2025 23:30:27] "[32mGET /dashboard HTTP/1.1[0m" 302 -
-2025-05-05 23:30:27,666 - INFO - 127.0.0.1 - - [05/May/2025 23:30:27] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:30:27,694 - INFO - 127.0.0.1 - - [05/May/2025 23:30:27] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:31:14,263 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\config.py', reloading
-2025-05-05 23:31:14,317 - INFO -  * Restarting with stat
-2025-05-05 23:31:15,106 - WARNING -  * Debugger is active!
-2025-05-05 23:31:15,109 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:31:23,645 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2025-05-05 23:31:23,646 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-05 23:31:23,647 - INFO -  * Restarting with stat
-2025-05-05 23:31:24,406 - WARNING -  * Debugger is active!
-2025-05-05 23:31:24,409 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:32:22,865 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\config.py', reloading
-2025-05-05 23:32:22,917 - INFO -  * Restarting with stat
-2025-05-05 23:32:23,799 - WARNING -  * Debugger is active!
-2025-05-05 23:32:23,801 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:32:48,786 - WARNING - LFI Detected: General include attempt | Input: include(/etc/passwd)
-2025-05-05 23:32:48,802 - INFO - 127.0.0.1 - - [05/May/2025 23:32:48] "[31m[1mGET /waf/?file=include(/etc/passwd) HTTP/1.1[0m" 403 -
-2025-05-05 23:32:51,379 - INFO - 127.0.0.1 - - [05/May/2025 23:32:51] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:32:57,935 - INFO - 127.0.0.1 - - [05/May/2025 23:32:57] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:32:58,963 - INFO - 127.0.0.1 - - [05/May/2025 23:32:58] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-05 23:32:58,974 - INFO - 127.0.0.1 - - [05/May/2025 23:32:58] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:33:12,978 - INFO - 127.0.0.1 - - [05/May/2025 23:33:12] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:33:18,338 - INFO - 127.0.0.1 - - [05/May/2025 23:33:18] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
-2025-05-05 23:33:18,346 - INFO - 127.0.0.1 - - [05/May/2025 23:33:18] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:33:23,650 - INFO - 127.0.0.1 - - [05/May/2025 23:33:23] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:33:36,272 - INFO - 127.0.0.1 - - [05/May/2025 23:33:36] "GET /analytics/html HTTP/1.1" 200 -
-2025-05-05 23:33:47,113 - INFO - 127.0.0.1 - - [05/May/2025 23:33:47] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-05 23:33:47,122 - INFO - 127.0.0.1 - - [05/May/2025 23:33:47] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:33:47,153 - INFO - 127.0.0.1 - - [05/May/2025 23:33:47] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:34:46,709 - INFO - 127.0.0.1 - - [05/May/2025 23:34:46] "GET /waf/?hh HTTP/1.1" 200 -
-2025-05-05 23:34:50,023 - INFO - 127.0.0.1 - - [05/May/2025 23:34:50] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:34:57,901 - INFO - 127.0.0.1 - - [05/May/2025 23:34:57] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:35:03,006 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2025-05-05 23:35:03,006 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-05 23:35:03,008 - INFO -  * Restarting with stat
-2025-05-05 23:35:03,721 - WARNING -  * Debugger is active!
-2025-05-05 23:35:03,723 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:35:05,056 - INFO - 127.0.0.1 - - [05/May/2025 23:35:05] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:35:05,124 - INFO - 127.0.0.1 - - [05/May/2025 23:35:05] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:35:08,617 - INFO - 127.0.0.1 - - [05/May/2025 23:35:08] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-05 23:35:08,628 - INFO - 127.0.0.1 - - [05/May/2025 23:35:08] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:35:12,297 - INFO - 127.0.0.1 - - [05/May/2025 23:35:12] "GET /analytics/html HTTP/1.1" 200 -
-2025-05-05 23:35:15,435 - INFO - 127.0.0.1 - - [05/May/2025 23:35:15] "GET /settings/html HTTP/1.1" 200 -
-2025-05-05 23:44:17,455 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2025-05-05 23:44:17,456 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-05 23:44:17,456 - INFO -  * Restarting with stat
-2025-05-05 23:44:18,174 - WARNING -  * Debugger is active!
-2025-05-05 23:44:18,177 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:44:26,960 - INFO - 127.0.0.1 - - [05/May/2025 23:44:26] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:44:29,031 - INFO - 127.0.0.1 - - [05/May/2025 23:44:29] "GET /settings/html HTTP/1.1" 200 -
-2025-05-05 23:44:31,053 - INFO - 127.0.0.1 - - [05/May/2025 23:44:31] "GET /analytics/html HTTP/1.1" 200 -
-2025-05-05 23:44:32,533 - INFO - 127.0.0.1 - - [05/May/2025 23:44:32] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:44:33,909 - INFO - 127.0.0.1 - - [05/May/2025 23:44:33] "GET /attack-logs/html HTTP/1.1" 200 -
-2025-05-05 23:46:22,954 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2025-05-05 23:46:22,954 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-05 23:46:22,955 - INFO -  * Restarting with stat
-2025-05-05 23:46:23,706 - WARNING -  * Debugger is active!
-2025-05-05 23:46:23,709 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:48:12,523 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
-2025-05-05 23:48:12,566 - INFO -  * Restarting with stat
-2025-05-05 23:48:13,400 - WARNING -  * Debugger is active!
-2025-05-05 23:48:13,402 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:51:00,382 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
-2025-05-05 23:51:00,419 - INFO -  * Restarting with stat
-2025-05-05 23:51:01,171 - WARNING -  * Debugger is active!
-2025-05-05 23:51:01,174 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:54:04,527 - INFO -  * Detected change in 'D:\\CoDe\\waf\\test_waf.py', reloading
-2025-05-05 23:54:04,570 - INFO -  * Restarting with stat
-2025-05-05 23:54:05,419 - WARNING -  * Debugger is active!
-2025-05-05 23:54:05,423 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:54:30,054 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\waf_routes.py', reloading
-2025-05-05 23:54:30,097 - INFO -  * Restarting with stat
-2025-05-05 23:54:30,921 - WARNING -  * Debugger is active!
-2025-05-05 23:54:30,924 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:55:43,739 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2025-05-05 23:55:43,739 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-05 23:55:43,742 - INFO -  * Restarting with stat
-2025-05-05 23:55:44,488 - WARNING -  * Debugger is active!
-2025-05-05 23:55:44,492 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:56:07,821 - INFO - 127.0.0.1 - - [05/May/2025 23:56:07] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:56:10,939 - INFO - 127.0.0.1 - - [05/May/2025 23:56:10] "GET /analytics/html HTTP/1.1" 200 -
-2025-05-05 23:56:13,389 - INFO - 127.0.0.1 - - [05/May/2025 23:56:13] "GET /settings/html HTTP/1.1" 200 -
-2025-05-05 23:56:15,016 - INFO - 127.0.0.1 - - [05/May/2025 23:56:15] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:56:16,414 - INFO - 127.0.0.1 - - [05/May/2025 23:56:16] "GET /attack-logs/html HTTP/1.1" 200 -
-2025-05-05 23:56:17,828 - INFO - 127.0.0.1 - - [05/May/2025 23:56:17] "GET /rules/html HTTP/1.1" 200 -
-2025-05-05 23:56:20,316 - INFO - 127.0.0.1 - - [05/May/2025 23:56:20] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-05 23:56:20,327 - INFO - 127.0.0.1 - - [05/May/2025 23:56:20] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:56:20,384 - INFO - 127.0.0.1 - - [05/May/2025 23:56:20] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:56:22,208 - INFO - 127.0.0.1 - - [05/May/2025 23:56:22] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:56:22,228 - INFO - 127.0.0.1 - - [05/May/2025 23:56:22] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:56:23,569 - INFO - 127.0.0.1 - - [05/May/2025 23:56:23] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-05 23:56:23,584 - INFO - 127.0.0.1 - - [05/May/2025 23:56:23] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:56:36,933 - WARNING - XSS Detected: Script tag | Input: <script>alert('xss')</script>
-2025-05-05 23:56:36,945 - INFO - 127.0.0.1 - - [05/May/2025 23:56:36] "[31m[1mGET /waf/?q=<script>alert('xss')</script> HTTP/1.1[0m" 403 -
-2025-05-05 23:56:39,260 - INFO - 127.0.0.1 - - [05/May/2025 23:56:39] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:56:42,247 - INFO - 127.0.0.1 - - [05/May/2025 23:56:42] "GET /attack-logs/html HTTP/1.1" 200 -
-2025-05-05 23:56:51,589 - INFO - 127.0.0.1 - - [05/May/2025 23:56:51] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:56:54,855 - INFO - 127.0.0.1 - - [05/May/2025 23:56:54] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
-2025-05-05 23:56:54,864 - INFO - 127.0.0.1 - - [05/May/2025 23:56:54] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:57:05,951 - WARNING - Path Traversal: Directory traversal | Input: ../var/log
-2025-05-05 23:57:05,964 - INFO - 127.0.0.1 - - [05/May/2025 23:57:05] "[31m[1mGET /waf/?path=../var/log HTTP/1.1[0m" 403 -
-2025-05-05 23:57:08,234 - INFO - 127.0.0.1 - - [05/May/2025 23:57:08] "GET /attack-logs/html HTTP/1.1" 200 -
-2025-05-05 23:57:11,047 - INFO - 127.0.0.1 - - [05/May/2025 23:57:11] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:57:12,543 - INFO - 127.0.0.1 - - [05/May/2025 23:57:12] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
-2025-05-05 23:57:12,555 - INFO - 127.0.0.1 - - [05/May/2025 23:57:12] "GET /blocked-ips/html HTTP/1.1" 200 -
-2025-05-05 23:57:14,171 - INFO - 127.0.0.1 - - [05/May/2025 23:57:14] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:57:22,642 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:5000
-2025-05-05 23:57:22,643 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-05 23:57:22,646 - INFO -  * Restarting with stat
-2025-05-05 23:57:23,407 - WARNING -  * Debugger is active!
-2025-05-05 23:57:23,410 - INFO -  * Debugger PIN: 119-727-939
-2025-05-05 23:57:24,640 - INFO - 127.0.0.1 - - [05/May/2025 23:57:24] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:57:28,919 - INFO - 127.0.0.1 - - [05/May/2025 23:57:28] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-05 23:57:28,931 - INFO - 127.0.0.1 - - [05/May/2025 23:57:28] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:57:28,996 - INFO - 127.0.0.1 - - [05/May/2025 23:57:28] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:57:30,496 - INFO - 127.0.0.1 - - [05/May/2025 23:57:30] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-05 23:57:30,507 - INFO - 127.0.0.1 - - [05/May/2025 23:57:30] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:57:35,488 - INFO - 127.0.0.1 - - [05/May/2025 23:57:35] "GET /analytics/html HTTP/1.1" 200 -
-2025-05-05 23:57:40,100 - INFO - 127.0.0.1 - - [05/May/2025 23:57:40] "GET /attack-logs/html HTTP/1.1" 200 -
-2025-05-05 23:57:43,649 - INFO - 127.0.0.1 - - [05/May/2025 23:57:43] "GET /settings/html HTTP/1.1" 200 -
-2025-05-05 23:57:48,618 - INFO - 127.0.0.1 - - [05/May/2025 23:57:48] "GET /dashboard HTTP/1.1" 200 -
-2025-05-05 23:57:53,908 - INFO - 127.0.0.1 - - [05/May/2025 23:57:53] "[32mGET /logout HTTP/1.1[0m" 302 -
-2025-05-05 23:57:53,918 - INFO - 127.0.0.1 - - [05/May/2025 23:57:53] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:57:53,949 - INFO - 127.0.0.1 - - [05/May/2025 23:57:53] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:57:58,027 - INFO - 127.0.0.1 - - [05/May/2025 23:57:58] "GET /login HTTP/1.1" 200 -
-2025-05-05 23:57:58,047 - INFO - 127.0.0.1 - - [05/May/2025 23:57:58] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
-2025-05-05 23:58:45,431 - INFO - 127.0.0.1 - - [05/May/2025 23:58:45] "[32mPOST /login HTTP/1.1[0m" 302 -
-2025-05-05 23:58:45,441 - INFO - 127.0.0.1 - - [05/May/2025 23:58:45] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 14:30:00,123 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 14:30:00,124 - INFO -  * Restarting with stat
+2025-05-07 14:30:00,795 - WARNING -  * Debugger is active!
+2025-05-07 14:30:00,798 - INFO -  * Debugger PIN: 119-727-939
