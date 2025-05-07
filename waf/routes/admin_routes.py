@@ -1,9 +1,9 @@
-from flask import request, render_template_string, redirect, url_for, session
+from flask import request, render_template_string, redirect, url_for, session, flash
 from waf.db import get_blocked_ips, unblock_ip, log_attack, add_rule, get_rules, delete_rule, update_setting, get_all_settings, get_setting
 import sqlite3
 from datetime import datetime, timedelta
 import time
-from waf.config import DB_PATH
+from waf.config import DB_PATH, clean_old_logs, get_logs_size
 
 
 def login_required(f):
@@ -907,3 +907,107 @@ def init_admin_routes(app):
         conn.commit()
         conn.close()
         return redirect(url_for('show_blocked_ips_html'))
+    
+    @app.route('/logs-management/html', methods=['GET', 'POST'])
+    @login_required
+    def manage_logs_html():
+        """
+        Display a page for managing log files (size monitoring and cleanup).
+        """
+        # Handle manual cleanup
+        if request.method == 'POST' and 'cleanup' in request.form:
+            max_age_days = int(request.form.get('max_age_days', 30))
+            deleted_files, freed_space = clean_old_logs(max_age_days)
+            flash(f"Cleaned {deleted_files} log files, freed {freed_space:.2f} MB", 'success')
+
+        # Get log size info
+        total_size_mb, log_files = get_logs_size()
+        warning_threshold = 100  # MB
+        is_warning = total_size_mb > warning_threshold
+
+        html_template = """
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Log Management</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+            <style>
+                body { font-family: 'Vazir', Arial, sans-serif; background-color: #f4f6f9; padding: 20px; }
+                .table { background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+                .btn-danger { background-color: #cc0000; border: none; }
+                .btn-primary { background-color: #007bff; border: none; }
+                .btn-primary:hover { background-color: #0056b3; }
+                .form-label { font-weight: bold; }
+                h1 { color: #333; }
+                .navbar { margin-bottom: 20px; }
+                .alert-warning { background-color: #fff3cd; color: #856404; }
+            </style>
+        </head>
+        <body>
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">WAF Dashboard</a>
+                    <div>
+                        <span class="navbar-text me-3">Welcome, {{ session.username }}</span>
+                        <a href="/logout" class="btn btn-outline-danger">Logout</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="container">
+                <h1 class="my-4">📂 Log Management</h1>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <div class="card mb-4">
+                    <div class="card-header">Log Files Size</div>
+                    <div class="card-body">
+                        <p>Total Size: <strong>{{ total_size_mb | round(2) }} MB</strong></p>
+                        {% if is_warning %}
+                            <p class="alert alert-warning">⚠️ Log files are using more than {{ warning_threshold }} MB!</p>
+                        {% endif %}
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>File Name</th>
+                                    <th>Size (MB)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for file_name, file_size in log_files %}
+                                <tr>
+                                    <td>{{ file_name }}</td>
+                                    <td>{{ file_size | round(2) }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">Clean Old Logs</div>
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label for="max_age_days" class="form-label">Maximum Age (days)</label>
+                                <input type="number" name="max_age_days" class="form-control" value="30" min="1">
+                            </div>
+                            <button type="submit" name="cleanup" class="btn btn-danger">🧹 Clean Old Logs</button>
+                        </form>
+                    </div>
+                </div>
+                <a href="/dashboard" class="btn btn-secondary">🔙 Back to Dashboard</a>
+            </div>
+        </body>
+        </html>
+        """
+        return render_template_string(html_template, 
+                                     total_size_mb=total_size_mb, 
+                                     log_files=log_files, 
+                                     is_warning=is_warning, 
+                                     warning_threshold=warning_threshold)
