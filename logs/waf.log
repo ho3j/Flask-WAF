@@ -399,3 +399,318 @@
 2025-05-07 17:46:21,776 - INFO - 127.0.0.1 - - [07/May/2025 17:46:21] "GET /about-developer/html HTTP/1.1" 200 -
 2025-05-07 17:46:21,805 - INFO - 127.0.0.1 - - [07/May/2025 17:46:21] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -
 2025-05-07 17:46:22,746 - INFO - 127.0.0.1 - - [07/May/2025 17:46:22] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 17:47:56,504 - INFO - 127.0.0.1 - - [07/May/2025 17:47:56] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:47:56,852 - INFO - 127.0.0.1 - - [07/May/2025 17:47:56] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -
+2025-05-07 17:49:18,052 - INFO - 127.0.0.1 - - [07/May/2025 17:49:18] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:49:18,408 - INFO - 127.0.0.1 - - [07/May/2025 17:49:18] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -
+2025-05-07 17:49:25,648 - INFO - 127.0.0.1 - - [07/May/2025 17:49:25] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:49:25,664 - INFO - 127.0.0.1 - - [07/May/2025 17:49:25] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -
+2025-05-07 17:49:26,847 - INFO - 127.0.0.1 - - [07/May/2025 17:49:26] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:49:26,869 - INFO - 127.0.0.1 - - [07/May/2025 17:49:26] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -
+2025-05-07 17:49:27,740 - INFO - 127.0.0.1 - - [07/May/2025 17:49:27] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:49:27,762 - INFO - 127.0.0.1 - - [07/May/2025 17:49:27] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -
+2025-05-07 17:53:47,502 - INFO - 127.0.0.1 - - [07/May/2025 17:53:47] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:53:47,878 - INFO - Serving file from res: developer.jpg
+2025-05-07 17:53:47,879 - INFO - 127.0.0.1 - - [07/May/2025 17:53:47] "[33mGET /res/developer.jpg HTTP/1.1[0m" 404 -
+2025-05-07 17:54:42,111 - INFO - 127.0.0.1 - - [07/May/2025 17:54:42] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:54:42,454 - INFO - Serving file from res: res/developer.jpg
+2025-05-07 17:54:42,455 - INFO - 127.0.0.1 - - [07/May/2025 17:54:42] "[33mGET /res/res/developer.jpg HTTP/1.1[0m" 404 -
+2025-05-07 17:54:43,800 - INFO - 127.0.0.1 - - [07/May/2025 17:54:43] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:54:43,828 - INFO - Serving file from res: res/developer.jpg
+2025-05-07 17:54:43,829 - INFO - 127.0.0.1 - - [07/May/2025 17:54:43] "[33mGET /res/res/developer.jpg HTTP/1.1[0m" 404 -
+2025-05-07 17:54:52,673 - INFO - 127.0.0.1 - - [07/May/2025 17:54:52] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 17:54:52,694 - INFO - 127.0.0.1 - - [07/May/2025 17:54:52] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -
+2025-05-07 17:56:26,335 - INFO - 127.0.0.1 - - [07/May/2025 17:56:26] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 17:56:27,439 - INFO - 127.0.0.1 - - [07/May/2025 17:56:27] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:00:30,261 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:00:30,339 - INFO -  * Restarting with stat
+2025-05-07 18:00:32,383 - WARNING -  * Debugger is active!
+2025-05-07 18:00:32,386 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:00:34,462 - INFO - 127.0.0.1 - - [07/May/2025 18:00:34] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:00:34,470 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:00:34,471 - INFO - Logo file path: res\logo.png
+2025-05-07 18:00:34,472 - INFO - Logo file exists: True
+2025-05-07 18:00:34,478 - INFO - 127.0.0.1 - - [07/May/2025 18:00:34] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:00:34,829 - INFO - Serving file from res: logo.png
+2025-05-07 18:00:34,873 - INFO - 127.0.0.1 - - [07/May/2025 18:00:34] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:00:42,372 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:00:42,373 - INFO - Logo file path: res\logo.png
+2025-05-07 18:00:42,373 - INFO - Logo file exists: True
+2025-05-07 18:00:42,376 - INFO - 127.0.0.1 - - [07/May/2025 18:00:42] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:00:42,417 - INFO - Serving file from res: logo.png
+2025-05-07 18:00:42,418 - INFO - 127.0.0.1 - - [07/May/2025 18:00:42] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:00:45,908 - INFO - 127.0.0.1 - - [07/May/2025 18:00:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:00:45,926 - INFO - 127.0.0.1 - - [07/May/2025 18:00:45] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:00:50,207 - INFO - 127.0.0.1 - - [07/May/2025 18:00:50] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 18:00:50,237 - INFO - 127.0.0.1 - - [07/May/2025 18:00:50] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -
+2025-05-07 18:00:50,832 - INFO - 127.0.0.1 - - [07/May/2025 18:00:50] "GET /logs-management/html HTTP/1.1" 200 -
+2025-05-07 18:00:51,221 - INFO - 127.0.0.1 - - [07/May/2025 18:00:51] "GET /rules/html HTTP/1.1" 200 -
+2025-05-07 18:00:51,672 - INFO - 127.0.0.1 - - [07/May/2025 18:00:51] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 18:00:52,278 - INFO - 127.0.0.1 - - [07/May/2025 18:00:52] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:00:55,029 - INFO - 127.0.0.1 - - [07/May/2025 18:00:55] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:00:55,040 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:00:55,040 - INFO - Logo file path: res\logo.png
+2025-05-07 18:00:55,041 - INFO - Logo file exists: True
+2025-05-07 18:00:55,045 - INFO - 127.0.0.1 - - [07/May/2025 18:00:55] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:00:55,075 - INFO - Serving file from res: logo.png
+2025-05-07 18:00:55,076 - INFO - 127.0.0.1 - - [07/May/2025 18:00:55] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:00:58,152 - INFO - 127.0.0.1 - - [07/May/2025 18:00:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:00:58,163 - INFO - 127.0.0.1 - - [07/May/2025 18:00:58] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:01:04,940 - INFO - 127.0.0.1 - - [07/May/2025 18:01:04] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:01:04,947 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:01:04,948 - INFO - Logo file path: res\logo.png
+2025-05-07 18:01:04,949 - INFO - Logo file exists: True
+2025-05-07 18:01:04,952 - INFO - 127.0.0.1 - - [07/May/2025 18:01:04] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:01:04,984 - INFO - Serving file from res: logo.png
+2025-05-07 18:01:04,986 - INFO - 127.0.0.1 - - [07/May/2025 18:01:04] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:01:26,276 - INFO - 127.0.0.1 - - [07/May/2025 18:01:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:01:26,285 - INFO - 127.0.0.1 - - [07/May/2025 18:01:26] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:01:33,646 - INFO - 127.0.0.1 - - [07/May/2025 18:01:33] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:01:33,655 - INFO - 127.0.0.1 - - [07/May/2025 18:01:33] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:01:38,587 - INFO - 127.0.0.1 - - [07/May/2025 18:01:38] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:01:38,598 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:01:38,598 - INFO - Logo file path: res\logo.png
+2025-05-07 18:01:38,599 - INFO - Logo file exists: True
+2025-05-07 18:01:38,601 - INFO - 127.0.0.1 - - [07/May/2025 18:01:38] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:01:38,635 - INFO - Serving file from res: logo.png
+2025-05-07 18:01:38,636 - INFO - 127.0.0.1 - - [07/May/2025 18:01:38] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:04:22,237 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:04:22,308 - INFO -  * Restarting with stat
+2025-05-07 18:04:23,250 - WARNING -  * Debugger is active!
+2025-05-07 18:04:23,254 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:04:24,541 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:04:24,542 - INFO - Logo file path: res\logo.png
+2025-05-07 18:04:24,543 - INFO - Logo file exists: True
+2025-05-07 18:04:24,547 - INFO - 127.0.0.1 - - [07/May/2025 18:04:24] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:04:24,872 - INFO - Serving file from res: logo.png
+2025-05-07 18:04:24,911 - INFO - 127.0.0.1 - - [07/May/2025 18:04:24] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:04:27,298 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:04:27,299 - INFO - Logo file path: res\logo.png
+2025-05-07 18:04:27,300 - INFO - Logo file exists: True
+2025-05-07 18:04:27,304 - INFO - 127.0.0.1 - - [07/May/2025 18:04:27] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:04:27,345 - INFO - Serving file from res: logo.png
+2025-05-07 18:04:27,346 - INFO - 127.0.0.1 - - [07/May/2025 18:04:27] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:04:30,865 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:04:30,866 - INFO - Logo file path: res\logo.png
+2025-05-07 18:04:30,867 - INFO - Logo file exists: True
+2025-05-07 18:04:30,869 - INFO - 127.0.0.1 - - [07/May/2025 18:04:30] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:04:30,904 - INFO - Serving file from res: logo.png
+2025-05-07 18:04:30,906 - INFO - 127.0.0.1 - - [07/May/2025 18:04:30] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:04:41,303 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:04:41,304 - INFO - Logo file path: res\logo.png
+2025-05-07 18:04:41,304 - INFO - Logo file exists: True
+2025-05-07 18:04:41,307 - INFO - 127.0.0.1 - - [07/May/2025 18:04:41] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:04:41,334 - INFO - Serving file from res: logo.png
+2025-05-07 18:04:41,335 - INFO - 127.0.0.1 - - [07/May/2025 18:04:41] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:04:43,550 - INFO - 127.0.0.1 - - [07/May/2025 18:04:43] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:04:43,567 - INFO - 127.0.0.1 - - [07/May/2025 18:04:43] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:04:44,737 - INFO - 127.0.0.1 - - [07/May/2025 18:04:44] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:04:44,747 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:04:44,748 - INFO - Logo file path: res\logo.png
+2025-05-07 18:04:44,749 - INFO - Logo file exists: True
+2025-05-07 18:04:44,753 - INFO - 127.0.0.1 - - [07/May/2025 18:04:44] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:04:44,784 - INFO - Serving file from res: logo.png
+2025-05-07 18:04:44,786 - INFO - 127.0.0.1 - - [07/May/2025 18:04:44] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:07:34,194 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:07:34,262 - INFO -  * Restarting with stat
+2025-05-07 18:07:35,231 - WARNING -  * Debugger is active!
+2025-05-07 18:07:35,234 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:07:36,385 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:07:36,386 - INFO - Logo file path: res\logo.png
+2025-05-07 18:07:36,387 - INFO - Logo file exists: True
+2025-05-07 18:07:36,392 - INFO - 127.0.0.1 - - [07/May/2025 18:07:36] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:07:36,728 - INFO - Serving file from res: logo.png
+2025-05-07 18:07:36,766 - INFO - 127.0.0.1 - - [07/May/2025 18:07:36] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:07:55,254 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:07:55,255 - INFO - Logo file path: res\logo.png
+2025-05-07 18:07:55,256 - INFO - Logo file exists: True
+2025-05-07 18:07:55,259 - INFO - 127.0.0.1 - - [07/May/2025 18:07:55] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:07:55,632 - INFO - Serving file from res: logo.png
+2025-05-07 18:07:55,633 - INFO - 127.0.0.1 - - [07/May/2025 18:07:55] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:11:23,038 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:11:23,108 - INFO -  * Restarting with stat
+2025-05-07 18:11:24,068 - WARNING -  * Debugger is active!
+2025-05-07 18:11:24,071 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:11:28,962 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:11:28,963 - INFO - Logo file path: res\logo.png
+2025-05-07 18:11:28,963 - INFO - Logo file exists: True
+2025-05-07 18:11:28,968 - INFO - 127.0.0.1 - - [07/May/2025 18:11:28] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:11:29,304 - INFO - Serving file from res: logo.png
+2025-05-07 18:11:29,340 - INFO - 127.0.0.1 - - [07/May/2025 18:11:29] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:14:26,921 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:14:26,977 - INFO -  * Restarting with stat
+2025-05-07 18:14:27,909 - WARNING -  * Debugger is active!
+2025-05-07 18:14:27,913 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:14:29,493 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:14:29,494 - INFO - Logo file path: res\logo.png
+2025-05-07 18:14:29,494 - INFO - Logo file exists: True
+2025-05-07 18:14:29,499 - INFO - 127.0.0.1 - - [07/May/2025 18:14:29] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:14:29,846 - INFO - Serving file from res: logo.png
+2025-05-07 18:14:29,880 - INFO - 127.0.0.1 - - [07/May/2025 18:14:29] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:17:47,750 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:17:47,817 - INFO -  * Restarting with stat
+2025-05-07 18:17:48,815 - WARNING -  * Debugger is active!
+2025-05-07 18:17:48,819 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:17:50,549 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:17:50,549 - INFO - Logo file path: res\logo.png
+2025-05-07 18:17:50,550 - INFO - Logo file exists: True
+2025-05-07 18:17:50,555 - INFO - 127.0.0.1 - - [07/May/2025 18:17:50] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:17:50,896 - INFO - Serving file from res: logo.png
+2025-05-07 18:17:50,938 - INFO - 127.0.0.1 - - [07/May/2025 18:17:50] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:22:39,407 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:22:39,469 - INFO -  * Restarting with stat
+2025-05-07 18:22:40,408 - WARNING -  * Debugger is active!
+2025-05-07 18:22:40,410 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:22:41,853 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:22:41,854 - INFO - Logo file path: res\logo.png
+2025-05-07 18:22:41,855 - INFO - Logo file exists: True
+2025-05-07 18:22:41,859 - INFO - 127.0.0.1 - - [07/May/2025 18:22:41] "POST /login HTTP/1.1" 200 -
+2025-05-07 18:22:42,225 - INFO - Serving file from res: logo.png
+2025-05-07 18:22:42,264 - INFO - 127.0.0.1 - - [07/May/2025 18:22:42] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:22:53,546 - INFO - 127.0.0.1 - - [07/May/2025 18:22:53] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:22:53,563 - INFO - 127.0.0.1 - - [07/May/2025 18:22:53] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:22:54,541 - INFO - 127.0.0.1 - - [07/May/2025 18:22:54] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:22:54,549 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:22:54,551 - INFO - Logo file path: res\logo.png
+2025-05-07 18:22:54,551 - INFO - Logo file exists: True
+2025-05-07 18:22:54,557 - INFO - 127.0.0.1 - - [07/May/2025 18:22:54] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:22:54,596 - INFO - Serving file from res: logo.png
+2025-05-07 18:22:54,597 - INFO - 127.0.0.1 - - [07/May/2025 18:22:54] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:25:31,485 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:25:31,547 - INFO -  * Restarting with stat
+2025-05-07 18:25:32,380 - WARNING -  * Debugger is active!
+2025-05-07 18:25:32,383 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:25:34,604 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:25:34,607 - INFO - Logo file path: res\logo.png
+2025-05-07 18:25:34,608 - INFO - Logo file exists: True
+2025-05-07 18:25:34,612 - INFO - 127.0.0.1 - - [07/May/2025 18:25:34] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:25:34,953 - INFO - Serving file from res: logo.png
+2025-05-07 18:25:34,982 - INFO - 127.0.0.1 - - [07/May/2025 18:25:34] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:25:39,999 - INFO - 127.0.0.1 - - [07/May/2025 18:25:39] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:25:40,016 - INFO - 127.0.0.1 - - [07/May/2025 18:25:40] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:25:41,739 - INFO - 127.0.0.1 - - [07/May/2025 18:25:41] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:25:41,748 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:25:41,749 - INFO - Logo file path: res\logo.png
+2025-05-07 18:25:41,749 - INFO - Logo file exists: True
+2025-05-07 18:25:41,753 - INFO - 127.0.0.1 - - [07/May/2025 18:25:41] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:25:41,785 - INFO - Serving file from res: logo.png
+2025-05-07 18:25:41,787 - INFO - 127.0.0.1 - - [07/May/2025 18:25:41] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:26:34,524 - INFO - 127.0.0.1 - - [07/May/2025 18:26:34] "[33mGET /?name=john HTTP/1.1[0m" 404 -
+2025-05-07 18:36:30,284 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:36:30,372 - INFO -  * Restarting with stat
+2025-05-07 18:36:31,348 - WARNING -  * Debugger is active!
+2025-05-07 18:36:31,352 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:36:32,921 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:36:32,922 - INFO - Logo file path: res\logo.png
+2025-05-07 18:36:32,923 - INFO - Logo file exists: True
+2025-05-07 18:36:32,928 - INFO - 127.0.0.1 - - [07/May/2025 18:36:32] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:36:33,276 - INFO - Serving file from res: logo.png
+2025-05-07 18:36:33,324 - INFO - 127.0.0.1 - - [07/May/2025 18:36:33] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:39:52,787 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:39:52,852 - INFO -  * Restarting with stat
+2025-05-07 18:39:53,741 - WARNING -  * Debugger is active!
+2025-05-07 18:39:53,745 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:39:54,923 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:39:54,924 - INFO - Logo file path: res\logo.png
+2025-05-07 18:39:54,925 - INFO - Logo file exists: True
+2025-05-07 18:39:54,930 - INFO - 127.0.0.1 - - [07/May/2025 18:39:54] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:39:55,288 - INFO - Serving file from res: logo.png
+2025-05-07 18:39:55,321 - INFO - 127.0.0.1 - - [07/May/2025 18:39:55] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:47:56,720 - INFO - 127.0.0.1 - - [07/May/2025 18:47:56] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:47:56,737 - INFO - 127.0.0.1 - - [07/May/2025 18:47:56] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:47:59,568 - INFO - 127.0.0.1 - - [07/May/2025 18:47:59] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:47:59,578 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:47:59,578 - INFO - Logo file path: res\logo.png
+2025-05-07 18:47:59,579 - INFO - Logo file exists: True
+2025-05-07 18:47:59,583 - INFO - 127.0.0.1 - - [07/May/2025 18:47:59] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:47:59,616 - INFO - Serving file from res: logo.png
+2025-05-07 18:47:59,617 - INFO - 127.0.0.1 - - [07/May/2025 18:47:59] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:48:02,368 - INFO - 127.0.0.1 - - [07/May/2025 18:48:02] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:48:02,389 - INFO - 127.0.0.1 - - [07/May/2025 18:48:02] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:48:03,426 - INFO - 127.0.0.1 - - [07/May/2025 18:48:03] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:48:03,435 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:48:03,435 - INFO - Logo file path: res\logo.png
+2025-05-07 18:48:03,436 - INFO - Logo file exists: True
+2025-05-07 18:48:03,439 - INFO - 127.0.0.1 - - [07/May/2025 18:48:03] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:48:03,469 - INFO - Serving file from res: logo.png
+2025-05-07 18:48:03,470 - INFO - 127.0.0.1 - - [07/May/2025 18:48:03] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:48:06,759 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:48:06,760 - INFO - Logo file path: res\logo.png
+2025-05-07 18:48:06,760 - INFO - Logo file exists: True
+2025-05-07 18:48:06,765 - INFO - 127.0.0.1 - - [07/May/2025 18:48:06] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:48:06,796 - INFO - Serving file from res: logo.png
+2025-05-07 18:48:06,796 - INFO - 127.0.0.1 - - [07/May/2025 18:48:06] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:51:34,929 - INFO - 127.0.0.1 - - [07/May/2025 18:51:34] "[32mGET /dashboard HTTP/1.1[0m" 302 -
+2025-05-07 18:51:34,936 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:51:34,937 - INFO - Logo file path: res\logo.png
+2025-05-07 18:51:34,938 - INFO - Logo file exists: True
+2025-05-07 18:51:34,940 - INFO - 127.0.0.1 - - [07/May/2025 18:51:34] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:51:35,395 - INFO - Serving file from res: logo.png
+2025-05-07 18:51:35,396 - INFO - 127.0.0.1 - - [07/May/2025 18:51:35] "GET /res/logo.png HTTP/1.1" 200 -
+2025-05-07 18:55:37,085 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 18:55:37,144 - INFO -  * Restarting with stat
+2025-05-07 18:55:37,971 - WARNING -  * Debugger is active!
+2025-05-07 18:55:37,974 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 18:55:39,527 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:55:39,529 - INFO - Logo file path: res\logo.png
+2025-05-07 18:55:39,529 - INFO - Logo file exists: True
+2025-05-07 18:55:39,534 - INFO - 127.0.0.1 - - [07/May/2025 18:55:39] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:55:39,565 - INFO - Serving file from res: logo.png
+2025-05-07 18:55:39,601 - INFO - 127.0.0.1 - - [07/May/2025 18:55:39] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:55:46,287 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:55:46,288 - INFO - Logo file path: res\logo.png
+2025-05-07 18:55:46,288 - INFO - Logo file exists: True
+2025-05-07 18:55:46,293 - INFO - 127.0.0.1 - - [07/May/2025 18:55:46] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:55:46,320 - INFO - Serving file from res: logo.png
+2025-05-07 18:55:46,321 - INFO - 127.0.0.1 - - [07/May/2025 18:55:46] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:55:47,491 - INFO - 127.0.0.1 - - [07/May/2025 18:55:47] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 18:55:47,512 - INFO - 127.0.0.1 - - [07/May/2025 18:55:47] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 18:55:50,465 - INFO - 127.0.0.1 - - [07/May/2025 18:55:50] "[32mGET /logout HTTP/1.1[0m" 302 -
+2025-05-07 18:55:50,475 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:55:50,475 - INFO - Logo file path: res\logo.png
+2025-05-07 18:55:50,476 - INFO - Logo file exists: True
+2025-05-07 18:55:50,479 - INFO - 127.0.0.1 - - [07/May/2025 18:55:50] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:55:50,514 - INFO - Serving file from res: logo.png
+2025-05-07 18:55:50,516 - INFO - 127.0.0.1 - - [07/May/2025 18:55:50] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 18:56:20,894 - INFO - Logo URL: /res/logo.png
+2025-05-07 18:56:20,894 - INFO - Logo file path: res\logo.png
+2025-05-07 18:56:20,895 - INFO - Logo file exists: True
+2025-05-07 18:56:20,899 - INFO - 127.0.0.1 - - [07/May/2025 18:56:20] "GET /login HTTP/1.1" 200 -
+2025-05-07 18:56:20,926 - INFO - Serving file from res: logo.png
+2025-05-07 18:56:20,927 - INFO - 127.0.0.1 - - [07/May/2025 18:56:20] "GET /res/logo.png HTTP/1.1" 200 -
+2025-05-07 19:01:16,353 - INFO -  * Detected change in 'D:\\CoDe\\waf\\waf\\routes\\auth_routes.py', reloading
+2025-05-07 19:01:16,412 - INFO -  * Restarting with stat
+2025-05-07 19:01:17,395 - WARNING -  * Debugger is active!
+2025-05-07 19:01:17,399 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 19:01:18,562 - INFO - Logo URL: /res/logo.png
+2025-05-07 19:01:18,564 - INFO - Logo file path: res\logo.png
+2025-05-07 19:01:18,564 - INFO - Logo file exists: True
+2025-05-07 19:01:18,570 - INFO - 127.0.0.1 - - [07/May/2025 19:01:18] "GET /login HTTP/1.1" 200 -
+2025-05-07 19:01:18,596 - INFO - Serving file from res: logo.png
+2025-05-07 19:01:18,637 - INFO - 127.0.0.1 - - [07/May/2025 19:01:18] "GET /res/logo.png HTTP/1.1" 200 -
+2025-05-07 19:02:49,783 - INFO - Logo URL: /res/logo.png
+2025-05-07 19:02:49,785 - INFO - Logo file path: res\logo.png
+2025-05-07 19:02:49,785 - INFO - Logo file exists: True
+2025-05-07 19:02:49,790 - INFO - 127.0.0.1 - - [07/May/2025 19:02:49] "GET /login HTTP/1.1" 200 -
+2025-05-07 19:02:49,811 - INFO - Serving file from res: logo.png
+2025-05-07 19:02:49,812 - INFO - 127.0.0.1 - - [07/May/2025 19:02:49] "GET /res/logo.png HTTP/1.1" 200 -
+2025-05-07 19:03:06,707 - INFO - 127.0.0.1 - - [07/May/2025 19:03:06] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-05-07 19:03:06,727 - INFO - 127.0.0.1 - - [07/May/2025 19:03:06] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 19:03:11,972 - INFO - 127.0.0.1 - - [07/May/2025 19:03:11] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 19:03:14,615 - INFO - 127.0.0.1 - - [07/May/2025 19:03:14] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-07 19:03:15,742 - INFO - 127.0.0.1 - - [07/May/2025 19:03:15] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 19:03:22,703 - INFO - Checking params: query=OR 1=1
+2025-05-07 19:03:22,704 - INFO - is_text_like check: OR 1=1 -> True
+2025-05-07 19:03:22,705 - INFO - Checking SQLi for decoded input: OR 1=1
+2025-05-07 19:03:22,713 - WARNING - SQL Injection: Logic condition | Input: OR 1=1
+2025-05-07 19:03:22,726 - INFO - 127.0.0.1 - - [07/May/2025 19:03:22] "[31m[1mGET /waf/?query=OR%201=1 HTTP/1.1[0m" 403 -
+2025-05-07 19:03:27,440 - INFO - 127.0.0.1 - - [07/May/2025 19:03:27] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 19:03:32,132 - INFO - 127.0.0.1 - - [07/May/2025 19:03:32] "GET /attack-logs/html HTTP/1.1" 200 -
+2025-05-07 19:03:36,831 - INFO - 127.0.0.1 - - [07/May/2025 19:03:36] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 19:03:41,040 - INFO - 127.0.0.1 - - [07/May/2025 19:03:41] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 19:03:42,087 - INFO - 127.0.0.1 - - [07/May/2025 19:03:42] "[32mPOST /blocked-ips/clear HTTP/1.1[0m" 302 -
+2025-05-07 19:03:42,095 - INFO - 127.0.0.1 - - [07/May/2025 19:03:42] "GET /blocked-ips/html HTTP/1.1" 200 -
+2025-05-07 19:03:42,981 - INFO - 127.0.0.1 - - [07/May/2025 19:03:42] "GET /dashboard HTTP/1.1" 200 -
+2025-05-07 19:03:43,584 - INFO - 127.0.0.1 - - [07/May/2025 19:03:43] "GET /rules/html HTTP/1.1" 200 -
+2025-05-07 19:03:44,782 - INFO - 127.0.0.1 - - [07/May/2025 19:03:44] "GET /about-developer/html HTTP/1.1" 200 -
+2025-05-07 19:03:44,812 - INFO - 127.0.0.1 - - [07/May/2025 19:03:44] "[33mGET /static/images/developer.png HTTP/1.1[0m" 404 -

@@ -44,68 +44,168 @@ def init_auth_routes(app):
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Login - WAF Dashboard</title>
+            <title>Login - Shark WAF Dashboard</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-            <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
             <style>
                 body {
-                    font-family: 'Vazir', Arial, sans-serif;
-                    background: linear-gradient(135deg, #667eea, #764ba2);
+                    font-family: 'Poppins', sans-serif;
+                    background: linear-gradient(135deg, #0284c7, #38bdf8, #f4f6f9);
+                    background-size: 200% 200%;
+                    animation: gradientShift 15s ease infinite;
                     height: 100vh;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     margin: 0;
+                    position: relative;
+                    overflow: hidden;
+                }
+                @keyframes gradientShift {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+                .bubble-container {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    z-index: 0;
+                    pointer-events: none;
+                }
+                .bubble {
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(2, 132, 199, 0.7);
+                    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+                    animation: bubbleFloat 12s linear infinite;
+                    pointer-events: none;
+                }
+                .bubble:nth-child(1) { width: 30px; height: 30px; left: 15%; top: 10%; animation-duration: 10s; opacity: 0.8; }
+                .bubble:nth-child(2) { width: 20px; height: 20px; left: 25%; top: 60%; animation-duration: 8s; opacity: 0.6; background: rgba(255, 255, 255, 0.8); }
+                .bubble:nth-child(3) { width: 25px; height: 25px; left: 40%; top: 80%; animation-duration: 14s; opacity: 0.7; background: rgba(251, 146, 60, 0.7); }
+                .bubble:nth-child(4) { width: 15px; height: 15px; left: 55%; top: 20%; animation-duration: 9s; opacity: 0.5; background: rgba(56, 189, 248, 0.7); }
+                .bubble:nth-child(5) { width: 35px; height: 35px; left: 70%; top: 50%; animation-duration: 11s; opacity: 0.6; }
+                .bubble:nth-child(6) { width: 18px; height: 18px; left: 85%; top: 30%; animation-duration: 7s; opacity: 0.8; background: rgba(255, 255, 255, 0.7); }
+                .bubble:nth-child(7) { width: 22px; height: 22px; left: 30%; top: 70%; animation-duration: 13s; opacity: 0.5; background: rgba(107, 114, 128, 0.7); }
+                .bubble:nth-child(8) { width: 28px; height: 28px; left: 50%; top: 15%; animation-duration: 6s; opacity: 0.7; background: rgba(2, 132, 199, 0.7); }
+                @keyframes bubbleFloat {
+                    0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+                    25% { transform: translateY(-100px) translateX(30px) scale(1.2); opacity: 0.5; }
+                    50% { transform: translateY(-200px) translateX(-20px) scale(0.9); opacity: 0.3; }
+                    75% { transform: translateY(-100px) translateX(20px) scale(1.1); opacity: 0.5; }
+                    100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
                 }
                 .login-container {
-                    background: white;
+                    background: rgba(255, 255, 255, 0.95);
                     padding: 2rem;
-                    border-radius: 15px;
-                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                    border-radius: 12px;
+                    box-shadow: 0 0 20px rgba(2, 132, 199, 0.5);
                     width: 100%;
                     max-width: 400px;
+                    position: relative;
+                    backdrop-filter: blur(5px);
+                    animation: floatIn 0.8s ease-in-out;
+                    border: 2px solid rgba(2, 132, 199, 0.3);
+                    z-index: 1;
+                }
+                @keyframes floatIn {
+                    0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+                    60% { opacity: 0.7; transform: translateY(-10px) scale(1.05); }
+                    100% { opacity: 1; transform: translateY(0) scale(1); }
                 }
                 .login-container img {
                     display: block;
-                    margin: 0 auto 1.5rem;
-                    max-width: 150px;
+                    margin: 0 auto 2rem; /* افزایش فاصله پایین */
+                    max-width: 200px; /* بزرگ‌تر کردن لوگو */
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    transition: transform 0.3s ease, filter 0.3s ease;
+                }
+                .login-container img:hover {
+                    transform: scale(1.1);
+                    filter: drop-shadow(0 0 10px rgba(2, 132, 199, 0.7));
                 }
                 .form-control {
-                    border-radius: 10px;
+                    border-radius: 8px;
                     border: 1px solid #ced4da;
                     padding: 0.75rem;
+                    font-size: 1rem;
+                    transition: border-color 0.3s ease;
+                }
+                .form-control:focus {
+                    border-color: #0284c7;
+                    box-shadow: 0 0 5px rgba(2, 132, 199, 0.5);
                 }
                 .btn-primary {
-                    background: #667eea;
+                    background: #0284c7;
                     border: none;
-                    border-radius: 10px;
+                    border-radius: 8px;
                     padding: 0.75rem;
                     width: 100%;
-                    transition: background 0.3s;
+                    font-weight: 600;
+                    transition: background 0.3s, box-shadow 0.3s;
                 }
                 .btn-primary:hover {
-                    background: #764ba2;
+                    background: #38bdf8;
+                    box-shadow: 0 0 10px rgba(2, 132, 199, 0.7);
                 }
                 .alert {
-                    border-radius: 10px;
+                    border-radius: 8px;
                     margin-bottom: 1rem;
+                    border: 1px solid rgba(2, 132, 199, 0.3);
+                    font-size: 0.9rem;
                 }
                 h2 {
-                    color: #333;
+                    color: #0284c7;
                     text-align: center;
                     margin-bottom: 1.5rem;
+                    font-weight: 600;
+                    font-size: 1.5rem;
+                    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+                }
+                @media (max-width: 576px) {
+                    .login-container {
+                        margin: 1rem;
+                        padding: 1.5rem;
+                    }
+                    .login-container img {
+                        max-width: 150px; /* کوچیک‌تر کردن لوگو در موبایل */
+                    }
+                    .bubble:nth-child(n+5) {
+                        display: none; /* کاهش تعداد حباب‌ها در موبایل */
+                    }
+                    h2 {
+                        font-size: 1.3rem;
+                    }
+                    .form-control, .btn-primary {
+                        font-size: 0.9rem;
+                    }
                 }
             </style>
         </head>
         <body>
+            <div class="bubble-container">
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+                <div class="bubble"></div>
+            </div>
             <div class="login-container">
-                <img src="{{ url_for('serve_res', filename='logo.png') }}" alt="WAF Logo">
-                <h2>🔐 WAF Login</h2>
+                <img src="{{ url_for('serve_res', filename='logo.png') }}" alt="Shark WAF Logo">
+                <h2><i class="fas fa-shark me-2"></i> Shark WAF Login</h2>
                 {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
-                        {% for category, message in messages %}
-                            <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}">{{ message }}</div>
-                        {% endfor %}
+                        {% set category, message = messages[-1] %}
+                        <div class="alert alert-{{ 'success' if category == 'success' else 'danger' }}">{{ message }}</div>
                     {% endif %}
                 {% endwith %}
                 <form method="POST">
