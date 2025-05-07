@@ -34,10 +34,12 @@
         </div>
     </div>
 </div>
-<div class="card">
+<div class="card mb-4"> <!-- اضافه کردن margin-bottom -->
     <div class="card-header">Attack Chart (Last 7 Days)</div>
     <div class="card-body">
-        <canvas id="attackChart"></canvas>
+        <div style="position: relative; height: 300px;"> <!-- محدود کردن ارتفاع نمودار -->
+            <canvas id="attackChart"></canvas>
+        </div>
     </div>
 </div>
 <div class="card">
@@ -79,7 +81,10 @@
                 fill: false
             }]
         },
-        options: { scales: { y: { beginAtZero: true } } }
+        options: { 
+            scales: { y: { beginAtZero: true } },
+            maintainAspectRatio: false
+        }
     });
 </script>
 {% endblock %}

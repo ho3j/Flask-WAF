@@ -162,6 +162,11 @@ def init_admin_routes(app):
                              is_warning=is_warning, 
                              warning_threshold=warning_threshold)
 
+    @app.route('/about-developer/html')
+    @login_required
+    def about_developer_html():
+        return render_template('about_developer.html')
+
     @app.route('/rules/delete/<int:rule_id>')
     @login_required
     def delete_rule_route(rule_id):
@@ -178,35 +183,18 @@ def init_admin_routes(app):
         conn.close()
         return redirect(url_for('show_attack_logs_html'))
 
-    # در انتهای تابع init_admin_routes
     @app.route('/unblock/<ip>')
     @login_required
     def unblock_ip_route(ip):
         unblock_ip(ip)
         return render_template('unblock_ip.html', ip=ip)
 
-    @app.route('/test')
-    def test():
-        return render_template('test.html')
-
-    # اضافه کردن قالب برای unblock_ip با کدگذاری UTF-8
-    # with open('templates/unblock_ip.html', 'w', encoding='utf-8') as f:
-    #     f.write("""
-    #         <html>
-    #         <head>
-    #             <meta charset="UTF-8">
-    #             <title>IP Unblocked</title>
-    #             <link href="https://cdn.fontcdn.ir/Vazir/Vazir.css" rel="stylesheet">
-    #             <style>
-    #                 body { font-family: 'Vazir', Arial, sans-serif; background-color: #f0fff0; padding: 2rem; text-align: center; }
-    #                 h2 { color: #2e7d32; }
-    #                 a { color: #007bff; text-decoration: none; }
-    #                 a:hover { text-decoration: underline; }
-    #             </style>
-    #         </head>
-    #         <body>
-    #             <h2>✅ IP {{ ip }} has been unblocked.</h2>
-    #             <a href='/blocked-ips/html'>🔙 Back to Blocked IPs</a>
-    #         </body>
-    #         </html>
-    #     """)
+    @app.route('/blocked-ips/clear', methods=['POST'])
+    @login_required
+    def clear_blocked_ips():
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        c.execute("DELETE FROM blocked_ips")
+        conn.commit()
+        conn.close()
+        return redirect(url_for('show_blocked_ips_html'))

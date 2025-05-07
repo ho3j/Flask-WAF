@@ -1,0 +1,38 @@
+<!-- templates/about_developer.html -->
+{% extends 'base.html' %}
+{% block title %}About Developer{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center my-4" style="color: #1e3a8a;">👨‍💻 About the Developer</h1>
+    <div class="card">
+        <div class="card-header">Developer Information</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="{{ url_for('static', filename='images/developer.png') }}" alt="Developer Photo" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
+                    <!-- <img src="https://via.placeholder.com/150" alt="Developer Photo" class="rounded-circle mb-3" style="width: 150px; height: 150px;"> -->
+                </div>
+                <div class="col-md-8">
+                    <h3>Hossein Jalili</h3>
+                    <p><strong>Role:</strong> Full-Stack Developer & Security Enthusiast</p>
+                    <p><strong>Email:</strong> <a href="mailto:iq2icu0@gmail.com">your.email@example.com</a></p>
+                    <p><strong>GitHub:</strong> <a href="https://github.com/ho3j" target="_blank">github.com/yourusername</a></p>
+                    <p><strong>About:</strong> I'm passionate about building secure web applications and protecting them from cyber threats. This Flask-WAF project is designed to provide a robust web application firewall with a user-friendly interface.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card mt-4">
+        <div class="card-header">Project Details</div>
+        <div class="card-body">
+            <p><strong>Project:</strong> Flask Web Application Firewall (Flask-WAF)</p>
+            <p><strong>Version:</strong> 1.0.3</p>
+            <p><strong>Description:</strong> A lightweight WAF built with Flask to detect and block common web attacks like SQL Injection, XSS, and more. Features a modern admin panel for monitoring and management.</p>
+            <p><strong>Technologies:</strong> Flask, SQLite, Bootstrap, Chart.js, Python</p>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <a href="/dashboard" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}
