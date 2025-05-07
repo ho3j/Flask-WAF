@@ -3,6 +3,7 @@ from waf.db import get_user
 import bcrypt
 import logging
 import os
+from datetime import datetime
 
 def init_auth_routes(app):
     """
@@ -19,17 +20,26 @@ def init_auth_routes(app):
         Returns:
             Rendered HTML template for login page or redirect to dashboard
         """
+        client_ip = request.remote_addr
+        request_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S,%f')[:-3]
+        
         if request.method == 'POST':
             username = request.form.get('username')
             password = request.form.get('password')
             user = get_user(username)
+            
+            # لاگ درخواست لاگین
+            logging.info(f"Login attempt by user '{username}' from IP {client_ip} - Method: POST - URL: {request.url} - Headers: {dict(request.headers)}")
+            
             if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
                 session['user_id'] = user['id']
                 session['username'] = user['username']
                 flash('Login successful!', 'success')
+                logging.info(f"Login successful for user '{username}' from IP {client_ip} at {request_time}")
                 return redirect(url_for('dashboard'))
             else:
                 flash('Invalid username or password.', 'danger')
+                logging.error(f"Login failed for user '{username}' from IP {client_ip} - Reason: Invalid credentials")
         
         # Log the resource file path for debugging
         logo_path = url_for('serve_res', filename='logo.png')
@@ -37,6 +47,9 @@ def init_auth_routes(app):
         logging.info(f"Logo URL: {logo_path}")
         logging.info(f"Logo file path: {logo_full_path}")
         logging.info(f"Logo file exists: {os.path.exists(logo_full_path)}")
+        
+        # لاگ درخواست GET برای صفحه لاگین
+        logging.info(f"GET request for login page from IP {client_ip} - URL: {request.url} - Headers: {dict(request.headers)}")
         
         html_template = """
         <!DOCTYPE html>
@@ -119,8 +132,8 @@ def init_auth_routes(app):
                 }
                 .login-container img {
                     display: block;
-                    margin: 0 auto 2rem; /* افزایش فاصله پایین */
-                    max-width: 200px; /* بزرگ‌تر کردن لوگو */
+                    margin: 0 auto 2rem;
+                    max-width: 200px;
                     width: 100%;
                     height: auto;
                     object-fit: contain;
@@ -174,10 +187,10 @@ def init_auth_routes(app):
                         padding: 1.5rem;
                     }
                     .login-container img {
-                        max-width: 150px; /* کوچیک‌تر کردن لوگو در موبایل */
+                        max-width: 150px;
                     }
                     .bubble:nth-child(n+5) {
-                        display: none; /* کاهش تعداد حباب‌ها در موبایل */
+                        display: none;
                     }
                     h2 {
                         font-size: 1.3rem;
@@ -233,6 +246,13 @@ def init_auth_routes(app):
         Returns:
             Redirect to login page
         """
+        client_ip = request.remote_addr
+        request_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S,%f')[:-3]
+        username = session.get('username', 'unknown')
+        
+        # لاگ لاگ‌اوت
+        logging.info(f"User '{username}' logged out from IP {client_ip} at {request_time}")
+        
         session.pop('user_id', None)
         session.pop('username', None)
         flash('You have been logged out.', 'success')
