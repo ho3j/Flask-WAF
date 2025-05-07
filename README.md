@@ -6,22 +6,25 @@ A lightweight, extensible Web Application Firewall (WAF) built with Python and F
 
 ## 🧩 Project Structure
 
-| File / Folder           | Description |
-|-------------------------|-------------|
-| `main.py`               | Main WAF application entry point, initializing Flask and RESTx API |
-| `backend.py`            | Simulated backend server running on port 8888 to test WAF request forwarding |
-| `waf/db.py`             | SQLite database helpers for initializing tables, managing blocked IPs, logging attacks, and storing rules |
-| `waf/config.py`         | Configuration for logging (file and console output) |
-| `waf/waf_utils.py`      | Functions for detecting attacks (SQLi, XSS, Command Injection, Path Traversal, LFI, CSRF) |
-| `waf/waf_patterns.py`   | Regex patterns for detecting various attacks |
-| `waf/routes/waf_routes.py` | Main WAF endpoint (`/waf/`) for filtering requests and IP blocking |
-| `waf/routes/admin_routes.py` | Admin panel routes for dashboard, logs, blocked IPs, rules, and settings |
-| `waf/routes/auth_routes.py` | Authentication routes for login and logout |
-| `test_waf.py`           | Comprehensive test suite using `pytest` to validate WAF functionality |
-| `requirements.txt`      | Project dependencies |
-| `waf.db`                | SQLite database file (generated at runtime, excluded via `.gitignore`) |
-| `res/logs/waf.log`      | Log file for WAF activities |
-| `res/logo.png`          | Optional logo for admin panel UI |
+| File / Folder                  | Description |
+|--------------------------------|-------------|
+| `backend.py`                   | Simulated backend server running on port 8888 to test WAF request forwarding |
+| `waf/main.py`                  | Main WAF application entry point, initializing Flask and RESTx API |
+| `waf/db.py`                    | SQLite database helpers for initializing tables, managing blocked IPs, logging attacks, and storing rules |
+| `waf/config.py`                | Configuration for database path and logging (file output in `logs/waf.log`) |
+| `waf/waf_utils.py`             | Functions for detecting attacks (SQLi, XSS, Command Injection, Path Traversal, LFI, CSRF) |
+| `waf/waf_patterns.py`          | Regex patterns for detecting various attacks |
+| `waf/routes/waf_routes.py`     | Main WAF endpoint (`/waf/`) for filtering requests and IP blocking |
+| `waf/routes/admin_routes.py`   | Admin panel routes for dashboard, logs, blocked IPs, rules, settings, and log management |
+| `waf/routes/auth_routes.py`    | Authentication routes for login and logout |
+| `tests/test_waf.py`            | Comprehensive test suite using `pytest` to validate WAF functionality |
+| `tests/test_log_rotation.py`   | Tests for log rotation and cleanup functionality |
+| `requirements.txt`             | Project dependencies |
+| `db/waf.db`                    | SQLite database file (generated at runtime, excluded via `.gitignore`) |
+| `logs/waf.log`                 | Log file for WAF activities |
+| `res/logo.png`                 | Logo for admin panel UI |
+| `templates/*.html`             | HTML templates for admin panel, error pages, and safe request responses |
+| `static/images/developer.png`  | Image for the "About Developer" page |
 
 ---
 
@@ -31,11 +34,9 @@ A lightweight, extensible Web Application Firewall (WAF) built with Python and F
 To run the Flask-WAF project, ensure you have the following installed:
 - **Python 3.8+**: Download from [python.org](https://www.python.org/downloads/).
 - **pip**: Python package manager (included with Python).
-- **Redis** (optional): For rate limiting. Install via:
-  - Linux: `sudo apt-get install redis-server`
-  - Windows: Use [Redis for Windows](https://github.com/microsoftarchive/redis) or Docker.
-  - macOS: `brew install redis`
 - A web browser (e.g., Chrome, Firefox) for accessing the admin panel.
+
+**Note**: Redis is not required as rate limiting is not currently implemented.
 
 ### Installation
 1. **Clone the Repository**:
@@ -59,8 +60,6 @@ To run the Flask-WAF project, ensure you have the following installed:
    flask==2.3.2
    flask-restx==1.1.0
    requests==2.31.0
-   flask-limiter==3.5.0
-   redis==5.0.1
    bcrypt==4.0.1
    pytest==8.3.5
    ```
@@ -69,12 +68,12 @@ To run the Flask-WAF project, ensure you have the following installed:
    pip install -r requirements.txt
    ```
 
-4. **Create Log Directory** (if not exists):
+4. **Create Log and Database Directories** (if not exist):
    ```bash
    # Windows
-   mkdir res\logs
+   mkdir logs db
    # Linux/macOS
-   mkdir -p res/logs
+   mkdir -p logs db
    ```
 
 5. **Start the Backend Server**:
@@ -86,7 +85,7 @@ To run the Flask-WAF project, ensure you have the following installed:
 6. **Start the WAF**:
    The WAF runs on port 5000 and intercepts requests to `/waf/`.
    ```bash
-   python main.py
+   python waf/main.py
    ```
 
 7. **Access the Admin Panel**:
@@ -96,8 +95,9 @@ To run the Flask-WAF project, ensure you have the following installed:
    - Blocked IPs: `http://localhost:5000/blocked-ips/html`
    - Attack Logs: `http://localhost:5000/attack-logs/html`
    - Rule Management: `http://localhost:5000/rules/html`
-   - Analytics: `http://localhost:5000/analytics/html`
    - Settings: `http://localhost:5000/settings/html`
+   - Log Management: `http://localhost:5000/logs-management/html`
+   - About Developer: `http://localhost:5000/about-developer/html`
    - API Docs: `http://localhost:5000/docs`
 
 ---
@@ -111,39 +111,47 @@ The project includes a comprehensive test suite using `pytest` to validate WAF f
    pip install pytest
    ```
 
-2. **Ensure Backend is Running**:
-   Start the backend server (`python backend.py`) on port 8888, as some tests rely on it.
+2. **Ensure Backend is Running** (for forwarding tests):
+   Start the backend server on port 8888:
+   ```bash
+   python backend.py
+   ```
 
 3. **Run Tests**:
    ```bash
-   set PYTHONPATH=.  # Windows
-   export PYTHONPATH=.  # Linux/macOS
-   python -m pytest test_waf.py -v
+   # Windows
+   set PYTHONPATH=.
+   python -m pytest tests/test_waf.py -v
+   # Linux/macOS
+   export PYTHONPATH=.
+   python -m pytest tests/test_waf.py -v
    ```
    The test suite covers:
-   - Safe GET and POST requests
+   - Safe GET/POST requests with and without backend forwarding
    - Detection of SQLi, XSS, Command Injection, Path Traversal, LFI, and CSRF attacks
    - JSON payload and file upload attack detection
    - IP blocking and unblocking
    - Authentication (login, logout, invalid credentials)
-   - Admin panel route rendering (dashboard, blocked IPs)
+   - Admin panel route rendering (dashboard, blocked IPs, logs, rules, settings)
+   - Non-API path handling with `safe_but_disabled.html`
 
 ---
 
 ## 📋 Useful Routes
 
-| Route                   | Description |
-|-------------------------|-------------|
-| `/waf/`                 | Main WAF-protected endpoint for filtering incoming requests |
-| `/login`                | Login page for admin panel (default: `admin`/`admin`) |
-| `/logout`               | Log out the current user |
-| `/dashboard`            | Dashboard with attack statistics, recent logs, and a 7-day attack chart |
-| `/blocked-ips/html`     | View and manage blocked IPs (unblock or clear all) |
-| `/attack-logs/html`     | View and filter attack logs by type, time, or IP |
-| `/rules/html`           | Add, view, or delete custom detection rules |
-| `/analytics/html`       | Analyze attack patterns with charts and top attacking IPs |
-| `/settings/html`        | Enable/disable WAF features and configure settings (e.g., block duration, learning mode) |
-| `/docs`                 | Swagger-based API documentation for WAF endpoints |
+| Route                        | Description |
+|------------------------------|-------------|
+| `/waf/`                      | Main WAF-protected endpoint for filtering incoming requests |
+| `/login`                     | Login page for admin panel (default: `admin`/`admin`) |
+| `/logout`                    | Log out the current user |
+| `/dashboard`                 | Dashboard with attack statistics, recent logs, and a 7-day attack chart |
+| `/blocked-ips/html`          | View and manage blocked IPs (unblock or clear all) |
+| `/attack-logs/html`          | View and filter attack logs by type, time, or IP |
+| `/rules/html`                | Add, view, or delete custom detection rules |
+| `/settings/html`             | Enable/disable WAF features and configure settings (e.g., block duration, learning mode) |
+| `/logs-management/html`      | Manage log files (clean up old logs and view log size) |
+| `/about-developer/html`      | Information about the developer |
+| `/docs`                      | Swagger-based API documentation for WAF endpoints |
 
 ---
 
@@ -160,9 +168,9 @@ The project includes a comprehensive test suite using `pytest` to validate WAF f
   - **File Uploads**: Scans uploaded file names for attack patterns.
 
 - **Learning Mode**:
-  - Enables monitoring of attacks without blocking (logs attacks only).
-  - Configurable via `/settings/html` with a default 7-day expiry.
-  - Useful for analyzing traffic and tuning rules before enabling full blocking.
+  - Monitors attacks without blocking (logs only).
+  - Configurable via `/settings/html` with a 7-day expiry.
+  - Ideal for analyzing traffic before enabling full blocking.
 
 - **IP Blocking**:
   - Automatically blocks IPs sending malicious requests (default: 5 minutes).
@@ -179,21 +187,23 @@ The project includes a comprehensive test suite using `pytest` to validate WAF f
   - Supports multiple attack types (SQLi, XSS, etc.) and actions (block or log).
 
 - **Request Forwarding**:
-  - Forwards safe requests to the backend (`http://localhost:8888`).
+  - Forwards safe requests to the backend (`http://localhost:8888`) if `forward_to_backend` is enabled.
+  - Displays `safe_request.html` for safe API requests when forwarding is disabled.
+  - Displays `safe_but_disabled.html` for non-API paths when `FORWARDING_ENABLED` is disabled.
   - Preserves headers and parameters.
 
-- **Rate Limiting** (optional):
-  - Uses Redis to limit requests per IP (default: 100/minute).
-  - Returns 429 response for IPs exceeding the limit.
-
 - **Admin Panel**:
-  - Responsive HTML interface with Bootstrap and Vazir font.
-  - Features dashboard, blocked IPs, attack logs, rule management, analytics, and settings.
+  - Responsive HTML interface with Bootstrap and Poppins font.
+  - Features dashboard, blocked IPs, attack logs, rule management, settings, log management, and developer info.
   - Authentication with username/password (bcrypt-secured).
 
+- **Optimized Performance**:
+  - Database queries optimized with indexing and caching for `get_blocked_ips()` (response time ~19ms for safe requests).
+  - Efficient attack detection using regex patterns.
+
 - **Testing**:
-  - Comprehensive `pytest` suite covering attack detection, request forwarding, IP blocking, authentication, and JSON/file upload handling.
-  - Tests for admin panel routes and learning mode functionality.
+  - Comprehensive `pytest` suite covering attack detection, request forwarding, IP blocking, authentication, and admin panel routes.
+  - Tests for `safe_request.html` and `safe_but_disabled.html` rendering.
 
 ---
 
@@ -228,7 +238,26 @@ curl -X POST "http://localhost:5000/waf/" -F "file=@test.txt;filename=../../etc/
 ```
 Each request should return a 403 response, log the attack, and block the IP (unless in Learning Mode).
 
-### 2. Enabling Learning Mode
+### 2. Testing Safe Requests
+- **With Forwarding Disabled**:
+  ```bash
+  curl -H "Accept: text/html" "http://localhost:5000/waf/?name=hossein"
+  ```
+  Returns `safe_request.html` with "Request Approved".
+
+- **With Forwarding Enabled**:
+  ```bash
+  curl "http://localhost:5000/waf/?name=hossein"
+  ```
+  Forwards to backend and returns "Backend Response".
+
+- **Non-API Path**:
+  ```bash
+  curl -H "Accept: text/html" "http://localhost:5000/test-path"
+  ```
+  Returns `safe_but_disabled.html` with "Non-API Request Blocked" if `FORWARDING_ENABLED` is disabled.
+
+### 3. Enabling Learning Mode
 1. Go to `http://localhost:5000/settings/html`.
 2. Enable **Learning Mode** (checkbox).
 3. Save settings (sets a 7-day expiry).
@@ -238,7 +267,7 @@ Each request should return a 403 response, log the attack, and block the IP (unl
    ```
    The request will be logged but not blocked. Check logs at `http://localhost:5000/attack-logs/html`.
 
-### 3. Adding a Custom Rule
+### 4. Adding a Custom Rule
 1. Go to `http://localhost:5000/rules/html`.
 2. Add a rule, e.g.:
    - **Pattern**: `\bwhoami\b`
@@ -250,22 +279,22 @@ Each request should return a 403 response, log the attack, and block the IP (unl
    curl "http://localhost:5000/waf/?cmd=whoami"
    ```
 
-### 4. Viewing Attack Logs
+### 5. Viewing Attack Logs
 1. Go to `http://localhost:5000/attack-logs/html`.
 2. Filter logs by:
    - **Attack Type**: SQLi, XSS, etc.
    - **Time Range**: Last 24 hours, last 7 days, or all.
    - **IP**: Search for a specific IP (e.g., `127.0.0.1`).
 
-### 5. Managing Blocked IPs
+### 6. Managing Blocked IPs
 1. Go to `http://localhost:5000/blocked-ips/html`.
 2. View blocked IPs and remaining block time.
 3. Use "Unblock" to remove an IP or "Clear All IPs" to unblock all.
 
-### 6. Analyzing Attack Patterns
-1. Go to `http://localhost:5000/analytics/html`.
-2. View charts for attack types and daily attack counts.
-3. Check top attacking IPs with attack counts and last seen timestamps.
+### 7. Managing Logs
+1. Go to `http://localhost:5000/logs-management/html`.
+2. Clean up old log files (default: older than 30 days).
+3. View total log size and warning if it exceeds 100 MB.
 
 ---
 
@@ -278,7 +307,7 @@ To add a new attack type (e.g., `Custom`):
 3. Add the new type to the dropdown in `/rules/html`.
 
 ### Extending Tests
-Add new test cases to `test_waf.py` for custom rules or attack types:
+Add new test cases to `tests/test_waf.py` for custom rules or attack types:
 ```python
 def test_custom_rule(client):
     response = client.post('/rules/html', data={
@@ -292,25 +321,23 @@ def test_custom_rule(client):
 ```
 
 ### Notes for Developers
-- **Learning Mode**: When enabled, the WAF logs attacks without blocking, ideal for initial deployment to analyze traffic. Set via `/settings/html` with a 7-day expiry.
-- **Deprecation Warning**: The project uses `flask_restx`, which has a deprecated dependency (`jsonschema.RefResolver`). Consider upgrading to newer versions or switching to alternatives like `flask-smorest` in future releases.
-- **Windows Users**: Ensure the `res/logs` directory exists (`mkdir res\logs`) to avoid logging errors.
+- **Learning Mode**: Logs attacks without blocking, ideal for initial deployment. Set via `/settings/html` with a 7-day expiry.
+- **Deprecation Warning**: `flask_restx` has a deprecated dependency (`jsonschema.RefResolver`). Consider upgrading or switching to `flask-smorest` in future releases.
+- **Windows Users**: Ensure `logs` and `db` directories exist (`mkdir logs db`) to avoid errors.
 - **Package Structure**: The `waf` directory is a Python package, requiring `__init__.py` files in `waf` and `waf/routes`.
+- **Database Optimization**: Uses indexing and caching for `get_blocked_ips()` to achieve ~19ms response times.
 
 ---
 
 ## 🔍 Troubleshooting
 
-- **Redis Connection Error**:
-  - Verify Redis is running (`redis-cli ping` should return `PONG`).
-  - Disable rate limiting in `waf/routes/waf_routes.py` by setting `redis_client = None` if Redis is unavailable.
-
 - **Database Issues**:
-  - Ensure `waf.db` is writable in the project directory.
+  - Ensure `db/waf.db` is writable in `D:\CoDe\waf\db`.
+  - Verify `DB_PATH` in `waf/config.py` points to `D:\CoDe\waf\db\waf.db`.
   - Install `pysqlite3` if SQLite issues persist (`pip install pysqlite3`).
 
 - **UI Not Displaying Correctly**:
-  - Check if the Vazir font CDN (`https://cdn.fontcdn.ir/Vazir`) is accessible.
+  - Check if Bootstrap and Poppins font CDNs are accessible.
   - Clear browser cache or try another browser.
 
 - **Tests Failing**:
@@ -321,10 +348,15 @@ def test_custom_rule(client):
     set PYTHONPATH=.  # Windows
     export PYTHONPATH=.  # Linux/macOS
     ```
+  - Check `tests/test_waf.py` exists in `D:\CoDe\waf\tests`.
 
 - **ModuleNotFoundError**:
-  - Confirm `main.py` and the `waf` package structure are correct.
-  - Ensure `__init__.py` files exist in `waf` and `waf/routes`.
+  - Confirm `__init__.py` files exist in `waf` and `waf/routes`.
+  - Run tests with `PYTHONPATH`:
+    ```bash
+    set PYTHONPATH=.
+    python -m pytest tests/test_waf.py -v
+    ```
 
 - **Learning Mode Not Working**:
   - Check `/settings/html` to ensure Learning Mode is enabled.

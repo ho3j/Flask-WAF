@@ -2997,3 +2997,35 @@
 2025-05-07 20:37:00 - INFO - Request processed - URL: http://localhost:5000/res/logo.png - Response time: 5.00ms - Response size: 0.00KB
 2025-05-07 20:37:00,018 - INFO - 127.0.0.1 - - [07/May/2025 20:37:00] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
 2025-05-07 20:37:00 - INFO - 127.0.0.1 - - [07/May/2025 20:37:00] "[36mGET /res/logo.png HTTP/1.1[0m" 304 -
+2025-05-07 20:41:02,754 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 20:41:02 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 20:41:02,755 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 20:41:02 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 20:41:03,023 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 20:41:03 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-07 20:41:03,024 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 20:41:03 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-07 20:41:03,026 - INFO -  * Restarting with stat
+2025-05-07 20:41:03 - INFO -  * Restarting with stat
+2025-05-07 20:41:03,628 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 20:41:03 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 20:41:03,629 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 20:41:03 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 20:41:03,897 - WARNING -  * Debugger is active!
+2025-05-07 20:41:03 - WARNING -  * Debugger is active!
+2025-05-07 20:41:03,900 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 20:41:03 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 20:45:38,144 - INFO -  * Detected change in 'D:\\CoDe\\waf\\tests\\test_waf.py', reloading
+2025-05-07 20:45:38 - INFO -  * Detected change in 'D:\\CoDe\\waf\\tests\\test_waf.py', reloading
+2025-05-07 20:45:38,235 - INFO -  * Restarting with stat
+2025-05-07 20:45:38 - INFO -  * Restarting with stat
+2025-05-07 20:45:39,052 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 20:45:39 - INFO - Static folder path: D:\CoDe\waf\waf\static
+2025-05-07 20:45:39,054 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 20:45:39 - INFO - Template folder path: D:\CoDe\waf\templates
+2025-05-07 20:45:39,382 - WARNING -  * Debugger is active!
+2025-05-07 20:45:39 - WARNING -  * Debugger is active!
+2025-05-07 20:45:39,387 - INFO -  * Debugger PIN: 119-727-939
+2025-05-07 20:45:39 - INFO -  * Debugger PIN: 119-727-939
