@@ -94,46 +94,6 @@ FORWARDING_ENABLED = False  # باید با تنظیمات واقعی WAF خود
 @app.before_request
 def before_request():
     request.start_time = time.time()
-
-@app.after_request
-def after_request(response):
-    client_ip = request.remote_addr
-    request_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    
-    # لاگ درخواست
-    logging.info(f"Request from IP {client_ip} - Method: {request.method} - URL: {request.url} - Headers: {dict(request.headers)}")
-    
-    # لاگ حمله
-    attack_type, suspicious_param = detect_attack(request)
-    if attack_type:
-        action = "Blocked"
-        logging.warning(f"Attack detected - Type: {attack_type} - IP: {client_ip} - URL: {request.url} - Parameter: {suspicious_param} - Action: {action}")
-        response = make_response(render_template('blocked.html', message="Malicious input detected in your request."), 403)
-        response.headers['Content-Type'] = 'text/html'
-        return response
-    
-    # بررسی فوروارد به بک‌اند فقط برای درخواست‌های غیر-API، غیراستاتیک، و غیر-احراز هویت
-    api_paths = ['/waf', '/docs', '/res', '/favicon.ico', '/login', '/logout', '/dashboard', '/blocked-ips', '/attack-logs', '/rules', '/settings', '/logs-management', '/about-developer']
-    if not FORWARDING_ENABLED and not any(request.path.startswith(path) for path in api_paths):
-        logging.info(f"Request is safe but forwarding to backend is disabled - IP: {client_ip} - URL: {request.url}")
-        response = make_response(render_template('safe_but_disabled.html'))
-        response.headers['Content-Type'] = 'text/html'
-        return response
-    
-    # لاگ عملکرد
-    duration = (time.time() - request.start_time) * 1000
-    response_size = 0
-    try:
-        if isinstance(response, (Response, WerkzeugResponse)) and not response.direct_passthrough:
-            response_size = len(response.get_data(as_text=True))
-    except Exception as e:
-        logging.warning(f"Error calculating response size: {str(e)}")
-    
-    log_level = logging.WARNING if duration > 1000 else logging.INFO
-    logging.log(log_level, f"Request processed - URL: {request.url} - Response time: {duration:.2f}ms - Response size: {response_size/1024:.2f}KB")
-    
-    return response
-
 # Initialize database
 init_db()
 
@@ -156,3 +116,64 @@ cleanup_thread.start()
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
+
+@app.after_request
+def after_request(response):
+    client_ip = request.remote_addr
+    request_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    logging.info(f"Request from IP {client_ip} - Method: {request.method} - URL: {request.url} - Headers: {dict(request.headers)}")
+
+    attack_type, suspicious_param = detect_attack(request)
+    if attack_type:
+        action = "Blocked"
+        logging.warning(f"Attack detected - Type: {attack_type} - IP: {client_ip} - URL: {request.url} - Parameter: {suspicious_param} - Action: {action}")
+        response = make_response(render_template('blocked.html', message="Malicious input detected in your request."), 403)
+        response.headers['Content-Type'] = 'text/html'
+        return response
+
+    # فوروارد غیرفعال → نمایش صفحه امن
+    api_paths = ['/waf', '/docs', '/res', '/favicon.ico', '/login', '/logout', '/dashboard', '/blocked-ips', '/attack-logs', '/rules', '/settings', '/logs-management', '/about-developer']
+    if not FORWARDING_ENABLED and not any(request.path.startswith(path) for path in api_paths):
+        logging.info(f"Request is safe but forwarding to backend is disabled - IP: {client_ip} - URL: {request.url}")
+        response = make_response(render_template('safe_but_disabled.html'))
+        response.headers['Content-Type'] = 'text/html'
+        return response
+
+    # هدرهای امنیتی
+    response.headers['Content-Security-Policy'] = (
+        "default-src 'self'; "
+        "script-src 'self'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data:; "
+        "font-src 'self' https://fonts.gstatic.com; "
+        "connect-src 'self'; "
+        "frame-src 'none'; "
+        "object-src 'none'; "
+        "base-uri 'self'; "
+        "form-action 'self';"
+    )
+    response.headers['X-Content-Type-Options'] = 'nosniff'
+    response.headers['X-Frame-Options'] = 'DENY'
+    response.headers['Referrer-Policy'] = 'no-referrer'
+    response.headers['Permissions-Policy'] = (
+        "geolocation=(), microphone=(), camera=(), fullscreen=(), payment=()"
+    )
+    response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains; preload'
+
+    # لاگ زمان پاسخ و اندازه پاسخ
+    duration = (time.time() - request.start_time) * 1000
+    try:
+        if isinstance(response, (Response, WerkzeugResponse)) and not response.direct_passthrough:
+            response_size = len(response.get_data(as_text=True))
+        else:
+            response_size = 0
+    except Exception as e:
+        response_size = 0
+        logging.warning(f"Error calculating response size: {str(e)}")
+
+    level = logging.WARNING if duration > 1000 else logging.INFO
+    logging.log(level, f"Response completed - Time: {duration:.2f}ms - Size: {response_size / 1024:.2f}KB")
+
+    return response

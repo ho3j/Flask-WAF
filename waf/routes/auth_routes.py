@@ -4,6 +4,45 @@ import bcrypt
 import logging
 import os
 from datetime import datetime
+from PIL import Image, ImageDraw, ImageFont
+import random
+import string
+import base64
+from io import BytesIO
+import time
+
+def generate_captcha():
+    # تولید متن تصادفی
+    captcha_text = ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
+    
+    # ایجاد تصویر
+    image = Image.new('RGB', (200, 80), color='white')
+    draw = ImageDraw.Draw(image)
+    
+    # فونت (پیش‌فرض یا فونت دلخواه اگر موجود باشد)
+    try:
+        font = ImageFont.truetype("arial.ttf", 40)
+    except:
+        font = ImageFont.load_default()
+    
+    # افزودن متن با اعوجاج
+    draw.text((10, 20), captcha_text, fill='black', font=font)
+    
+    # افزودن نویز
+    for _ in range(50):
+        x, y = random.randint(0, 200), random.randint(0, 80)
+        draw.point((x, y), fill='gray')
+    
+    # ذخیره تصویر به Base64
+    buffer = BytesIO()
+    image.save(buffer, format="PNG")
+    img_str = base64.b64encode(buffer.getvalue()).decode()
+    
+    # ذخیره پاسخ در session
+    session['captcha_answer'] = captcha_text
+    session['captcha_expiry'] = time.time() + 120  # 2 دقیقه
+    
+    return img_str
 
 def init_auth_routes(app):
     """
@@ -15,7 +54,7 @@ def init_auth_routes(app):
     @app.route('/login', methods=['GET', 'POST'])
     def login():
         """
-        Display and handle the login page.
+        Display and handle the login page with CAPTCHA.
         
         Returns:
             Rendered HTML template for login page or redirect to dashboard
@@ -24,22 +63,34 @@ def init_auth_routes(app):
         request_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S,%f')[:-3]
         
         if request.method == 'POST':
-            username = request.form.get('username')
-            password = request.form.get('password')
-            user = get_user(username)
-            
-            # لاگ درخواست لاگین
-            logging.info(f"Login attempt by user '{username}' from IP {client_ip} - Method: POST - URL: {request.url} - Headers: {dict(request.headers)}")
-            
-            if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
-                session['user_id'] = user['id']
-                session['username'] = user['username']
-                flash('Login successful!', 'success')
-                logging.info(f"Login successful for user '{username}' from IP {client_ip} at {request_time}")
-                return redirect(url_for('dashboard'))
+            captcha_answer = request.form.get('captcha')
+            if session.get('captcha_answer') and time.time() < session.get('captcha_expiry', 0):
+                if captcha_answer.upper() == session['captcha_answer']:
+                    username = request.form.get('username')
+                    password = request.form.get('password')
+                    user = get_user(username)
+                    
+                    # لاگ درخواست لاگین
+                    logging.info(f"Login attempt by user '{username}' from IP {client_ip} - Method: POST - URL: {request.url} - Headers: {dict(request.headers)}")
+                    
+                    if user and bcrypt.checkpw(password.encode('utf-8'), user['password'].encode('utf-8')):
+                        session['user_id'] = user['id']
+                        session['username'] = user['username']
+                        flash('Login successful!', 'success')
+                        logging.info(f"Login successful for user '{username}' from IP {client_ip} at {request_time}")
+                        return redirect(url_for('dashboard'))
+                    else:
+                        flash('Invalid username or password.', 'danger')
+                        logging.error(f"Login failed for user '{username}' from IP {client_ip} - Reason: Invalid credentials")
+                else:
+                    flash('Invalid CAPTCHA.', 'danger')
+                    logging.error(f"Login failed for IP {client_ip} - Reason: Invalid CAPTCHA")
             else:
-                flash('Invalid username or password.', 'danger')
-                logging.error(f"Login failed for user '{username}' from IP {client_ip} - Reason: Invalid credentials")
+                flash('CAPTCHA expired or invalid.', 'danger')
+                logging.error(f"Login failed for IP {client_ip} - Reason: CAPTCHA expired")
+        
+        # تولید CAPTCHA جدید
+        captcha_img = generate_captcha()
         
         # Log the resource file path for debugging
         logo_path = url_for('serve_res', filename='logo.png')
@@ -74,6 +125,7 @@ def init_auth_routes(app):
                     margin: 0;
                     position: relative;
                     overflow: hidden;
+                    font-size: 0.9rem; /* کاهش فونت کلی */
                 }
                 @keyframes gradientShift {
                     0% { background-position: 0% 50%; }
@@ -114,11 +166,11 @@ def init_auth_routes(app):
                 }
                 .login-container {
                     background: rgba(255, 255, 255, 0.95);
-                    padding: 2rem;
-                    border-radius: 12px;
-                    box-shadow: 0 0 20px rgba(2, 132, 199, 0.5);
+                    padding: 1.5rem; /* کاهش padding */
+                    border-radius: 10px; /* کمی کوچکتر */
+                    box-shadow: 0 0 15px rgba(2, 132, 199, 0.5);
                     width: 100%;
-                    max-width: 400px;
+                    max-width: 350px; /* کاهش عرض ظرف */
                     position: relative;
                     backdrop-filter: blur(5px);
                     animation: floatIn 0.8s ease-in-out;
@@ -132,8 +184,8 @@ def init_auth_routes(app):
                 }
                 .login-container img {
                     display: block;
-                    margin: 0 auto 2rem;
-                    max-width: 200px;
+                    margin: 0 auto 1.5rem; /* کاهش margin */
+                    max-width: 150px; /* کاهش اندازه لوگو */
                     width: 100%;
                     height: auto;
                     object-fit: contain;
@@ -144,11 +196,12 @@ def init_auth_routes(app):
                     filter: drop-shadow(0 0 10px rgba(2, 132, 199, 0.7));
                 }
                 .form-control {
-                    border-radius: 8px;
+                    border-radius: 6px; /* کاهش شعاع گوشه */
                     border: 1px solid #ced4da;
-                    padding: 0.75rem;
-                    font-size: 1rem;
+                    padding: 0.5rem; /* کاهش padding */
+                    font-size: 0.9rem; /* کاهش اندازه فونت */
                     transition: border-color 0.3s ease;
+                    height: 2rem; /* کاهش ارتفاع */
                 }
                 .form-control:focus {
                     border-color: #0284c7;
@@ -157,46 +210,58 @@ def init_auth_routes(app):
                 .btn-primary {
                     background: #0284c7;
                     border: none;
-                    border-radius: 8px;
-                    padding: 0.75rem;
+                    border-radius: 6px; /* کاهش شعاع گوشه */
+                    padding: 0.5rem; /* کاهش padding */
                     width: 100%;
                     font-weight: 600;
+                    font-size: 0.9rem; /* کاهش اندازه فونت */
                     transition: background 0.3s, box-shadow 0.3s;
+                    height: 2rem; /* کاهش ارتفاع */
                 }
                 .btn-primary:hover {
                     background: #38bdf8;
                     box-shadow: 0 0 10px rgba(2, 132, 199, 0.7);
                 }
                 .alert {
-                    border-radius: 8px;
-                    margin-bottom: 1rem;
+                    border-radius: 6px; /* کاهش شعاع گوشه */
+                    margin-bottom: 0.8rem; /* کاهش margin */
                     border: 1px solid rgba(2, 132, 199, 0.3);
-                    font-size: 0.9rem;
+                    font-size: 0.8rem; /* کاهش اندازه فونت */
                 }
                 h2 {
                     color: #0284c7;
                     text-align: center;
-                    margin-bottom: 1.5rem;
+                    margin-bottom: 1rem; /* کاهش margin */
                     font-weight: 600;
-                    font-size: 1.5rem;
+                    font-size: 1.3rem; /* کاهش اندازه فونت */
                     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+                }
+                .form-label {
+                    font-size: 0.85rem; /* کاهش اندازه فونت لیبل */
+                }
+                .mb-3 {
+                    margin-bottom: 0.8rem !important; /* کاهش فاصله بین المان‌ها */
                 }
                 @media (max-width: 576px) {
                     .login-container {
-                        margin: 1rem;
-                        padding: 1.5rem;
+                        margin: 0.8rem;
+                        padding: 1rem; /* کاهش padding در موبایل */
                     }
                     .login-container img {
-                        max-width: 150px;
+                        max-width: 120px; /* کاهش اندازه لوگو در موبایل */
                     }
                     .bubble:nth-child(n+5) {
                         display: none;
                     }
                     h2 {
-                        font-size: 1.3rem;
+                        font-size: 1.1rem; /* کاهش اندازه فونت در موبایل */
                     }
                     .form-control, .btn-primary {
-                        font-size: 0.9rem;
+                        font-size: 0.8rem; /* کاهش فونت در موبایل */
+                        height: 1.8rem; /* کاهش ارتفاع در موبایل */
+                    }
+                    .form-label {
+                        font-size: 0.8rem; /* کاهش فونت لیبل در موبایل */
                     }
                 }
             </style>
@@ -230,13 +295,18 @@ def init_auth_routes(app):
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="captcha" class="form-label">Enter CAPTCHA</label>
+                        <img src="data:image/png;base64,{{ captcha_img }}" alt="CAPTCHA">
+                        <input type="text" class="form-control" id="captcha" name="captcha" required>
+                    </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
         </body>
         </html>
         """
-        return render_template_string(html_template)
+        return render_template_string(html_template, captcha_img=captcha_img)
 
     @app.route('/logout')
     def logout():

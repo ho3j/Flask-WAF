@@ -7,7 +7,7 @@ from waf.config import DB_PATH
 def init_db():
     """
     Initialize the SQLite database and create tables if they don't exist.
-    Tables: blocked_ips, attack_logs, rules, settings, users
+    Tables: blocked_ips, attack_logs, rules, settings, users, login_attempts
     """
     with sqlite3.connect(DB_PATH) as conn:
         c = conn.cursor()
@@ -55,6 +55,14 @@ def init_db():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 username TEXT NOT NULL UNIQUE,
                 password TEXT NOT NULL
+            )
+        ''')
+        # Table for login attempts
+        c.execute('''
+            CREATE TABLE IF NOT EXISTS login_attempts (
+                ip TEXT PRIMARY KEY,
+                attempts INTEGER,
+                last_attempt REAL
             )
         ''')
         # Initialize default settings
@@ -256,3 +264,40 @@ def get_user(username):
         if result:
             return {'id': result[0], 'username': result[1], 'password': result[2]}
         return None
+
+def record_login_attempt(ip):
+    """
+    Record a failed login attempt for an IP and block if attempts exceed limit.
+    
+    Args:
+        ip (str): IP address of the client
+        
+    Returns:
+        bool: True if IP should be blocked, False otherwise
+    """
+    with sqlite3.connect(DB_PATH) as conn:
+        c = conn.cursor()
+        c.execute("SELECT attempts, last_attempt FROM login_attempts WHERE ip = ?", (ip,))
+        result = c.fetchone()
+        
+        current_time = time.time()
+        if result:
+            attempts, last_attempt = result
+            # Reset attempts if more than 1 hour has passed
+            if current_time - last_attempt > 3600:
+                attempts = 0
+            attempts += 1
+            c.execute("UPDATE login_attempts SET attempts = ?, last_attempt = ? WHERE ip = ?", 
+                     (attempts, current_time, ip))
+        else:
+            attempts = 1
+            c.execute("INSERT INTO login_attempts (ip, attempts, last_attempt) VALUES (?, ?, ?)",
+                     (ip, attempts, current_time))
+        
+        conn.commit()
+        
+        # Block IP if attempts exceed 3
+        if attempts >= 3:
+            block_ip(ip, 300)  # Block for 5 minutes
+            return True
+        return False
